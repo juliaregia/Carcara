@@ -1,5 +1,4 @@
 ![logo](https://github.com/SoSoJigsaw/Carcara/blob/main/Sprint%201/Logos/Carcar%C3%A1%20Logo%20Alternativa.jpg)
-
 ![projeto](https://github.com/SoSoJigsaw/Carcara/blob/main/Sprint%201/Imagens/Slide2.jpg)
 ![equipe](https://github.com/SoSoJigsaw/Carcara/blob/main/Sprint%201/Imagens/equipe.jpg)
 ![proposta](https://github.com/SoSoJigsaw/Carcara/blob/main/Sprint%201/Imagens/Slide4.jpg)
