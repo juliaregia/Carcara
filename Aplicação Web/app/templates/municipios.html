@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- Idioma da pagina -->
+<html lang ="pt-br">
+
+
+  <head>
+                             
+    <!-- Mapa de caracteres -->
+    <meta charset="UTF-8"/>
+
+    <!-- Zoom da pagina -->
+    <meta name= "viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>INDEX</title>
+
+
+
+    <!-- local do arquivo .css flask -->
+    <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
+    <!-- --------------------------------------------------------------------------------------------------------------------------------------
+    <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="C:\Users\Aldrik\Desktop\helloFlask\app\static\style.css">
+    -->
+
+
+  </head>
+
+
+  <body>
+   <!-- Menu Horizontal e Direcionamento de paginas -->
+    <nav id="menu-H">
+        
+      
+      
+      <!-- Diretorio da Logo no Menu horizontal -->
+      <div class="logo"><img src="{{url_for('static', filename='logo.jpg')}}" alt="logo"></div>
+      <!-- -------------------------------------------------------------------------------------------------------------------------------------
+      <div class="logo"><img src="{{url_for('static', filename='logo.jpg')}}" alt="logo"></div>
+      <div class="logo"><img src="C:\Users\Aldrik\Desktop\helloFlask\app\static\logo.jpg"></div>
+      -->
+
+      <!-- Lista de Botoes e direcionamento de paginas Menu Horizontal -->   
+        <ul> 
+          <li><a href="/estados">Estado</a></li>
+
+          <li><a href="/municipios">Municipios</a></li>
+
+          <li><a href="/index">Observaçoes</a></li>
+
+          <li><a href="https://github.com/SoSoJigsaw/Carcara">GitHub</a></li>
+      </ul>
+    </nav>
+
+
+    <!-- Corpo da pagina -->
+    <nav id="TituloEstado">
+      <div class="Estados">
+        
+        <!-- Local da Imagem de fundo -->
+        <img class="imgMunicipio" src="{{url_for('static', filename='branco.jpg')}}" alt="mapaSP">
+          <!-------------------------------------------------------------------------------------------------------------------------------------
+        <img class="blur" src="{{url_for('static', filename='branco.jpg')}}" alt="mapaSP">
+        <img class="imgMunicipio" src="C:\Users\Aldrik\Desktop\helloFlask\app\static\branco.jpg" alt="mapaSP">
+        -->
+        
+        <div class="TituloMunicipios">Dados dos Municípios</div>
+    
+      </div>
+    </nav>
+
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p class="footerText">© Carcará Analysis,  Inc. 2021. </p>
+    </div>
+
+  </body> 
+</html>

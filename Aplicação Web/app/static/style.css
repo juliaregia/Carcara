@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+    /* formatação da pagina*/
+*{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+
+/* ------------------------------- ↓↓↓↓↓ INDEX.HTML PART 1 ↓↓↓↓↓ --------------------------------*/ 
+
+/* barra do menu*/
+#menu-H ul{
+    list-style-type: none;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+    filter: drop-shadow(0px 0px 0.1px rgb(0, 0, 0));
+
+}
+
+    /* faz ficarem um ao lado do outro*/
+    #menu-H ul li{
+        display: inline;
+        float: right;
+        /* distanciamento
+        padding: 20px;
+        float: right;
+       */
+    }
+
+    /* formatação links*/
+    #menu-H ul li a{
+        color: rgb(0, 0, 0);
+        
+        padding: 20px;
+        display: inline-block;
+        text-decoration: none;
+        transition: background .6s;
+    
+    }
+    /* Animação */
+    #menu-H ul li a:hover{
+        background-color: rgb(255, 166, 0);
+    }
+ 
+ /* LOGO */
+    #menu-H .logo{
+      float: left;
+      width: 20%;
+      padding: 5px; 
+    }
+
+
+/* ------------------------------- ↓↓↓↓↓ INDEX.HTML PART 2 ↓↓↓↓↓ --------------------------------*/ 
+/* imagem de fundo*/    
+img {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+/* Filtro da imagem de fundo*/
+.imgIndex {
+  filter: brightness(.6);
+}
+
+
+/* formatação do texto*/
+    .home {
+        position: relative;
+      }
+      
+          .Titulo1 {
+            position: absolute;
+            top:150px;
+            left: 160px;
+            font-size: 100px;
+            text-shadow: 0px 0px 0px rgb(71, 71, 71), 0px 0px 0px rgb(255, 255, 255), 0px 0px 5px rgb(0, 0, 0);
+          }
+
+          .Titulo2 {
+            position: absolute;
+            top:240px;
+            left: 159px;
+            font-size: 105px;
+            color: #d07810;
+            text-shadow: 0px 0px 0px rgb(71, 71, 71), 0px 0px 0px rgb(255, 255, 255), 0px 0px 5px rgb(0, 0, 0);
+            
+        
+          }
+
+          .SubTitulo {
+            font-weight: bold;
+            position: absolute;
+            top:370px;
+            left: 160px;
+            font-size: 20px;
+            color: rgb(255, 255, 255);
+            text-shadow: 0px 0px 0px rgb(71, 71, 71), 0px 0px 0px rgb(255, 255, 255), 2px 2px 10px rgb(0, 0, 0);        
+          }
+
+          .btnEstado {
+            position: absolute;
+            top:550px;
+            left: 550px;
+            font-size: 20px;
+            background-color: #F8AC5B;
+
+            border: none;
+            color: #AC5A00;
+            padding: 15px 15px;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 4px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        
+          }
+          .btnEstado:hover {background-color: #F8AC5B}
+          .btnEstado:active {
+            background-color: #F8AC5B;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+          }
+
+
+          
+          .btnMunicipio {
+            position: absolute;
+            top:550px;
+            left: 1100px;
+            font-size: 20px;
+            background-color: #F8AC5B;
+
+            border: none;
+            color: #AC5A00;
+            padding: 15px 15px;
+            text-align: center;
+            font-size: 20px;
+            border-radius: 4px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+            display: inline-block;
+            cursor: pointer;
+        
+          }
+          .btnMunicipio:hover {background-color: #F8AC5B}
+          .btnMunicipio:active {
+            background-color: #F8AC5B;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+          }
+
+
+
+/* ------------------------------- ↓↓↓↓↓ ESTADOS.HTML ↓↓↓↓↓ --------------------------------*/ 
+/* formatação da Imgagem de fundo*/
+.imgEstado {
+  filter: brightness(.6);
+
+  max-width:2000px;
+  max-height:350px; 
+    height: auto;  
+}
+
+.TituloEstados {
+  font-weight: bold;
+  position: absolute;
+  top:190px;
+  left: 600px;
+  font-size: 50px;
+    
+}
+
+
+
+
+/* formatação da Imgagem de fundo*/
+.imgMunicipio {
+  filter: brightness(.6);
+
+  max-width:2000px;
+  max-height:350px; 
+    height: auto;  
+}
+
+.TituloMunicipios {
+  font-weight: bold;
+  position: absolute;
+  top:190px;
+  left: 690px;
+  font-size: 50px;
+    
+}
+
+
+
+
+
+/* ------------------------------- ↓↓↓↓↓ FOOTER ↓↓↓↓↓ --------------------------------*/ 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 8%;
+  background-color: rgb(255, 255, 255);
+  
+   box-shadow:         inset 0 0 5px #000000;
+}
+
+.footerText{
+  color: #AC5A00;
+  padding: 30px;
+  text-align: center;
+  
+  
+
+}
+
+
+        
+
+          
+          
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- Idioma da pagina -->
+<html lang ="pt-br">
+
+
+  <head>
+                             
+    <!-- Mapa de caracteres -->
+    <meta charset="UTF-8"/>
+
+    <!-- Zoom da pagina -->
+    <meta name= "viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>INDEX</title>
+
+
+
+    <!-- local do arquivo .css flask -->
+    <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
+    <!-- --------------------------------------------------------------------------------------------------------------------------------------
+    <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" href="C:\Users\Aldrik\Desktop\helloFlask\app\static\style.css">
+    -->
+
+
+  </head>
+
+
+  <body>
+    <!-- Menu Horizontal e Direcionamento de paginas -->
+    <nav id="menu-H">
+       
+      <!-- Diretorio da Logo no Menu horizontal -->
+      <div class="logo"><img src="{{url_for('static', filename='logo.jpg')}}" alt="logo"></div>
+      <!-- -------------------------------------------------------------------------------------------------------------------------------------
+      <div class="logo"><img src="{{url_for('static', filename='logo.jpg')}}" alt="logo"></div>
+      <div class="logo"><img src="C:\Users\Aldrik\Desktop\helloFlask\app\static\logo.jpg"></div>
+      -->
+
+
+        <!-- Lista de Botoes e direcionamento de paginas Menu Horizontal -->      
+        <ul> 
+          <li><a href="/estados">Estado</a></li>
+
+          <li><a href="/municipios">Municipios</a></li>
+
+          <li><a href="/index">Observaçoes</a></li>
+
+          <li><a href="https://github.com/SoSoJigsaw/Carcara">GitHub</a></li>
+      </ul>
+    </nav>
+
+
+    <!-- Corpo da pagina -->
+    <nav id="home">
+
+      <div class="inicio">
+
+        <!-- Local da Imagem de fundo -->
+        <img class="imgIndex" src="{{url_for('static', filename='mapaTeste.jpg')}}" alt="mapaSP">
+          <!-------------------------------------------------------------------------------------------------------------------------------------
+        <img class="imgIndex" src="{{url_for('static', filename='mapaTeste.jpg')}}" alt="mapaSP">
+        <img class="imgIndex" src="C:\Users\Aldrik\Desktop\helloFlask\app\static\mapaTeste.jpg" alt="mapaSP">
+        -->
+
+
+        <div class="Titulo1">PANDEDEMIA</div>
+        <div class="Titulo2">ESTRUTURADA</div>
+        <div class="SubTitulo">Expondo o impacto da COVID-19 no Estado de São Paulo de forma clara e contextualizada.</div>
+
+        <!-- Botoes de direcionamento de paginas
+        <a href="estados.html" target="_parent"><button class="btnEstado">Dados gerais do Estado de São Paulo</button></a>
+        -->
+       
+        
+        <a href="/estados" target="_parent"><button class="btnEstado">Dados gerais do Estado de São Paulo</button></a>
+
+        
+        <a href="/municipios" target="_parent"><button class="btnMunicipio">Dados por Município</button></a>
+
+
+
+      </div>
+
+    </nav>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p class="footerText">© Carcará Analysis,  Inc. 2021. </p>
+  </div>
+
+  </body> 
+</html>
