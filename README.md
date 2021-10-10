@@ -1,7 +1,7 @@
 # Carcará Analysis
 
 ![projeto](https://github.com/SoSoJigsaw/Carcara/blob/main/Sprint%201/Imagens/Slide2.jpg)
-![equipe](https://github.com/SoSoJigsaw/Carcara/blob/main/Sprint%201/Imagens/Slide3.jpg)
+![equipe]()
 ![proposta](https://github.com/SoSoJigsaw/Carcara/blob/main/Sprint%201/Imagens/Slide4.jpg)
 ![info](https://github.com/SoSoJigsaw/Carcara/blob/main/Sprint%201/Imagens/Slide5.jpg)
 ![Prototipo1](https://github.com/SoSoJigsaw/Carcara/blob/main/Sprint%201/Imagens/Slide6.jpg)
