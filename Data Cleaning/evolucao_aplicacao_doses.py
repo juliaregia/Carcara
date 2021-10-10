@@ -79,3 +79,6 @@ df["Dose Única"] = df["Dose Única"].astype(int)
 
 # Alterando nome de colunas
 df.rename(columns={"Dia de Data Registro Vacina": "Data de Registro"}, inplace=True)
+
+# Exportando o Dataframe tratado em arquivo csv
+df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/evolucao-aplicacao-doses.csv", index=False)

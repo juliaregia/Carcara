@@ -97,3 +97,6 @@ df = df[[c for c in df.columns if c not in ['index']]]
 if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):
     df = df.to_frame(index=False)
 df = df.reset_index().drop('index', axis=1, errors='ignore')
+
+# Exportando o Dataframe tratado em arquivo csv
+df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/covid-municipios-sp.csv", index=False)

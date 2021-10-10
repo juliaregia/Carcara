@@ -122,3 +122,6 @@ df = vacinometro.merge(distribuicao, left_on=['Município'],
 # Reformatando os valores da coluna "Município", que estavam em caixa alta
 s = df['Município'].str.title()
 df.loc[:, 'Município'] = pd.Series(s, index=df.index, name='Município')
+
+# Exportando o Dataframe tratado em arquivo csv
+df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/vacinometro-sp.csv", index=False)

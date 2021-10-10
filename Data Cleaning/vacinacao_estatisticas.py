@@ -56,3 +56,6 @@ df = df.rename(columns={'Nomes de medida': 'Dado'})
 
 # Alterando a ordem das linhas
 df = df.sort_values(['Dado'], ascending=[True])
+
+# Exportando o Dataframe tratado em arquivo csv
+df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/vacinacao-estatisticas.csv", index=False)

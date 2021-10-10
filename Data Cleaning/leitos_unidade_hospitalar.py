@@ -43,7 +43,7 @@ list_of_files = glob.glob('/home/sobral/data/unidade-hospitalar/*.csv')
 latest_file = max(list_of_files, key=os.path.getctime)
 csv = os.path.abspath(latest_file)
 
-# leitura do dataframe pelo pandas
+# Leitura do dataframe pelo pandas
 df = pd.read_csv(csv, sep=';')
 
 # Renomeando colunas
@@ -59,3 +59,6 @@ df.loc[:, 'Município'] = pd.Series(s, index=df.index, name='Município')
 s = df['Unidade Hospitalar'].str.title()
 df.loc[:, 'Unidade Hospitalar'] = pd.Series(s, index=df.index,
                                             name='Unidade Hospitalar')
+
+# Exportando o Dataframe tratado em arquivo csv
+df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/leitos-unidade-hospitalar.csv", index=False)
