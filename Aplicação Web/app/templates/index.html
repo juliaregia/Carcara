@@ -11,80 +11,50 @@
     <!-- Zoom da pagina -->
     <meta name= "viewport" content="width=device-width, initial-scale=1.0">
 
+    
 
     <title>INDEX</title>
-
-
 
     <!-- local do arquivo .css flask -->
     <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
     <!-- --------------------------------------------------------------------------------------------------------------------------------------
     <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
-    <link rel="stylesheet" href="C:\Users\Aldrik\Desktop\helloFlask\app\static\style.css">
+    <link rel="stylesheet" href="C:\Users\Aldrik\Desktop\Carcara\Aplicação Web\app\static\style.css">
     -->
-
-
+      
   </head>
 
 
   <body>
     <!-- Menu Horizontal e Direcionamento de paginas -->
-    <nav id="menu-H">
-       
-      <!-- Diretorio da Logo no Menu horizontal -->
-      <div class="logo"><img src="{{url_for('static', filename='logo.jpg')}}" alt="logo"></div>
-      <!-- -------------------------------------------------------------------------------------------------------------------------------------
-      <div class="logo"><img src="{{url_for('static', filename='logo.jpg')}}" alt="logo"></div>
-      <div class="logo"><img src="C:\Users\Aldrik\Desktop\helloFlask\app\static\logo.jpg"></div>
-      -->
-
-
-        <!-- Lista de Botoes e direcionamento de paginas Menu Horizontal -->      
-        <ul> 
-          <li><a href="/estados">Estado</a></li>
-
-          <li><a href="/municipios">Municipios</a></li>
-
-          <li><a href="/index">Observaçoes</a></li>
-
-          <li><a href="https://github.com/SoSoJigsaw/Carcara">GitHub</a></li>
-      </ul>
-    </nav>
-
-
-    <!-- Corpo da pagina -->
-    <nav id="home">
-
-      <div class="inicio">
-
-        <!-- Local da Imagem de fundo -->
-        <img class="imgIndex" src="{{url_for('static', filename='mapaTeste.jpg')}}" alt="mapaSP">
-          <!-------------------------------------------------------------------------------------------------------------------------------------
-        <img class="imgIndex" src="{{url_for('static', filename='mapaTeste.jpg')}}" alt="mapaSP">
-        <img class="imgIndex" src="C:\Users\Aldrik\Desktop\helloFlask\app\static\mapaTeste.jpg" alt="mapaSP">
-        -->
-
-
-        <div class="Titulo1">PANDEMIA</div>
-        <div class="Titulo2">ESTRUTURADA</div>
-        <div class="SubTitulo">Expondo o impacto da COVID-19 no Estado de São Paulo de forma clara e contextualizada.</div>
-
-        <!-- Botoes de direcionamento de paginas
-        <a href="estados.html" target="_parent"><button class="btnEstado">Dados gerais do Estado de São Paulo</button></a>
-        -->
-       
+    <div class="menuH">
+      <nav>
         
-        <a href="/estados" target="_parent"><button class="btnEstado">Dados gerais do Estado de São Paulo</button></a>
+        <div class="logo"><img src="{{  url_for('static', filename='logo.jpg')}}" ></div>
 
-        
-        <a href="/municipios" target="_parent"><button class="btnMunicipio">Dados por Município</button></a>
+        <button class="button button1">&#9776;</button>
 
-
-
+        <ul>
+            <li> <a href="/index">Inicio</a> </li>
+            <li> <a href="/estados">Estados</a> </li>
+            <li> <a href="/municipios">Municipios</a> </li>
+            <li> <a href="/index">Observaçoes</a> </li>
+            <li> <a href="https://github.com/SoSoJigsaw/Carcara">GitHub</a>  </li>
+        </ul>
+      </nav>
       </div>
+    
+      <header id="showcase">
+        <div id="showcase-container">
+          <img class="imgIndex" src="{{  url_for('static', filename='logoGrande.png')}}">
+            <p>Expondo o impacto da COVID-19 no Estado de São Paulo de forma clara e contextualizada.</p>
+            <a href="/estados" class="btn">Dados gerais do Estado de São Paulo</a>
+            <a href="/municipios" class="btn">Dados por Município</a>
+        </div>
+    </header>
 
-    </nav>
-
+    
+    
   <!-- FOOTER -->
   <div class="footer">
     <p class="footerText">© Carcará Analysis,  Inc. 2021. </p>

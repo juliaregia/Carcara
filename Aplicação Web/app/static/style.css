@@ -1,229 +1,262 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
-
-    /* formatação da pagina*/
 *{
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
-
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  background-color: #ffffff;
+  font-family: Arial;
 }
 
+/* ------------------------------- ↓↓↓↓↓ Menu(navbar) ↓↓↓↓↓ --------------------------------*/ 
 
-/* ------------------------------- ↓↓↓↓↓ INDEX.HTML PART 1 ↓↓↓↓↓ --------------------------------*/ 
-
-/* barra do menu*/
-#menu-H ul{
-    list-style-type: none;
-    padding: 0;
-    background-color: rgb(255, 255, 255);
-    filter: drop-shadow(0px 0px 0.1px rgb(0, 0, 0));
-
-}
-
-    /* faz ficarem um ao lado do outro*/
-    #menu-H ul li{
-        display: inline;
-        float: right;
-        /* distanciamento
-        padding: 20px;
-        float: right;
-       */
-    }
-
-    /* formatação links*/
-    #menu-H ul li a{
-        color: rgb(0, 0, 0);
-        
-        padding: 20px;
-        display: inline-block;
-        text-decoration: none;
-        transition: background .6s;
-    
-    }
-    /* Animação */
-    #menu-H ul li a:hover{
-        background-color: rgb(255, 166, 0);
-    }
+.logo{
+ min-width: 500px;
+ max-width: 1000px;
  
- /* LOGO */
-    #menu-H .logo{
-      float: left;
-      width: 20%;
-      padding: 5px; 
-    }
-
-
-/* ------------------------------- ↓↓↓↓↓ INDEX.HTML PART 2 ↓↓↓↓↓ --------------------------------*/ 
-/* imagem de fundo*/    
-img {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto; 
 }
 
-/* Filtro da imagem de fundo*/
-.imgIndex {
-  filter: brightness(.6);
+nav {
+  background-color: #ffffff;
+  padding: 3px;
+  justify-content: space-between;
+  box-shadow: inset 0px 0px 2px #000000;
+  
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  overflow: hidden;
+  transition: all .5s;
+  
+}
 
-/* formatação do texto*/
-    .home {
-        position: relative;
-      }
+li {
+  padding: 20px;
+  max-height: 20px;
+  font-size: 18px;
+  
+
+}
+
+nav, ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.button1 {
+  background-color: transparent;
+  border: none;
+  color: rgb(0, 0, 0);
+  font-size: 36px;
+  position: absolute;
+  right: 10px;
+  top: center;
+  display: none;
+
+  
+}
+
+li:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  background-color: #ac5a00;
+  font-size: 21px;
+}
+
+.button1:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  background-color: #ac5a00;
+  padding: 4px;
+}
+
+.button1:focus~ul {
+  height: 300px;
+}
+
+@media (max-width: 1050px) {
+
+  nav,
+  ul {
+      flex-direction: column;
       
-          .Titulo1 {
-            position: absolute;
-            top:150px;
-            left: 160px;
-            font-size: 100px;
-            text-shadow: 0px 0px 0px rgb(71, 71, 71), 0px 0px 0px rgb(255, 255, 255), 0px 0px 5px rgb(0, 0, 0);
-          }
+  }
 
-          .Titulo2 {
-            position: absolute;
-            top:240px;
-            left: 159px;
-            font-size: 105px;
-            color: #d07810;
-            text-shadow: 0px 0px 0px rgb(71, 71, 71), 0px 0px 0px rgb(255, 255, 255), 0px 0px 5px rgb(0, 0, 0);
-            
-        
-          }
+  ul {
+      text-align: center;
+      margin: 0;
+      height: 0;
+  }
 
-          .SubTitulo {
-            font-weight: bold;
-            position: absolute;
-            top:370px;
-            left: 160px;
-            font-size: 20px;
-            color: rgb(255, 255, 255);
-            text-shadow: 0px 0px 0px rgb(71, 71, 71), 0px 0px 0px rgb(255, 255, 255), 2px 2px 10px rgb(0, 0, 0);        
-          }
+  nav {
+      padding: 0;
+      align-items: flex-start;
+  }
 
-          .btnEstado {
-            position: absolute;
-            top:550px;
-            left: 550px;
-            font-size: 20px;
-            background-color: #F8AC5B;
+  .button1 {
+      display: flex;
+      
+      
+  }
 
-            border: none;
-            color: #AC5A00;
-            padding: 15px 15px;
-            text-align: center;
-            font-size: 20px;
-            border-radius: 4px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-        
-          }
-          .btnEstado:hover {background-color: #F8AC5B}
-          .btnEstado:active {
-            background-color: #F8AC5B;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-          }
+  li, ul {
+      width: 100%;
+      
+      
+  }
+  
 
-
-          
-          .btnMunicipio {
-            position: absolute;
-            top:550px;
-            left: 1100px;
-            font-size: 20px;
-            background-color: #F8AC5B;
-
-            border: none;
-            color: #AC5A00;
-            padding: 15px 15px;
-            text-align: center;
-            font-size: 20px;
-            border-radius: 4px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-
-            display: inline-block;
-            cursor: pointer;
-        
-          }
-          .btnMunicipio:hover {background-color: #F8AC5B}
-          .btnMunicipio:active {
-            background-color: #F8AC5B;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-          }
-
-
-
-/* ------------------------------- ↓↓↓↓↓ ESTADOS.HTML ↓↓↓↓↓ --------------------------------*/ 
-/* formatação da Imgagem de fundo*/
-.imgEstado {
-  filter: brightness(.6);
-
-  max-width:2000px;
-  max-height:350px; 
-    height: auto;  
+ 
 }
 
-.TituloEstados {
-  font-weight: bold;
-  position: absolute;
-  top:190px;
-  left: 600px;
+/* ------------------------------- ↓↓↓↓↓ INDEX.HTML ↓↓↓↓↓ --------------------------------*/ 
+
+.imgIndex {
+  max-width:auto ;
+  width: 80%;
+  
+  
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  top:650px;
+
+  margin: 5px;
+  background: #F8AC5B;
+  color: #AC5A00;
+  border-radius: 5px;
+  box-shadow: #000000;
+  box-shadow: 0px 0px 16px 0 rgba(0,0,0,0.2);
+  transition: background 500ms ease;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background: #AC5A00;
+  color: #F8AC5B;
+}
+
+/* Showcase */
+#showcase {
+  
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+  background: url('mapaTeste.jpg') no-repeat center center/cover;
+
+  /* Overlay */
+  background-color: rgba(0,0,0,0.5);
+  background-blend-mode: color;
+}
+
+#showcase-container {
+  text-align: center;
+}
+
+#showcase-container h2 {
+  font-size: 2.5rem;
+}
+
+#showcase-container p {
+  font-size: 1.2rem;
+  padding: 15px 0;
+}
+
+
+/* ------------------------------- ↓↓↓↓↓ Bloco Estados/Municipios ↓↓↓↓↓ --------------------------------*/ 
+
+.bloco{
+  background-color: #ffffff;
+  padding: 100px;
+  filter: brightness(.7);
+  height: 50px;
+  text-align: center;
+
+  font-size: 200%;
+  font-style: inherit;
+
+  box-shadow: inset 0px 0px 3px #000000;
+}
+
+
+/* ------------------------------- ↓↓↓↓↓ Tabs ↓↓↓↓↓ --------------------------------*/ 
+
+.hide{
+  visibility: hidden;
   font-size: 50px;
-    
 }
 
-
-
-
-/* formatação da Imgagem de fundo*/
-.imgMunicipio {
-  filter: brightness(.6);
-
-  max-width:2000px;
-  max-height:350px; 
-    height: auto;  
+/* Style the tab */
+.tab {
+overflow: hidden;
+border: 3px solid #F8AC5B;
+background-color: #e4e4e4;
+text-align: center;
 }
 
-.TituloMunicipios {
-  font-weight: bold;
-  position: absolute;
-  top:190px;
-  left: 690px;
-  font-size: 50px;
-    
+/* Style the buttons inside the tab */
+.tab button {
+background-color: inherit;
+border: none;
+cursor: pointer;
+padding: 15px;
+transition: 0.3s;
+font-size: 20px;
 }
 
+/* Change background color of buttons on hover */
+.tab button:hover {
+background-color: #F8AC5B;
+
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+background-color: #F8AC5B;
+}
+
+/* Style the tab content */
+.tabcontent {
+display: none;
+padding: 6px 12px;
+border: 3px solid #F8AC5B;
+border-top: none;
+}
+
+/* Style the close button */
+.topright {
+float: right;
+cursor: pointer;
+font-size: 28px;
+}
+
+.topright:hover {color: #ac5a00;}
 
 
-
-
-/* ------------------------------- ↓↓↓↓↓ FOOTER ↓↓↓↓↓ --------------------------------*/ 
+/* ------------------------------- ↓↓↓↓↓ FOOTER ↓↓↓↓↓  --------------------------------*/       
 .footer {
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 8%;
   background-color: rgb(255, 255, 255);
   
-   box-shadow:         inset 0 0 5px #000000;
+   box-shadow:         inset 0 0 2px #000000;
 }
 
 .footerText{
   color: #AC5A00;
   padding: 30px;
   text-align: center;
-  
-  
 
 }
-
-
-        
-
           
           
 
