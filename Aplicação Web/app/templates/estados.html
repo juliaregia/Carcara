@@ -32,7 +32,7 @@
       <!-- Menu Horizontal e Direcionamento de paginas -->
       <div class="menuH">
       <nav>
-        
+
         <div class="logo"><img src="{{  url_for('static', filename='logo.jpg')}}" ></div>
 
         <button class="button button1">&#9776;</button>
@@ -49,9 +49,9 @@
 
       <!-- Bloco -->
       <div class="bloco">
-          <p class="p1">Dados do Estado de São Paulo</p> 
+          <p class="p1">Dados do Estado de São Paulo</p>
       </div>
- 
+
 
       <!-- Paragrafo Invisivel -->
        <p class="hide"> a</p>
@@ -73,7 +73,7 @@
           <div id="Paris" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
             <h3>Teste2</h3>
-            <p>atualmente 9.000.000</p> 
+            <p>atualmente 9.000.000</p>
           </div>
 
           <div id="Tokyo" class="tabcontent">
@@ -82,7 +82,42 @@
             <p>atualmente 6.000.000 vacinados</p>
           </div>
 
-          <script>
+
+
+    {% block content %}
+<h2>Pesquisa Personalizada</h2>
+<form action="/estados/search" method="post">
+    <p>
+        {{form.startdate_field.label}} <br>
+        {{form.startdate_field(min=min, max=max)}}
+    </p>
+    <p>
+        {{form.enddate_field.label}} <br>
+        {{form.enddate_field(min=min, max=max)}}
+    </p>
+    <p>
+        {{form.submit_field()}}
+    </p>
+</form>
+{% endblock %}
+
+
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+      <h1>  {{ message }}  </h1>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+
+{% for table in tables %}
+      {{titles[loop.index]}}
+      {{ table|safe }}
+{% endfor %}
+
+
+      <script>
             function openCity(evt, cityName) {
               var i, tabcontent, tablinks;
               tabcontent = document.getElementsByClassName("tabcontent");
@@ -101,9 +136,6 @@
             document.getElementById("defaultOpen").click();
             </script>
           </div>
-
-
-
 
     </body> 
 
