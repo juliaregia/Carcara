@@ -12,8 +12,9 @@ from dateutil.parser import parse
 import plotly.express as px
 
 
-url = 'https://raw.githubusercontent.com/SoSoJigsaw/Carcara/main/Data%20Cleaning/Dados%20tratados/' \
-      'covid-estado-sp.csv '
+url = 'https://raw.githubusercontent.com/SoSoJigsaw/Carcara/main/Aplica' \
+      '%C3%A7%C3%A3o%20Web/app/data/covid-estado-sp.csv'
+
 
 covid_estado = pd.read_csv(url)
 covid_estado['Data'] = pd.to_datetime(covid_estado['Data'])
