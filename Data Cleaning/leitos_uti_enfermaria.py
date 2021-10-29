@@ -103,6 +103,9 @@ df.loc[:, 'Data'] = pd.Series(pd.to_datetime(df['Data'], dayfirst=True,
                                              format='%d/%m/%Y', errors='coerce'),
                               name='Data')
 
+# Renomeando os headers para tirar os espaços
+df.columns = df.columns.str.replace(' ', '_')
+
 # Ordenando o dataframe por data e resetando o index
 df = df.reset_index(drop=True)
 
@@ -114,4 +117,4 @@ if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):
 df = df.reset_index().drop('index', axis=1, errors='ignore')
 
 # Exportando o Dataframe tratado em arquivo csv
-df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/leitos-uti-enfermaria.csv", index=False)
+df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/leitos-uti-enfermaria.csv", index=False)

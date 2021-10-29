@@ -54,8 +54,11 @@ df.at[0, 'Nomes de medida'] = 'Doses Aplicadas'
 df = df.rename(columns={'Valores de medida': 'Total'})
 df = df.rename(columns={'Nomes de medida': 'Dado'})
 
+# Renomeando os headers para tirar os espaços
+df.columns = df.columns.str.replace(' ', '_')
+
 # Alterando a ordem das linhas
 df = df.sort_values(['Dado'], ascending=[True])
 
 # Exportando o Dataframe tratado em arquivo csv
-df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/vacinacao-estatisticas.csv", index=False)
+df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/vacinacao-estatisticas.csv", index=False)

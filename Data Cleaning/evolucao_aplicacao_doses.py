@@ -11,6 +11,8 @@ import os
 import glob
 import time
 import re
+import datetime as dt
+
 
 # Automação da coleta dos dataframes pelo selenium
 sys.path.insert(0, '/usr/lib/chromium-browser/chromedriver')
@@ -47,6 +49,7 @@ csv = os.path.abspath(latest_file)
 # Leitura do Dataframe pelo pandas
 df = pd.read_csv(csv, sep=';')
 
+
 # Criando novas colunas de tal forma que não tenha linhas duplicadas
 col = 'Dose'
 condition1 = [df[col] == '1° DOSE']
@@ -78,7 +81,44 @@ df["3ª Dose"] = df["3ª Dose"].astype(int)
 df["Dose Única"] = df["Dose Única"].astype(int)
 
 # Alterando nome de colunas
-df.rename(columns={"Dia de Data Registro Vacina": "Data de Registro"}, inplace=True)
+df.rename(columns={"Dia de Data Registro Vacina": "Data"}, inplace=True)
+
+# Alterando o registro da data para o formato capaz de convertê-lo à datetype64
+meses = {' de janeiro de ': '/01/', ' de fevereiro de ': '/02/',
+         ' de março de ': '/03/', ' de abril de ': '/04/', ' de maio de ': '/05/',
+         ' de junho de ': '/06/', ' de julho de ': '/07/', ' de agosto de ': '/08/',
+         ' de setembro de ': '/09/', ' de outubro de ': '/10/',
+         ' de novembro de ': '/11/', ' de dezembro de ': '/12/'
+         }
+
+dias = {'1/0': '01/0', '1/1': '01/1', '2/0': '02/0', '2/1': '02/1', '3/0': '03/0',
+        '3/1': '03/1', '4/0': '04/0', '4/1': '04/1', '5/0': '05/0', '5/1': '05/1',
+        '6/0': '06/0', '6/1': '06/1', '7/0': '07/0', '7/1': '07/1', '8/0': '08/0',
+        '8/1': '08/1', '9/0': '09/0', '9/1': '09/1'}
+
+coerce = {'101': '11', '102': '12', '103': '13', '104': '14', '105': '15',
+          '106': '16', '107': '17',  '108': '18', '109': '19', '201': '21',
+          '202/': '22/', '203': '23', '204': '24', '205': '25', '206': '26',
+          '207': '27', '208': '28', '209': '29', '301': '31'}
+
+for k, v in meses.items():
+    df['Data'] = df['Data'].str.replace(k, v)
+
+for k, v in dias.items():
+    df['Data'] = df['Data'].str.replace(k, v)
+
+for k, v in coerce.items():
+    df['Data'] = df['Data'].str.replace(k, v)
+
+df.loc[:, 'Data'] = pd.Series(pd.to_datetime(df['Data'], dayfirst=True,
+                                             format='%d/%m/%Y', errors='coerce'),
+                              name='Data')
+
+# Renomeando os headers para tirar os espaços
+df.columns = df.columns.str.replace(' ', '_')
+
+df = df.sort_values(['Data'], ascending=True)
+df = df.reset_index(drop=True)
 
 # Exportando o Dataframe tratado em arquivo csv
-df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/evolucao-aplicacao-doses.csv", index=False)
+df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/evolucao-aplicacao-doses.csv", index=False)

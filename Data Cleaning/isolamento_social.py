@@ -123,7 +123,7 @@ df_first = df[~duplicates]
 df_first.loc[:, 'Data'] = df['data_reg'] + '/2021'
 df_first.loc[:, 'Data'] = pd.Series(pd.to_datetime(df_first['Data'], dayfirst=True,
                                                    format='%d/%m/%Y', errors='coerce'),
-                                    name='Data', )
+                                    name='Data')
 
 df_first = df_first.reset_index(drop=True)
 
@@ -149,10 +149,13 @@ df = df[~duplicates]
 
 df.drop('data_reg', axis=1, inplace=True)
 
+# Renomeando os headers para tirar os espaços
+df.columns = df.columns.str.replace(' ', '_')
+
 df = df[[c for c in df.columns if c not in ['index']]]
 if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):
     df = df.to_frame(index=False)
 df = df.reset_index().drop('index', axis=1, errors='ignore')
 
 # Exportando o Dataframe tratado em arquivo csv
-df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/isolamento-social.csv", index=False)
+df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/isolamento-social.csv", index=False)

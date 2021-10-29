@@ -90,6 +90,9 @@ df.dropna().reset_index(drop=True, inplace=True)
 df = df.loc[(df['Total de Casos'] + df['Novos Casos'] + df['Total de Óbitos'] +
              df['Novos Óbitos'] != 0)]
 
+# Renomeando os headers para tirar os espaços
+df.columns = df.columns.str.replace(' ', '_')
+
 # Forçando a ordenação por data e por fim resetando o index
 df = df.sort_values(['Data'], ascending=True)
 
@@ -99,4 +102,4 @@ if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):
 df = df.reset_index().drop('index', axis=1, errors='ignore')
 
 # Exportando o Dataframe tratado em arquivo csv
-df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/covid-municipios-sp.csv", index=False)
+df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/covid-municipios-sp.csv", index=False)

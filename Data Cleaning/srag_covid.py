@@ -94,10 +94,13 @@ df['Doença'] = df['Doença'].str.replace(' ', '-')
 # Padronizando Missing Values encontrados na coluna "Evolução"
 df = df.fillna(value='Não informado')
 
+# Renomeando os headers para tirar os espaços
+df.columns = df.columns.str.replace(' ', '_')
+
 # Ordenando a coluna "Data de Notificação" e resetando o index
 df = df.reset_index(drop=True)
 
-df = df.sort_values(['Data de Notificação'], ascending=True)
+df = df.sort_values(['Data_de_Notificação'], ascending=True)
 
 df = df[[c for c in df.columns if c not in ['index']]]
 if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):
@@ -105,4 +108,4 @@ if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):
 df = df.reset_index().drop('index', axis=1, errors='ignore')
 
 # Exportando o Dataframe tratado em arquivo csv
-df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/srag-covid.csv", index=False)
+df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/srag-covid.csv", index=False)

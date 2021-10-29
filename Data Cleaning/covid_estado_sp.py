@@ -89,6 +89,11 @@ df = df.drop(df[(df.obitos == 0) & (df.casos == 0) &
 df.rename(columns={"obitos": "Óbitos por dia"}, inplace=True)
 df.rename(columns={"casos": "Casos por dia"}, inplace=True)
 
+
+# Tirando o espaço dos headers
+df.columns = df.columns.str.replace(' ', '_')
+
+
 # Forçando a ordenação por data e por fim resetando o index
 df = df.sort_values(['Data'], ascending=True)
 
@@ -98,4 +103,4 @@ if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):
 df = df.reset_index().drop('index', axis=1, errors='ignore')
 
 # Exportando o Dataframe tratado em arquivo csv
-df.to_csv("/home/sobral/Carcara/Data Cleaning/Dados tratados/covid-estado-sp.csv", index=False)
+df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/covid-estado-sp.csv", index=False)
