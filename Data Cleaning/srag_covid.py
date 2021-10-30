@@ -75,6 +75,7 @@ df.drop('EVOLUCAO_NOT_NULL', axis=1, inplace=True)
 df.rename(columns={"Nu Idade N": "Idade do paciente"}, inplace=True)
 df.rename(columns={"Grupo de Idades": "Faixa Etária"}, inplace=True)
 df.rename(columns={"Municípios": "Município"}, inplace=True)
+df.rename(columns={"Data de Notificação": "Data"}, inplace=True)
 
 # Ajustando valores que estão em caixa alta
 s = df['Município'].str.title()
@@ -82,11 +83,10 @@ df.loc[:, 'Município'] = pd.Series(s, name='Município')
 s = df['Doença'].str.title()
 df.loc[:, 'Doença'] = pd.Series(s, name='Doença')
 
-# Transformando a coluna de Data de Notificação em Datetime type
-df.loc[:, 'Data de Notificação'] = pd.Series(pd.to_datetime(df['Data de Notificação'],
-                                                            dayfirst=True, format='%d/%m/%Y',
-                                                            errors='coerce'),
-                                             name='Data de Notificação')
+# Transformando a coluna de Data em Datetime type
+df.loc[:, 'Data'] = pd.Series(pd.to_datetime(df['Data'], dayfirst=True,
+                                             format='%d/%m/%Y', errors='coerce'),
+                              name='Data')
 
 # Alterando a " " pelo "-" na coluna "Doença"
 df['Doença'] = df['Doença'].str.replace(' ', '-')
@@ -100,7 +100,7 @@ df.columns = df.columns.str.replace(' ', '_')
 # Ordenando a coluna "Data de Notificação" e resetando o index
 df = df.reset_index(drop=True)
 
-df = df.sort_values(['Data_de_Notificação'], ascending=True)
+df = df.sort_values(['Data'], ascending=True)
 
 df = df[[c for c in df.columns if c not in ['index']]]
 if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):

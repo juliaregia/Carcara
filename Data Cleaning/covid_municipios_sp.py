@@ -49,10 +49,6 @@ df.drop('pop_60', axis=1, inplace=True)
 df.drop('casos_pc', axis=1, inplace=True)
 df.drop('obitos_pc', axis=1, inplace=True)
 
-# Mudando a formatação do registro de data
-df.loc[:, 'Data'] = pd.Series(pd.to_datetime
-                              (df['Data'], infer_datetime_format=True),
-                              name='Data', index=df['Data'].index)
 
 # Alterando a "," pelo "." para a conversão em float sem gerar valores NaN
 df['Latitude'] = df['Latitude'].str.replace(',', '.')
@@ -93,13 +89,13 @@ df = df.loc[(df['Total de Casos'] + df['Novos Casos'] + df['Total de Óbitos'] +
 # Renomeando os headers para tirar os espaços
 df.columns = df.columns.str.replace(' ', '_')
 
-# Forçando a ordenação por data e por fim resetando o index
-df = df.sort_values(['Data'], ascending=True)
+# Mudando a formatação do registro de data e forçando a ordenação por data
+df.loc[:, 'Data'] = pd.Series(pd.to_datetime(df['Data'], format='%Y-%m-%d',
+                                             errors='coerce'),
+                              name='Data')
 
-df = df[[c for c in df.columns if c not in ['index']]]
-if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):
-    df = df.to_frame(index=False)
-df = df.reset_index().drop('index', axis=1, errors='ignore')
+df = df.sort_values(['Data'], ascending=True)
+df = df.reset_index(drop=True)
 
 # Exportando o Dataframe tratado em arquivo csv
 df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/covid-municipios-sp.csv", index=False)
