@@ -114,9 +114,6 @@ df.loc[:, 'Data'] = pd.Series(pd.to_datetime(df['Data'], dayfirst=True,
                                              format='%d/%m/%Y', errors='coerce'),
                               name='Data')
 
-# Renomeando os headers para tirar os espaços
-df.columns = df.columns.str.replace(' ', '_')
-
 df = df.sort_values(['Data'], ascending=True)
 df = df.reset_index(drop=True)
 

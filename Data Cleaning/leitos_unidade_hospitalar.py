@@ -60,8 +60,5 @@ s = df['Unidade Hospitalar'].str.title()
 df.loc[:, 'Unidade Hospitalar'] = pd.Series(s, index=df.index,
                                             name='Unidade Hospitalar')
 
-# Renomeando os headers para tirar os espaços
-df.columns = df.columns.str.replace(' ', '_')
-
 # Exportando o Dataframe tratado em arquivo csv
 df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/leitos-unidade-hospitalar.csv", index=False)

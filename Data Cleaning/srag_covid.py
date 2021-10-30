@@ -94,9 +94,6 @@ df['Doença'] = df['Doença'].str.replace(' ', '-')
 # Padronizando Missing Values encontrados na coluna "Evolução"
 df = df.fillna(value='Não informado')
 
-# Renomeando os headers para tirar os espaços
-df.columns = df.columns.str.replace(' ', '_')
-
 # Ordenando a coluna "Data de Notificação" e resetando o index
 df = df.reset_index(drop=True)
 

@@ -149,9 +149,6 @@ df = df[~duplicates]
 
 df.drop('data_reg', axis=1, inplace=True)
 
-# Renomeando os headers para tirar os espaços
-df.columns = df.columns.str.replace(' ', '_')
-
 df = df[[c for c in df.columns if c not in ['index']]]
 if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):
     df = df.to_frame(index=False)

@@ -1,4 +1,4 @@
-Data,Total_de_casos,Total_de_óbitos,Casos_por_dia,Óbitos_por_dia
+Data,Total de casos,Total de óbitos,Casos por dia,Óbitos por dia
 2020-02-26,1,0,1,0
 2020-02-27,1,0,1,0
 2020-02-28,1,0,1,0
@@ -610,3 +610,4 @@ Data,Total_de_casos,Total_de_óbitos,Casos_por_dia,Óbitos_por_dia
 2021-10-26,4400932,151623,1716,78
 2021-10-27,4402566,151682,1634,59
 2021-10-28,4403856,151798,1290,116
+2021-10-29,4404843,151914,987,116

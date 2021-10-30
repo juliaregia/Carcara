@@ -89,11 +89,6 @@ df = df.drop(df[(df.obitos == 0) & (df.casos == 0) &
 df.rename(columns={"obitos": "Óbitos por dia"}, inplace=True)
 df.rename(columns={"casos": "Casos por dia"}, inplace=True)
 
-
-# Tirando o espaço dos headers
-df.columns = df.columns.str.replace(' ', '_')
-
-
 # Forçando a ordenação por data e por fim resetando o index
 df = df.sort_values(['Data'], ascending=True)
 

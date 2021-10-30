@@ -86,9 +86,6 @@ df.dropna().reset_index(drop=True, inplace=True)
 df = df.loc[(df['Total de Casos'] + df['Novos Casos'] + df['Total de Óbitos'] +
              df['Novos Óbitos'] != 0)]
 
-# Renomeando os headers para tirar os espaços
-df.columns = df.columns.str.replace(' ', '_')
-
 # Mudando a formatação do registro de data e forçando a ordenação por data
 df.loc[:, 'Data'] = pd.Series(pd.to_datetime(df['Data'], format='%Y-%m-%d',
                                              errors='coerce'),

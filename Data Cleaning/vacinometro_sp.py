@@ -119,9 +119,6 @@ df = vacinometro.merge(distribuicao, left_on=['Município'],
                        right_on=['Município'], how='inner',
                        suffixes=['_vacinometro', '_distribuicao'])
 
-# Renomeando os headers para tirar os espaços
-df.columns = df.columns.str.replace(' ', '_')
-
 # Reformatando os valores da coluna "Município", que estavam em caixa alta
 s = df['Município'].str.title()
 df.loc[:, 'Município'] = pd.Series(s, index=df.index, name='Município')
