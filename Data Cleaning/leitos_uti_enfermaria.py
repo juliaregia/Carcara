@@ -44,74 +44,46 @@ latest_file = max(list_of_files, key=os.path.getctime)
 csv = os.path.abspath(latest_file)
 
 # Leitura pelo Pandas do arquivo csv
-df = pd.read_csv(csv, sep=';')
+df = pd.read_csv(csv, sep=';',
+                 usecols=["datahora", "ocupacao_leitos", "internacoes_7d", "pacientes_uti_ultimo_dia",
+                          "total_covid_uti_ultimo_dia", "ocupacao_leitos_ultimo_dia", "internacoes_ultimo_dia",
+                          "pacientes_enf_ultimo_dia", "total_covid_enf_ultimo_dia", "nome_drs"],
+                 dtype={'nome_drs': 'category', 'internacoes_7d': 'int32', 'pacientes_uti_ultimo_dia': 'int16',
+                        'total_covid_uti_ultimo_dia': 'int16', 'internacoes_ultimo_dia': 'int16',
+                        'pacientes_enf_ultimo_dia': 'int16', 'total_covid_enf_ultimo_dia': 'int32'})
+
+df.loc[:, 'datahora'] = pd.Series(pd.to_datetime(df['datahora'], dayfirst=True,
+                                                 format='%d/%m/%Y', errors='coerce'),
+                                  name='datahora')
+
 
 # Cleaning Data
 
-# Deletando colunas sem dados relevantes
-df.drop('internacoes_7d_l', axis=1, inplace=True)
-df.drop('leitos_pc', axis=1, inplace=True)
-
 # Alterando a "," pelo "." para a conversão em float sem gerar valores NaN
-df['pacientes_uti_mm7d'] = df['pacientes_uti_mm7d'].str.replace(',', '.')
-df['total_covid_uti_mm7d'] = df['total_covid_uti_mm7d'].str.replace(',', '.')
 df['ocupacao_leitos'] = df['ocupacao_leitos'].str.replace(',', '.')
-df['internacoes_7v7'] = df['internacoes_7v7'].str.replace(',', '.')
 df['ocupacao_leitos_ultimo_dia'] = df['ocupacao_leitos_ultimo_dia'].str.replace(',', '.')
-df['pacientes_enf_mm7d'] = df['pacientes_enf_mm7d'].str.replace(',', '.')
-df['total_covid_enf_mm7d'] = df['total_covid_enf_mm7d'].str.replace(',', '.')
 
-# Alterando o Datatype de algumas colunas
-df['pacientes_uti_mm7d'] = df['pacientes_uti_mm7d'].apply(pd.to_numeric, downcast='float', errors='coerce')
-df['total_covid_uti_mm7d'] = df['total_covid_uti_mm7d'].apply(pd.to_numeric, downcast='float', errors='coerce')
-df['ocupacao_leitos'] = df['ocupacao_leitos'].apply(pd.to_numeric, downcast='float', errors='coerce')
-df['internacoes_7v7'] = df['internacoes_7v7'].apply(pd.to_numeric, downcast='float', errors='coerce')
-df['ocupacao_leitos_ultimo_dia'] = df['ocupacao_leitos_ultimo_dia'].apply(pd.to_numeric, downcast='float',
-                                                                          errors='coerce')
-df['pacientes_enf_mm7d'] = df['pacientes_enf_mm7d'].apply(pd.to_numeric, downcast='float', errors='coerce')
-df['total_covid_enf_mm7d'] = df['total_covid_enf_mm7d'].apply(pd.to_numeric, downcast='float', errors='coerce')
-
-# Delimitando as casas decimais em colunas float:
-df['pacientes_uti_mm7d'] = df['pacientes_uti_mm7d'].round(decimals=2)
-df['total_covid_uti_mm7d'] = df['total_covid_uti_mm7d'].round(decimals=2)
-df['ocupacao_leitos'] = df['ocupacao_leitos'].round(decimals=2)
-df['internacoes_7v7'] = df['internacoes_7v7'].round(decimals=2)
-df['ocupacao_leitos_ultimo_dia'] = df['ocupacao_leitos_ultimo_dia'].round(decimals=2)
-df['pacientes_enf_mm7d'] = df['pacientes_enf_mm7d'].round(decimals=2)
-df['total_covid_enf_mm7d'] = df['total_covid_enf_mm7d'].round(decimals=2)
+df['ocupacao_leitos'] = df['ocupacao_leitos'].astype(np.float64).round(decimals=1)
+df['ocupacao_leitos_ultimo_dia'] = df['ocupacao_leitos_ultimo_dia'].astype(np.float64).round(decimals=1)
 
 # Renomeando colunas
 df.rename(columns={"ocupacao_leitos": "mm7d da Ocupação dos leitos de UTI e Enfermaria (%)"}, inplace=True)
 df.rename(columns={"datahora": "Data"}, inplace=True)
-df.rename(columns={"total_covid_uti_mm7d": "mm7d do Total de leitos de UTI destinados à Covid"}, inplace=True)
 df.rename(columns={"internacoes_7d": "Nº de novas internações nos últimos 7 dias"}, inplace=True)
-df.rename(columns={"internacoes_7v7": "Variação no nº de novas internações (%)"}, inplace=True)
 df.rename(columns={"pacientes_uti_ultimo_dia": "Pacientes em tratamento na UTI"}, inplace=True)
 df.rename(columns={"total_covid_uti_ultimo_dia": "Total de leitos de UTI destinados à Covid"}, inplace=True)
 df.rename(columns={"ocupacao_leitos_ultimo_dia": "Ocupação dos leitos de UTI e Enfermaria (%)"}, inplace=True)
 df.rename(columns={"internacoes_ultimo_dia": "Novos casos de internações (UTI e Enfermaria)"}, inplace=True)
-df.rename(columns={"total_covid_enf_mm7d": "mm7d do Total de leitos de Enfermaria destinados à Covid"}, inplace=True)
 df.rename(columns={"pacientes_enf_ultimo_dia": "Pacientes em tratamento na Enfermaria"}, inplace=True)
 df.rename(columns={"total_covid_enf_ultimo_dia": "Total de leitos de Enfermaria destinados à Covid"}, inplace=True)
 df.rename(columns={"nome_drs": "Departamento Regional de Saúde"}, inplace=True)
-df.rename(columns={"pacientes_uti_mm7d": "mm7d do Nº de pacientes em tratamento na UTI"}, inplace=True)
-df.rename(columns={"pop": "População"}, inplace=True)
-df.rename(columns={"pacientes_enf_mm7d": "mm7d do Nº de pacientes em tratamento na Enfermaria"}, inplace=True)
-
-# Transformando a coluna de Data de Notificação em Datetime type
-df.loc[:, 'Data'] = pd.Series(pd.to_datetime(df['Data'], dayfirst=True,
-                                             format='%d/%m/%Y', errors='coerce'),
-                              name='Data')
 
 # Ordenando o dataframe por data e resetando o index
+df = df.sort_values(['Data'], ascending=True)
 df = df.reset_index(drop=True)
 
-df = df.sort_values(['Data'], ascending=True)
-
-df = df[[c for c in df.columns if c not in ['index']]]
-if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):
-    df = df.to_frame(index=False)
-df = df.reset_index().drop('index', axis=1, errors='ignore')
+df.info(verbose=False, memory_usage="deep")
+print('\n', df.dtypes, '\n')
 
 # Exportando o Dataframe tratado em arquivo csv
 df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/leitos-uti-enfermaria.csv", index=False)

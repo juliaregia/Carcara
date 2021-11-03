@@ -49,7 +49,6 @@ csv = os.path.abspath(latest_file)
 # Leitura do Dataframe pelo pandas
 df = pd.read_csv(csv, sep=';')
 
-
 # Criando novas colunas de tal forma que não tenha linhas duplicadas
 col = 'Dose'
 condition1 = [df[col] == '1° DOSE']
@@ -68,22 +67,16 @@ df = df.groupby('Dia de Data Registro Vacina').agg({'1ª Dose': 'first',
                                                     '3ª Dose': 'first',
                                                     'Dose Única': 'first'}).reset_index()
 
-# Ajustando os missing values encontrados para converter em int64:
-df["1ª Dose"] = df["1ª Dose"].fillna(0)
-df["2ª Dose"] = df["2ª Dose"].fillna(0)
-df["3ª Dose"] = df["3ª Dose"].fillna(0)
-df["Dose Única"] = df["Dose Única"].fillna(0)
-
-# Ajustando o Datatype de colunas
-df["1ª Dose"] = df["1ª Dose"].astype(int)
-df["2ª Dose"] = df["2ª Dose"].astype(int)
-df["3ª Dose"] = df["3ª Dose"].astype(int)
-df["Dose Única"] = df["Dose Única"].astype(int)
+# Ajustando os missing values encontrados e convertendo em int64:
+df["1ª Dose"] = df["1ª Dose"].fillna(0).astype(np.int32)
+df["2ª Dose"] = df["2ª Dose"].fillna(0).astype(np.int32)
+df["3ª Dose"] = df["3ª Dose"].fillna(0).astype(np.int32)
+df["Dose Única"] = df["Dose Única"].fillna(0).astype(np.int32)
 
 # Alterando nome de colunas
 df.rename(columns={"Dia de Data Registro Vacina": "Data"}, inplace=True)
 
-# Alterando o registro da data para o formato capaz de convertê-lo à datetype64
+# Alterando o registro da data para o formato capaz de convertê-lo à datetime64
 meses = {' de janeiro de ': '/01/', ' de fevereiro de ': '/02/',
          ' de março de ': '/03/', ' de abril de ': '/04/', ' de maio de ': '/05/',
          ' de junho de ': '/06/', ' de julho de ': '/07/', ' de agosto de ': '/08/',
@@ -116,6 +109,9 @@ df.loc[:, 'Data'] = pd.Series(pd.to_datetime(df['Data'], dayfirst=True,
 
 df = df.sort_values(['Data'], ascending=True)
 df = df.reset_index(drop=True)
+
+df.info(verbose=False, memory_usage="deep")
+print('\n', df.dtypes, '\n')
 
 # Exportando o Dataframe tratado em arquivo csv
 df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/evolucao-aplicacao-doses.csv", index=False)

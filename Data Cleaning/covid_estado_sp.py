@@ -37,7 +37,7 @@ elemento = navegador.find_element_by_xpath("/html/body/div[1]/div[1]/a[1]")
 href = elemento.get_attribute("href")
 navegador.get(href)
 
-time.sleep(30)
+time.sleep(15)
 
 # Automação do reconhecimento de novos dados pelo Pandas
 list_of_files = glob.glob('/home/sobral/data/covid_estado/*.csv')
@@ -47,55 +47,49 @@ csv = os.path.abspath(latest_file)
 url = 'https://raw.githubusercontent.com/seade-R/dados-covid-sp/master/data/sp.csv'
 
 # Leitura pelo Pandas do arquivo csv
-df1 = pd.read_csv(csv, sep=';', encoding='latin1')
-df2 = pd.read_csv(url, sep=';')
+df = pd.read_csv(csv, sep=';', encoding='latin1',
+                 usecols=['Total de casos', 'Casos por dia', 'Óbitos por dia'],
+                 dtype={'Total de casos': 'int32', 'Casos por dia': 'int32'})
+
+df2 = pd.read_csv(url, sep=';', dtype={'casos_acum': 'int32', 'obitos_acum': 'int32'})
+
+df2.loc[:, 'datahora'] = pd.Series(pd.to_datetime(df2['datahora'], format='%Y-%m-%d',
+                                                  errors='coerce'),
+                                   name='datahora')
 
 # Agrupando os dois dataframes que se completam nas informações
-df1 = df1.drop(['Data', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7',
-                'Unnamed: 8'], axis=1)
-df = df2.merge(df1, left_on=['casos_acum'], right_on=['Total de casos'],
+df = df2.merge(df, left_on=['casos_acum'], right_on=['Total de casos'],
                how='inner', suffixes=['_1', '_2'])
+
+del df2
+df = df.reset_index(drop=True)
+
 
 # Data Cleaning
 
 # Deletando colunas duplicadas
 df.drop('Total de casos', axis=1, inplace=True)
 
+# Padronizando valores "0" errôneamente descritos como NaN e convertendo para int16
+df["Óbitos por dia"] = df["Óbitos por dia"].fillna(0)
+df["Óbitos por dia"] = df["Óbitos por dia"].astype(np.int16)
+
 # Renomeando colunas
 df.rename(columns={"casos_acum": "Total de casos"}, inplace=True)
 df.rename(columns={"obitos_acum": "Total de óbitos"}, inplace=True)
 df.rename(columns={"datahora": "Data"}, inplace=True)
 
-# Mudando a formatação do registro de data para datetime64
-df.loc[:, 'Data'] = pd.Series(pd.to_datetime(df['Data'],
-                                             infer_datetime_format=True),
-                              name='Data', index=df['Data'].index)
-
-# Padronizando valores "0" errôneamente descritos como NaN
-df["Óbitos por dia"] = df["Óbitos por dia"].fillna(0)
-
-# Alterando o Datatype da coluna "Óbitos por dia" para int64
-df["Óbitos por dia"] = df["Óbitos por dia"].astype(int)
-
-# Excluindo dados que estavam duplicadas
+# Excluindo dados que estavam duplicados
 df = df.sort_values(['Data'], ascending=True)
-
-df.rename(columns={"Óbitos por dia": "obitos"}, inplace=True)
-df.rename(columns={"Casos por dia": "casos"}, inplace=True)
-
-df = df.drop(df[(df.obitos == 0) & (df.casos == 0) &
+df = df.drop(df[(df['Óbitos por dia'] == 0) & (df['Casos por dia'] == 0) &
                 (df.Data < '2021-01-01')].index)
-
-df.rename(columns={"obitos": "Óbitos por dia"}, inplace=True)
-df.rename(columns={"casos": "Casos por dia"}, inplace=True)
 
 # Forçando a ordenação por data e por fim resetando o index
 df = df.sort_values(['Data'], ascending=True)
+df = df.reset_index(drop=True)
 
-df = df[[c for c in df.columns if c not in ['index']]]
-if isinstance(df, (pd.DatetimeIndex, pd.MultiIndex)):
-    df = df.to_frame(index=False)
-df = df.reset_index().drop('index', axis=1, errors='ignore')
+df.info(verbose=False, memory_usage="deep")
+print('\n', df.dtypes, '\n')
 
 # Exportando o Dataframe tratado em arquivo csv
 df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/covid-estado-sp.csv", index=False)
