@@ -67,7 +67,7 @@ navegador2.get(href2)
 
 time.sleep(30)
 
-# Automatação do reconhecimento de novos dados pelo Pandas
+# Automação do reconhecimento de novos dados pelo Pandas
 list_of_files1 = glob.glob('/home/sobral/data/vacinometro/*.csv')
 latest_file1 = max(list_of_files1, key=os.path.getctime)
 csv1 = os.path.abspath(latest_file1)
@@ -79,6 +79,7 @@ csv2 = os.path.abspath(latest_file2)
 # Leitura pelo Pandas dos arquivos csv
 vacinometro = pd.read_csv(csv1, sep=';')
 distribuicao = pd.read_csv(csv2, sep=';')
+
 
 # Cleaning Data
 
@@ -105,10 +106,11 @@ vacinometro["3ª Dose"] = vacinometro["3ª Dose"].fillna(0)
 vacinometro["Dose Única"] = vacinometro["Dose Única"].fillna(0)
 
 # Ajustando o Datatype de colunas
-vacinometro["1ª Dose"] = vacinometro["1ª Dose"].astype(int)
-vacinometro["2ª Dose"] = vacinometro["2ª Dose"].astype(int)
-vacinometro["3ª Dose"] = vacinometro["3ª Dose"].astype(int)
-vacinometro["Dose Única"] = vacinometro["Dose Única"].astype(int)
+vacinometro["1ª Dose"] = vacinometro["1ª Dose"].astype(np.int32)
+vacinometro["2ª Dose"] = vacinometro["2ª Dose"].astype(np.int32)
+vacinometro["3ª Dose"] = vacinometro["3ª Dose"].astype(np.int32)
+vacinometro["Dose Única"] = vacinometro["Dose Única"].astype(np.int32)
+distribuicao['Qtd-Doses-Distribuidas'] = distribuicao['Qtd-Doses-Distribuidas'].astype(np.int32)
 
 # Alterando nome de colunas
 distribuicao.rename(columns={"Municipio": "Município"}, inplace=True)
@@ -118,10 +120,15 @@ distribuicao.rename(columns={"Qtd-Doses-Distribuidas": "Doses Distribuídas"}, i
 df = vacinometro.merge(distribuicao, left_on=['Município'],
                        right_on=['Município'], how='inner',
                        suffixes=['_vacinometro', '_distribuicao'])
+del vacinometro, distribuicao
 
 # Reformatando os valores da coluna "Município", que estavam em caixa alta
 s = df['Município'].str.title()
 df.loc[:, 'Município'] = pd.Series(s, index=df.index, name='Município')
+df['Município'] = df['Município'].astype('category')
+
+df.info(verbose=False, memory_usage="deep")
+print('\n', df.dtypes, '\n')
 
 # Exportando o Dataframe tratado em arquivo csv
 df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/vacinometro-sp.csv", index=False)
