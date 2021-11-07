@@ -22,8 +22,6 @@
     <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
     <link rel="stylesheet" href="C:\Users\Aldrik\Desktop\helloFlask\app\static\style.css">
     -->
-
-
   </head>
 
 
@@ -33,12 +31,12 @@
       <div class="menuH">
       <nav>
 
-        <div class="logo"><img src="{{  url_for('static', filename='logo.png')}}" ></div>
-
+        <div class="logo"><img src="{{    url_for('static', filename='logo.JPG')}}" ></div>
+                                       
         <button class="button button1">&#9776;</button>
 
         <ul>
-            <li> <a href="/index">Inicio</a> </li>
+          <li><a href="/index"><li> Inicio </a></li>
             <li> <a href="/estados">Estados</a> </li>
             <li> <a href="/municipios">Municipios</a> </li>
             <li> <a href="/index">Observaçoes</a> </li>
@@ -82,42 +80,7 @@
             <p>atualmente 6.000.000 vacinados</p>
           </div>
 
-
-
-    {% block content %}
-<h2>Pesquisa Personalizada</h2>
-<form action="/estados/search" method="post">
-    <p>
-        {{form.startdate_field.label}} <br>
-        {{form.startdate_field(min=min, max=max)}}
-    </p>
-    <p>
-        {{form.enddate_field.label}} <br>
-        {{form.enddate_field(min=min, max=max)}}
-    </p>
-    <p>
-        {{form.submit_field()}}
-    </p>
-</form>
-{% endblock %}
-
-
-{% with messages = get_flashed_messages() %}
-   {% if messages %}
-      {% for message in messages %}
-      <h1>  {{ message }}  </h1>
-      {% endfor %}
-   {% endif %}
-{% endwith %}
-
-
-{% for table in tables %}
-      {{titles[loop.index]}}
-      {{ table|safe }}
-{% endfor %}
-
-
-      <script>
+          <script>
             function openCity(evt, cityName) {
               var i, tabcontent, tablinks;
               tabcontent = document.getElementsByClassName("tabcontent");
@@ -135,7 +98,59 @@
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
             </script>
+
+
+
+
+      
           </div>
+
+           <!-- Paragrafo Invisivel -->
+          <p class="hide"> a</p>
+  
+
+<div class="pesquisa">
+
+    <div class="blocoTab">
+          {% block content %}
+      <h2>Pesquisa Personalizada</h2>
+        
+      <form action="/estados/search" method="post">
+          <p>
+              {{form.startdate_field.label}} <br>
+              {{form.startdate_field(min=min, max=max)}}
+          </p>
+          <p>
+              {{form.enddate_field.label}} <br>
+              {{form.enddate_field(min=min, max=max)}}
+          </p>
+          <p>
+              {{form.submit_field()}}
+          </p>
+      </form>
+      
+      {% endblock %}
+    </div>
+  
+ <!-- Paragrafo Invisivel -->
+ <p class="hide">a</p>
+  
+<div class="tabela1">
+  {% with messages = get_flashed_messages() %}
+     {% if messages %}
+        {% for message in messages %}
+        <h1>  {{ message }}  </h1>
+        {% endfor %}
+     {% endif %}
+  {% endwith %}
+  
+
+  {% for table in tables %}
+        {{titles[loop.index]}}
+        {{ table|safe }}
+  {% endfor %}
+  </div>
+</div>
 
     </body> 
 

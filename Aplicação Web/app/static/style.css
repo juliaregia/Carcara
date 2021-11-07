@@ -5,6 +5,7 @@
 body{
   background-color: #ffffff;
   font-family: Arial;
+  
 }
 
 /* ------------------------------- ↓↓↓↓↓ Menu(navbar) ↓↓↓↓↓ --------------------------------*/ 
@@ -13,6 +14,12 @@ body{
  min-width: 500px;
  max-width: 1000px;
  
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  
 }
 
 nav {
@@ -35,8 +42,6 @@ li {
   padding: 20px;
   max-height: 20px;
   font-size: 18px;
-  
-
 }
 
 nav, ul {
@@ -52,16 +57,14 @@ nav, ul {
   position: absolute;
   right: 10px;
   top: center;
-  display: none;
-
-  
+  display: none; 
 }
 
 li:hover {
-  cursor: pointer;
   opacity: 0.8;
   background-color: #ac5a00;
   font-size: 21px;
+  
 }
 
 .button1:hover {
@@ -189,7 +192,7 @@ li:hover {
 
 .hide{
   visibility: hidden;
-  font-size: 50px;
+  font-size: 20px;
 }
 
 /* Style the tab */
@@ -258,5 +261,47 @@ font-size: 28px;
 
 }
           
-          
 
+/* ------------------------------- ↓↓↓↓↓ TABELA ↓↓↓↓↓  --------------------------------*/   
+.pesquisa{
+  font-size: 15px;
+}
+
+h1, form{
+  text-align: center;
+  font-size: 110%;
+}
+
+h2{
+  text-align: center;
+  font-size: 160%;
+}
+
+.blocoTab{
+  background-color: #F8AC5B;
+  padding: 20px;
+  max-width: 30%;
+  margin: auto;
+  border-radius: 10px;
+
+  color: #000000;
+  font-weight: bold;
+}
+
+.tabela1{
+
+  text-align: center;
+  max-width: 40%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+table{
+  
+  text-align: center;
+  margin: auto;
+
+  border-collapse: collapse;
+  width: 100%;
+}
