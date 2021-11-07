@@ -59,7 +59,6 @@ df = df.sort_values(['Dado'], ascending=True)
 
 df.info(verbose=False, memory_usage="deep")
 print('\n', df.dtypes, '\n')
-print(df)
 
 # Exportando o Dataframe tratado em arquivo csv
 df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/vacinacao-estatisticas.csv", index=False)
