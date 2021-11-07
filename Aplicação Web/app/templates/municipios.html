@@ -215,6 +215,7 @@
                 {% endif %}
           </button>
 
+          <!--  SRAG 
           <button class="tablinks" onclick="openCity(event, 'Paris')">
               {% if "/search" not in request.path|string %}
               <a class="button" href="{{ url_for('sragmuni_main') }}" style="text-decoration:none; color:#000000;">Casos Graves (SRAG)</a>
@@ -223,7 +224,7 @@
               <a class="button" href="{{ url_for('sragmuni_search') }}" style="text-decoration:none; color:#000000;">Casos Graves (SRAG)</a>
               {% endif %}
           </button>
-
+          -->
 
           <button class="tablinks" onclick="openCity(event, 'Tokyo')">
               {% if "/search" not in request.path|string %}
@@ -251,10 +252,12 @@
             
           </div>
 
+          <!--  SRAG 
           <div id="Paris" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
            
           </div>
+          -->
 
           <div id="Tokyo" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>

@@ -184,7 +184,7 @@
                 {% endif %}
             </button>
 
-
+            <!--  SRAG 
               <button class="tablinks" onclick="openCity(event, 'Paris')">
                      {% if "/search" not in request.path|string %}
                      <a class="button" href="{{ url_for('srag_main') }}" style="text-decoration:none; color:#000000;">Casos Graves (SRAG)</a>
@@ -193,7 +193,7 @@
                      <a class="button" href="{{ url_for('srag_search') }}" style="text-decoration:none; color:#000000;">Casos Graves (SRAG)</a>
                      {% endif %}
               </button>
-
+            -->
 
 
 
@@ -220,7 +220,7 @@
 
 
 
-
+            <!--  LEITOS    
             <button class="tablinks" onclick="openCity(event, 'Lima')">
                 {% if "/search" not in request.path|string %}
                 <a class="button" href="{{ url_for('leitos_main') }}" style="text-decoration:none; color:#000000;">Leitos</a>
@@ -229,7 +229,7 @@
                 <a class="button" href="{{ url_for('leitos_search') }}" style="text-decoration:none; color:#000000;">Leitos</a>
                 {% endif %}
             </button>
-
+          -->
 
 
 
@@ -238,9 +238,11 @@
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
           </div>
 
+          <!--  SRAG 
           <div id="Paris" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
           </div>
+          -->
 
           <div id="Tokyo" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
@@ -250,11 +252,12 @@
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
           </div>
 
+         <!--  LEITOS 
           <div id="Lima" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
       
           </div>
-
+        -->
 
 
                {% for table in tables_covidsp %}
