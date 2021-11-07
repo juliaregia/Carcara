@@ -179,8 +179,10 @@
           </div>
       </div>
 
+      <!-- Paragrafo Invisivel -->
+      <p class="hide"> a</p>
 
-
+<div class="MensagemAviso">
 {% with messages = get_flashed_messages() %}
       {% if messages %}
       {% for message in messages %}
@@ -188,13 +190,22 @@
       {% endfor %}
    {% endif %}
 {% endwith %}
-
+</div>
 
       <!-- Paragrafo Invisivel -->
        <p class="hide"> a</p>
 
+
+
+
+
+
        <!-- tabs -->
         <div class="tabela">
+
+        
+          <div class="tab">
+
           <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">
                 {% if "/search" not in request.path|string %}
                 <a class="button" href="{{ url_for('covidmuni_main') }}" style="text-decoration:none; color:#000000;">Casos e Óbitos</a>
@@ -233,31 +244,26 @@
               {% endif %}
           </button>
 
-
+          </div>
 
           <div id="London" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-            <h3>Teste1</h3>
-            <p>atualmente 15.000.000 Casos confirmados</p>
-            <p>atualmente 2.000.000 Mortes confirmados</p>
+            
           </div>
 
           <div id="Paris" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-            <h3>Teste2</h3>
-            <p>atualmente 9.000.000</p>
+           
           </div>
 
           <div id="Tokyo" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-            <h3>Teste3</h3>
-            <p>atualmente 6.000.000 vacinados</p>
+           
           </div>
 
           <div id="Berlin" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-            <h3>Teste3</h3>
-            <p>atualmente 6.000.000 vacinados</p>
+            
           </div>
 
                  {% if grafico %}

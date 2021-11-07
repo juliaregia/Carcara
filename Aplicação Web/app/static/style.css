@@ -228,12 +228,12 @@ h2{
   font-size: 160%;
 }
 
-.blocoTab{
+.MensagemAviso{
   background-color: #F8AC5B;
   padding: 20px;
-  max-width: 30%;
+  max-width: 40%;
   margin: auto;
-  border-radius: 10px;
+  border-radius: 5px;
 
   color: #000000;
   font-weight: bold;
