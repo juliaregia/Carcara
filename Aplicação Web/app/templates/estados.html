@@ -12,7 +12,7 @@
     <meta name= "viewport" content="width=\, initial-scale=1.0">
 
 
-    <title>INDEX</title>
+    <title>Dados do Estado</title>
 
 
 
@@ -31,16 +31,16 @@
       <div class="menuH">
       <nav>
 
-        <div class="logo"><img src="{{    url_for('static', filename='logo.JPG')}}" ></div>
-                                       
+        <div class="logo"><img src="{{  url_for('static', filename='logo.jpg')}}" ></div>
+
         <button class="button button1">&#9776;</button>
 
         <ul>
-          <li><a href="/index"><li> Inicio </a></li>
-            <li> <a href="/estados">Estados</a> </li>
-            <li> <a href="/municipios">Municipios</a> </li>
-            <li> <a href="/index">Observaçoes</a> </li>
-            <li> <a href="https://github.com/SoSoJigsaw/Carcara">GitHub</a>  </li>
+            <li> <a href="/index" style="text-decoration:none; color:#000000;">Início</a> </li>
+            <li> <a href="/estado/covidsp" style="text-decoration:none; color:#000000;">Estado</a> </li>
+            <li> <a href="/municipios/covidsp" style="text-decoration:none; color:#000000;">Municípios</a> </li>
+            <li> <a href="/index" style="text-decoration:none; color:#000000;">Observações</a> </li>
+            <li> <a href="https://github.com/SoSoJigsaw/Carcara" style="text-decoration:none; color:#000000;">GitHub</a>  </li>
         </ul>
       </nav>
       </div>
@@ -48,8 +48,116 @@
       <!-- Bloco -->
       <div class="bloco">
           <p class="p1">Dados do Estado de São Paulo</p>
+
+                          {% block content %}
+                  <h2>Pesquisa Personalizada</h2>
+
+                   {% if "/estado" == request.path|string %}
+                   <form action="/estado/covidsp/search" method="post">
+                        <p>
+                            {{form.startdate_field.label}} <br>
+                            {{form.startdate_field(min=min, max=max)}}
+                        </p>
+                        <p>
+                            {{form.enddate_field.label}} <br>
+                            {{form.enddate_field(min=min, max=max)}}
+                        </p>
+                        <p>
+                            {{form.submit_field()}}
+                        </p>
+                    </form>
+                          {% endif %}
+
+                   {% if "/estado/covidsp" in request.path|string %}
+                   <form action="/estado/covidsp/search" method="post">
+                        <p>
+                            {{form.startdate_field.label}} <br>
+                            {{form.startdate_field(min=min, max=max)}}
+                        </p>
+                        <p>
+                            {{form.enddate_field.label}} <br>
+                            {{form.enddate_field(min=min, max=max)}}
+                        </p>
+                        <p>
+                            {{form.submit_field()}}
+                        </p>
+                    </form>
+                          {% endif %}
+
+                        {% if "/estado/srag" in request.path|string %}
+                    <form action="/estado/srag/search" method="post">
+                        <p>
+                            {{form.startdate_field.label}} <br>
+                            {{form.startdate_field(min=min, max=max)}}
+                        </p>
+                        <p>
+                            {{form.enddate_field.label}} <br>
+                            {{form.enddate_field(min=min, max=max)}}
+                        </p>
+                        <p>
+                            {{form.submit_field()}}
+                        </p>
+                    </form>
+                          {% endif %}
+
+                         {% if "/estado/vacina" in request.path|string %}
+                    <form action="/estado/vacina/search" method="post">
+                         <p>
+                            {{form.startdate_field.label}} <br>
+                            {{form.startdate_field(min=min, max=max)}}
+                         </p>
+                         <p>
+                            {{form.enddate_field.label}} <br>
+                            {{form.enddate_field(min=min, max=max)}}
+                         </p>
+                         <p>
+                            {{form.submit_field()}}
+                         </p>
+                    </form>
+                            {% endif %}
+
+                  {% if "/estado/leitos" in request.path|string %}
+                    <form action="/estado/leitos/search" method="post">
+                          <p>
+                            {{form.startdate_field.label}} <br>
+                            {{form.startdate_field(min=min, max=max)}}
+                          </p>
+                          <p>
+                            {{form.enddate_field.label}} <br>
+                            {{form.enddate_field(min=min, max=max)}}
+                          </p>
+                          <p>
+                            {{form.submit_field()}}
+                          </p>
+                    </form>
+                               {% endif %}
+
+                    {% if "/estado/isolamento-social" in request.path|string %}
+                    <form action="/estado/isolamento-social/search" method="post">
+                           <p>
+                            {{form.startdate_field.label}} <br>
+                            {{form.startdate_field(min=min, max=max)}}
+                           </p>
+                           <p>
+                            {{form.enddate_field.label}} <br>
+                            {{form.enddate_field(min=min, max=max)}}
+                           </p>
+                           <p>
+                            {{form.submit_field()}}
+                           </p>
+                    </form>
+                                 {% endif %}
+                                {% endblock %}
+
       </div>
 
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      <h1>  {{ message }}  </h1>
+            {% endfor %}
+            {% endif %}
+           {% endwith %}
 
       <!-- Paragrafo Invisivel -->
        <p class="hide"> a</p>
@@ -57,30 +165,136 @@
        <!-- tabs -->
         <div class="tabela">
           <div class="tab">
-            <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">Casos e Obitos</button>
-            <button class="tablinks" onclick="openCity(event, 'Paris')">Isolamento Social</button>
-            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Vacinação</button>
+            <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">
+                {% if "/search" not in request.path|string %}
+                <a class="button" href="{{ url_for('covidsp_main') }}" style="text-decoration:none; color:#000000;">Casos e Óbitos</a>
+                {% endif %}
+                {% if "/search" in request.path|string %}
+                <a class="button" href="{{ url_for('covidsp_search') }}" style="text-decoration:none; color:#000000;">Casos e Óbitos</a>
+                {% endif %}
+            </button>
+
+
+              <button class="tablinks" onclick="openCity(event, 'Paris')">
+                     {% if "/search" not in request.path|string %}
+                     <a class="button" href="{{ url_for('srag_main') }}" style="text-decoration:none; color:#000000;">Casos Graves (SRAG)</a>
+                      {% endif %}
+                      {% if "/search" in request.path|string %}
+                     <a class="button" href="{{ url_for('srag_search') }}" style="text-decoration:none; color:#000000;">Casos Graves (SRAG)</a>
+                     {% endif %}
+              </button>
+
+
+
+
+            <button class="tablinks" onclick="openCity(event, 'Tokyo')">
+                {% if "/search" not in request.path|string %}
+                <a class="button" href="{{ url_for('evoludose_main') }}" style="text-decoration:none; color:#000000;">Vacinação</a>
+                {% endif %}
+                {% if "/search" in request.path|string %}
+                <a class="button" href="{{ url_for('evoludose_search') }}" style="text-decoration:none; color:#000000;">Vacinação</a>
+                {% endif %}
+            </button>
+
+
+
+
+            <button class="tablinks" onclick="openCity(event, 'Berlin')">
+                {% if "/search" not in request.path|string %}
+                <a class="button" href="{{ url_for('isola_main') }}" style="text-decoration:none; color:#000000;">Isolamento Social</a>
+                {% endif %}
+                {% if "/search" in request.path|string %}
+                <a class="button" href="{{ url_for('isola_search') }}" style="text-decoration:none; color:#000000;">Isolamento Social</a>
+                {% endif %}
+            </button>
+
+
+
+
+            <button class="tablinks" onclick="openCity(event, 'Lima')">
+                {% if "/search" not in request.path|string %}
+                <a class="button" href="{{ url_for('leitos_main') }}" style="text-decoration:none; color:#000000;">Leitos</a>
+                {% endif %}
+                {% if "/search" in request.path|string %}
+                <a class="button" href="{{ url_for('leitos_search') }}" style="text-decoration:none; color:#000000;">Leitos</a>
+                {% endif %}
+            </button>
+
+
+
+
           </div>
           <div id="London" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
             <h3>Teste1</h3>
             <p>atualmente 15.000.000 Casos confirmados</p>
             <p>atualmente 2.000.000 Mortes confirmados</p>
+
+
           </div>
 
           <div id="Paris" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
             <h3>Teste2</h3>
             <p>atualmente 9.000.000</p>
+
+
           </div>
 
           <div id="Tokyo" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
             <h3>Teste3</h3>
             <p>atualmente 6.000.000 vacinados</p>
+
+
           </div>
 
-          <script>
+          <div id="Berlin" class="tabcontent">
+            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+            <h3>Teste3</h3>
+            <p>atualmente 6.000.000 vacinados</p>
+
+
+          </div>
+
+          <div id="Lima" class="tabcontent">
+            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
+            <h3>Teste3</h3>
+            <p>atualmente 6.000.000 vacinados</p>
+
+
+          </div>
+
+
+
+               {% for table in tables_covidsp %}
+                {{titles_covidsp[loop.index]}}
+                    {{ table|safe }}
+                      {% endfor %}
+
+               {% for table in tables_srag %}
+                {{titles_srag[loop.index]}}
+                    {{ table|safe }}
+                      {% endfor %}
+
+               {% for table in tables_evoludose %}
+                 {{titles_evoludose[loop.index]}}
+                       {{ table|safe }}
+                         {% endfor %}
+
+              {% for table in tables_isola %}
+               {{titles_isola[loop.index]}}
+                    {{ table|safe }}
+                      {% endfor %}
+
+              {% for table in tables_leitos %}
+                {{titles_leitos[loop.index]}}
+                      {{ table|safe }}
+                       {% endfor %}
+
+
+
+      <script>
             function openCity(evt, cityName) {
               var i, tabcontent, tablinks;
               tabcontent = document.getElementsByClassName("tabcontent");
@@ -98,59 +312,7 @@
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
             </script>
-
-
-
-
-      
           </div>
-
-           <!-- Paragrafo Invisivel -->
-          <p class="hide"> a</p>
-  
-
-<div class="pesquisa">
-
-    <div class="blocoTab">
-          {% block content %}
-      <h2>Pesquisa Personalizada</h2>
-        
-      <form action="/estados/search" method="post">
-          <p>
-              {{form.startdate_field.label}} <br>
-              {{form.startdate_field(min=min, max=max)}}
-          </p>
-          <p>
-              {{form.enddate_field.label}} <br>
-              {{form.enddate_field(min=min, max=max)}}
-          </p>
-          <p>
-              {{form.submit_field()}}
-          </p>
-      </form>
-      
-      {% endblock %}
-    </div>
-  
- <!-- Paragrafo Invisivel -->
- <p class="hide">a</p>
-  
-<div class="tabela1">
-  {% with messages = get_flashed_messages() %}
-     {% if messages %}
-        {% for message in messages %}
-        <h1>  {{ message }}  </h1>
-        {% endfor %}
-     {% endif %}
-  {% endwith %}
-  
-
-  {% for table in tables %}
-        {{titles[loop.index]}}
-        {{ table|safe }}
-  {% endfor %}
-  </div>
-</div>
 
     </body> 
 

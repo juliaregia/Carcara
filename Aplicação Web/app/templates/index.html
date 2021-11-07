@@ -13,7 +13,7 @@
 
     
 
-    <title>INDEX</title>
+    <title>Pandemia Estruturada</title>
 
     <!-- local do arquivo .css flask -->
     <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
@@ -35,11 +35,11 @@
         <button class="button button1">&#9776;</button>
 
         <ul>
-            <li> <a href="/index">Inicio</a> </li>
-            <li> <a href="/estados">Estados</a> </li>
-            <li> <a href="/municipios">Municipios</a> </li>
-            <li> <a href="/index">Observaçoes</a> </li>
-            <li> <a href="https://github.com/SoSoJigsaw/Carcara">GitHub</a>  </li>
+            <li> <a href="/index" class="nav-item" style="text-decoration:none; color:#000000;">Início</a> </li>
+            <li> <a href="/estado/covidsp" class="nav-item" style="text-decoration:none; color:#000000;">Estado</a> </li>
+            <li> <a href="/municipios/covidsp" class="nav-item" style="text-decoration:none; color:#000000;">Municípios</a> </li>
+            <li> <a href="/index" class="nav-item" style="text-decoration:none; color:#000000;">Observações</a> </li>
+            <li> <a href="https://github.com/SoSoJigsaw/Carcara" class="nav-item" style="text-decoration:none; color:#000000;">GitHub</a>  </li>
         </ul>
       </nav>
       </div>
@@ -48,8 +48,8 @@
         <div id="showcase-container">
           <img class="imgIndex" src="{{  url_for('static', filename='logoGrande.png')}}">
             <p>Expondo o impacto da COVID-19 no Estado de São Paulo de forma clara e contextualizada.</p>
-            <a href="/estados" class="btn">Dados gerais do Estado de São Paulo</a>
-            <a href="/municipios" class="btn">Dados por Município</a>
+            <a href="/estado/covidsp" class="btn" style="text-decoration:none; color:#000000;">Dados gerais do Estado de São Paulo</a>
+            <a href="/municipios/covidsp" class="btn" style="text-decoration:none; color:#000000;">Dados por Município</a>
         </div>
     </header>
 

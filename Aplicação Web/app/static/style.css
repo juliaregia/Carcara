@@ -5,7 +5,7 @@
 body{
   background-color: #ffffff;
   font-family: Arial;
-  
+
 }
 
 /* ------------------------------- ↓↓↓↓↓ Menu(navbar) ↓↓↓↓↓ --------------------------------*/ 
@@ -19,32 +19,76 @@ body{
 a{
   text-decoration: none;
   color: black;
-  
+
 }
 
 nav {
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
   background-color: #ffffff;
-  padding: 3px;
+  padding: 0 20px;
+  box-shadow: 0 10px 40px #000000;
   justify-content: space-between;
-  box-shadow: inset 0px 0px 2px #000000;
-  
+}
+
+.nav-item{
+  color: #000000;
+  active-color: #ac5a00;
+  padding-left: 0;
+  text-decoration: none;
+  transition: 0.3s;
+  z-index: 1;
+  font-family: Helvetica;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-item:before{
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #ffffff;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.logo {
+  flex-basis: 25%;
+  font-size: 0;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
 }
 
 ul {
+  display: inline;
+  margin: 0;
+  flex-grow: 1;
   list-style: none;
-  padding: 0;
+  padding-left: 835px;
   overflow: hidden;
   transition: all .5s;
   
 }
 
 li {
+  display: inline;
+  float: right;
   padding: 20px;
   max-height: 20px;
   font-size: 18px;
+  text-decoration: none;
 }
 
 nav, ul {
+  text-decoration: none;
   display: flex;
   flex-direction: row;
 }
@@ -57,14 +101,14 @@ nav, ul {
   position: absolute;
   right: 10px;
   top: center;
-  display: none; 
+  display: none;
 }
 
 li:hover {
   opacity: 0.8;
   background-color: #ac5a00;
   font-size: 21px;
-  
+
 }
 
 .button1:hover {
@@ -262,7 +306,7 @@ font-size: 28px;
 }
           
 
-/* ------------------------------- ↓↓↓↓↓ TABELA ↓↓↓↓↓  --------------------------------*/   
+/* ------------------------------- ↓↓↓↓↓ TABELA ↓↓↓↓↓  --------------------------------*/
 .pesquisa{
   font-size: 15px;
 }
@@ -298,7 +342,7 @@ h2{
 }
 
 table{
-  
+
   text-align: center;
   margin: auto;
 
