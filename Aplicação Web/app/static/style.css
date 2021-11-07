@@ -11,151 +11,109 @@ body{
 /* ------------------------------- ↓↓↓↓↓ Menu(navbar) ↓↓↓↓↓ --------------------------------*/ 
 
 .logo{
- min-width: 500px;
- max-width: 1000px;
- 
-}
-
-a{
-  text-decoration: none;
-  color: black;
-
-}
-
-nav {
-  display: inline-flex;
-  position: relative;
-  overflow: hidden;
-  max-width: 100%;
-  background-color: #ffffff;
-  padding: 0 20px;
-  box-shadow: 0 10px 40px #000000;
-  justify-content: space-between;
-}
-
-.nav-item{
-  color: #000000;
-  active-color: #ac5a00;
-  padding-left: 0;
-  text-decoration: none;
-  transition: 0.3s;
-  z-index: 1;
-  font-family: Helvetica;
-  font-weight: 500;
-  position: relative;
-}
-
-.nav-item:before{
-  content: "";
-  position: absolute;
-  bottom: -7px;
-  left: 0;
-  width: 100%;
-  height: 5px;
-  background-color: #ffffff;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.logo {
-  flex-basis: 25%;
-  font-size: 0;
-}
-
-.logo img {
-  width: 100%;
-  height: 100%;
-}
-
-ul {
-  display: inline;
-  margin: 0;
-  flex-grow: 1;
-  list-style: none;
-  padding-left: 835px;
-  overflow: hidden;
-  transition: all .5s;
+  min-width: 500px;
+  max-width: 1000px;
   
-}
-
-li {
-  display: inline;
-  float: right;
-  padding: 20px;
-  max-height: 20px;
-  font-size: 18px;
-  text-decoration: none;
-}
-
-nav, ul {
-  text-decoration: none;
-  display: flex;
-  flex-direction: row;
-}
-
-.button1 {
-  background-color: transparent;
-  border: none;
-  color: rgb(0, 0, 0);
-  font-size: 36px;
-  position: absolute;
-  right: 10px;
-  top: center;
-  display: none;
-}
-
-li:hover {
-  opacity: 0.8;
-  background-color: #ac5a00;
-  font-size: 21px;
-
-}
-
-.button1:hover {
-  cursor: pointer;
-  opacity: 0.8;
-  background-color: #ac5a00;
-  padding: 4px;
-}
-
-.button1:focus~ul {
-  height: 300px;
-}
-
-@media (max-width: 1050px) {
-
-  nav,
-  ul {
-      flex-direction: column;
-      
-  }
-
-  ul {
-      text-align: center;
-      margin: 0;
-      height: 0;
-  }
-
-  nav {
-      padding: 0;
-      align-items: flex-start;
-  }
-
-  .button1 {
-      display: flex;
-      
-      
-  }
-
-  li, ul {
-      width: 100%;
-      
-      
-  }
-  
-
+ }
  
-}
+ a{
+  text-decoration: none;
+   color: black;
+  
+   
+   
+ }
+ 
+ nav {
+   background-color: #ffffff;
+   padding: 3px;
+   justify-content: space-between;
+   box-shadow: inset 0px 0px 2px #000000;
+   
+ }
+ 
+ ul {
+   list-style: none;
+   padding: 0;
+   overflow: hidden;
+   transition: all .5s;
+   
+ }
+ 
+ li {
+   padding: 20px;
+   max-height: 20px;
+   font-size: 18px;
+ }
+ 
+ nav, ul {
+   display: flex;
+   flex-direction: row;
+ }
+ 
+ .button1 {
+   background-color: transparent;
+   border: none;
+   color: rgb(0, 0, 0);
+   font-size: 36px;
+   position: absolute;
+   right: 10px;
+   top: center;
+   display: none; 
+ }
+ 
+ li:hover {
+   opacity: 0.8;
+   background-color: #ac5a00;
+   font-size: 21px;
+   
+ }
+ 
+ .button1:hover {
+   cursor: pointer;
+   opacity: 0.8;
+   background-color: #ac5a00;
+   padding: 4px;
+ }
+ 
+ .button1:focus~ul {
+   height: 300px;
+ }
+ 
+ @media (max-width: 1050px) {
+ 
+   nav,
+   ul {
+       flex-direction: column;
+       
+   }
+ 
+   ul {
+       text-align: center;
+       margin: 0;
+       height: 0;
+   }
+ 
+   nav {
+       padding: 0;
+       align-items: flex-start;
+   }
+ 
+   .button1 {
+       display: flex;
+       
+       
+   }
+ 
+   li, ul {
+       width: 100%;
+       
+       
+   }
+   
+ 
+  
+ }
 
 /* ------------------------------- ↓↓↓↓↓ INDEX.HTML ↓↓↓↓↓ --------------------------------*/ 
 
@@ -219,18 +177,85 @@ li:hover {
 /* ------------------------------- ↓↓↓↓↓ Bloco Estados/Municipios ↓↓↓↓↓ --------------------------------*/ 
 
 .bloco{
-  background-color: #ffffff;
+  position: relative;
+ 
   padding: 100px;
-  filter: brightness(.7);
-  height: 50px;
-  text-align: center;
-
-  font-size: 200%;
-  font-style: inherit;
-
+  
   box-shadow: inset 0px 0px 3px #000000;
+  background: url('fundo.JPG') no-repeat center center/cover;
 }
 
+.p1{
+  
+  text-align: center;
+  font-size: 210%;
+}
+
+.pesquisa{
+  position: absolute;
+  background-color: #F8AC5B;
+  padding: 15px;
+  padding-top: 30px;
+  max-width: 300px;
+  text-align: center;
+  border-radius: 0px;
+  
+  box-shadow: inset 0px 0px 2px #000000;
+ 
+
+  color: #000000;
+  font-weight: bold;
+  font-size: 90%;
+
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+/* ------------------------------- ↓↓↓↓↓ TABELA ↓↓↓↓↓  --------------------------------*/
+
+
+
+
+h1, form{
+  text-align: center;
+  font-size: 110%;
+}
+
+h2{
+  text-align: center;
+  font-size: 160%;
+}
+
+.blocoTab{
+  background-color: #F8AC5B;
+  padding: 20px;
+  max-width: 30%;
+  margin: auto;
+  border-radius: 10px;
+
+  color: #000000;
+  font-weight: bold;
+}
+
+.tabela1{
+
+  text-align: center;
+  max-width: 40%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+table{
+
+  text-align: center;
+  margin: auto;
+
+  border-collapse: collapse;
+  width: 100%;
+}
 
 /* ------------------------------- ↓↓↓↓↓ Tabs ↓↓↓↓↓ --------------------------------*/ 
 
@@ -306,46 +331,3 @@ font-size: 28px;
 }
           
 
-/* ------------------------------- ↓↓↓↓↓ TABELA ↓↓↓↓↓  --------------------------------*/
-.pesquisa{
-  font-size: 15px;
-}
-
-h1, form{
-  text-align: center;
-  font-size: 110%;
-}
-
-h2{
-  text-align: center;
-  font-size: 160%;
-}
-
-.blocoTab{
-  background-color: #F8AC5B;
-  padding: 20px;
-  max-width: 30%;
-  margin: auto;
-  border-radius: 10px;
-
-  color: #000000;
-  font-weight: bold;
-}
-
-.tabela1{
-
-  text-align: center;
-  max-width: 40%;
-  margin: auto;
-  border-radius: 10px;
-  padding: 10px;
-}
-
-table{
-
-  text-align: center;
-  margin: auto;
-
-  border-collapse: collapse;
-  width: 100%;
-}
