@@ -269,34 +269,40 @@
             
           </div>
 
-                 {% if grafico %}
-                 {{ grafico|safe }}
-                   {% endif %}
+            {% if graf1_covidmuni %}
+            {{ graf1_covidmuni|safe }}
+            {% endif %}
 
-                {% for table in tables_covidsp %}
-                {{titles_covidsp[loop.index]}}
-                    {{ table|safe }}
-                      {% endfor %}
+            {% if graf2_covidmuni %}
+            {{ graf2_covidmuni|safe }}
+            {% endif %}
 
-               {% for table in tables_srag %}
-                {{titles_srag[loop.index]}}
-                    {{ table|safe }}
-                      {% endfor %}
+            {% if graf3_covidmuni %}
+            {{ graf3_covidmuni|safe }}
+            {% endif %}
 
-               {% for table in tables_vacina %}
-                 {{titles_vacina[loop.index]}}
-                       {{ table|safe }}
-                         {% endfor %}
+            {% if graf4_covidmuni %}
+            {{ graf4_covidmuni|safe }}
+            {% endif %}
 
-              {% for table in tables_isola %}
-               {{titles_isola[loop.index]}}
-                    {{ table|safe }}
-                      {% endfor %}
 
-              {% for table in tables_leitos %}
-                {{titles_leitos[loop.index]}}
-                      {{ table|safe }}
-                       {% endfor %}
+
+
+            {% if graf1_vacina %}
+            {{ graf1_vacina|safe }}
+            {% endif %}
+
+            {% if graf2_vacina %}
+            {{ graf2_vacina|safe }}
+            {% endif %}
+
+
+
+
+             {% if graf1_isola %}
+            {{ graf1_isola|safe }}
+            {% endif %}
+
 
 
 

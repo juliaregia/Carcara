@@ -220,7 +220,7 @@
 
 
 
-            <!--  LEITOS    
+
             <button class="tablinks" onclick="openCity(event, 'Lima')">
                 {% if "/search" not in request.path|string %}
                 <a class="button" href="{{ url_for('leitos_main') }}" style="text-decoration:none; color:#000000;">Leitos</a>
@@ -229,7 +229,7 @@
                 <a class="button" href="{{ url_for('leitos_search') }}" style="text-decoration:none; color:#000000;">Leitos</a>
                 {% endif %}
             </button>
-          -->
+
 
 
 
@@ -252,38 +252,80 @@
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
           </div>
 
-         <!--  LEITOS 
+
           <div id="Lima" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
       
           </div>
-        -->
 
 
-               {% for table in tables_covidsp %}
-                {{titles_covidsp[loop.index]}}
-                    {{ table|safe }}
-                      {% endfor %}
+            {% if graf1_covidsp %}
+            {{ graf1_covidsp|safe }}
+            {% endif %}
 
-               {% for table in tables_srag %}
-                {{titles_srag[loop.index]}}
-                    {{ table|safe }}
-                      {% endfor %}
+            {% if graf2_covidsp %}
+            {{ graf2_covidsp|safe }}
+            {% endif %}
 
-               {% for table in tables_evoludose %}
-                 {{titles_evoludose[loop.index]}}
-                       {{ table|safe }}
-                         {% endfor %}
+            {% if graf3_covidsp %}
+            {{ graf3_covidsp|safe }}
+            {% endif %}
 
-              {% for table in tables_isola %}
-               {{titles_isola[loop.index]}}
-                    {{ table|safe }}
-                      {% endfor %}
+            {% if graf4_covidsp %}
+            {{ graf4_covidsp|safe }}
+            {% endif %}
 
-              {% for table in tables_leitos %}
-                {{titles_leitos[loop.index]}}
-                      {{ table|safe }}
-                       {% endfor %}
+
+
+
+
+
+            {% if graf1_evoludose %}
+            {{ graf1_evoludose|safe }}
+            {% endif %}
+
+            {% if graf2_evoludose %}
+            {{ graf2_evoludose|safe }}
+            {% endif %}
+
+            {% if graf3_evoludose %}
+            {{ graf3_evoludose|safe }}
+            {% endif %}
+
+            {% if graf4_evoludose %}
+            {{ graf4_evoludose|safe }}
+            {% endif %}
+
+            {% if graf5_evoludose %}
+            {{ graf5_evoludose|safe }}
+            {% endif %}
+
+
+
+
+            {% if graf1_leitos %}
+            {{ graf1_leitos|safe }}
+            {% endif %}
+
+            {% if graf2_leitos %}
+            {{ graf2_leitos|safe }}
+            {% endif %}
+
+            {% if graf3_leitos %}
+            {{ graf3_leitos|safe }}
+            {% endif %}
+
+            {% if graf4_leitos %}
+            {{ graf4_leitos|safe }}
+            {% endif %}
+
+
+
+
+             {% if graf1_isola %}
+            {{ graf1_isola|safe }}
+            {% endif %}
+
 
 
 
