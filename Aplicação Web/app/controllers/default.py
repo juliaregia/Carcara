@@ -716,7 +716,7 @@ def covidmuni_main():
                        font=dict(size=18, color='#dc770d'), barmode='stack')
     graf1 = fig1.to_html(full_html=False)
 
-    # Óbitos diários por município
+    # Óbitos diários por municípioo
     fig2 = px.bar(covidmuni, x='Data', y='Novos Óbitos', color='Município', hover_data=['Novos Óbitos'],
                   color_discrete_sequence=[['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
                                             '#ffb600', '#b76300', '#cc7601', '#d67f01',
