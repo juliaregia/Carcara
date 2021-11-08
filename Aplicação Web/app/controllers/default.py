@@ -59,7 +59,7 @@ def covidsp_main():
     flash_generate(covidsp)
 
     # Gráfico casos por dia
-    fig1 = px.bar(covidsp, x='Data', y='Casos por dia', color_discrete_sequence=['#f8ac5b'],
+    fig1 = px.bar(covidsp, x='Data', y='Casos por dia', color_discrete_sequence=['#b76300'],
                   title='Casos por dia no Estado de São Paulo', hover_data=['Data', 'Total de casos', 'Casos por dia'],
                   template='xgridoff')
     fig1.update_yaxes(showgrid=False),
@@ -72,7 +72,7 @@ def covidsp_main():
     graf1 = fig1.to_html(full_html=False)
 
     # Gráfico óbitos por dia
-    fig2 = px.bar(covidsp, x='Data', y='Óbitos por dia', color_discrete_sequence=['#f8ac5b'],
+    fig2 = px.bar(covidsp, x='Data', y='Óbitos por dia', color_discrete_sequence=['#b76300'],
                   title='Óbitos por dia no Estado de São Paulo',
                   hover_data=['Data', 'Total de óbitos', 'Óbitos por dia'],
                   template='xgridoff')
@@ -143,11 +143,9 @@ def evoludose_main():
 
     # Evolução 1ª dose
     fig1 = px.bar(evoludose, x='Data', y='1ª Dose', template='xgridoff',
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'])
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'])
     fig1.update_yaxes(showgrid=False),
     fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                        xaxis_tickangle=360,
@@ -159,11 +157,9 @@ def evoludose_main():
 
     # Evolução 2ª dose
     fig2 = px.bar(evoludose, x='Data', y='2ª Dose', template='xgridoff',
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'])
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'])
     fig2.update_yaxes(showgrid=False),
     fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                        xaxis_tickangle=360,
@@ -175,11 +171,9 @@ def evoludose_main():
 
     # Evolução 3ª dose
     fig3 = px.bar(evoludose, x='Data', y='3ª Dose', template='xgridoff',
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'])
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'])
     fig3.update_yaxes(showgrid=False),
     fig3.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                        xaxis_tickangle=360,
@@ -191,11 +185,9 @@ def evoludose_main():
 
     # Evolução dose única
     fig4 = px.bar(evoludose, x='Data', y='Dose Única', template='xgridoff',
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'])
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'])
     fig4.update_yaxes(showgrid=False),
     fig4.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                        xaxis_tickangle=360,
@@ -214,11 +206,9 @@ def evoludose_main():
     # Comparativo entre doses
     fig5 = px.bar(evoludose, x='Data', y=['1ª Dose', '2ª Dose', '3ª Dose', 'Dose Única'], barmode='group',
                   template='xgridoff',
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'])
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'])
     fig5.update_yaxes(showgrid=False),
     fig5.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                        xaxis_tickangle=360,
@@ -253,11 +243,9 @@ def leitos_main():
 
     # Ocupação dos leitos de UTI e enfermaria no Estado
     fig1 = px.bar(leitos, x='Data', y='Ocupação dos leitos de UTI e Enfermaria (%)', template='xgridoff',
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'])
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'])
     fig1.update_yaxes(showgrid=False),
     fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                        xaxis_tickangle=360,
@@ -271,11 +259,9 @@ def leitos_main():
     fig2 = px.bar(leitos, x='Data',
                   y=['Total de leitos de UTI destinados à Covid', 'Total de leitos de Enfermaria destinados à Covid'],
                   template='xgridoff',
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'])
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'])
     fig2.update_yaxes(showgrid=False),
     fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                        xaxis_tickangle=360,
@@ -288,11 +274,9 @@ def leitos_main():
     # Número de pacientes em tratamento na UTI e enfermaria no Estado
     fig3 = px.bar(leitos, x='Data', y=['Pacientes em tratamento na UTI', 'Pacientes em tratamento na Enfermaria'],
                   template='xgridoff',
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'])
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'])
     fig3.update_yaxes(showgrid=False),
     fig3.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                        xaxis_tickangle=360,
@@ -305,11 +289,9 @@ def leitos_main():
     # Novas internações por dia no Estado
     fig4 = px.line(leitos.sort_values(by=['Data'], ascending=[True]), x='Data',
                    y='Novos casos de internações (UTI e Enfermaria)', template='xgridoff',
-                   color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                            '#ffb41a',
-                                            '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                            '#eb9300',
-                                            '#f59e00', '#ffa800'])
+                   color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                            '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                            '#eb9300', '#ffa800'])
     fig4.update_yaxes(showgrid=False),
     fig4.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                        xaxis_tickangle=360,
@@ -331,18 +313,20 @@ def isola_main():
                         dtype={'Município': 'category', 'codigo_ibge': 'category', 'Índice de Isolamento (%)': 'int8',
                                'Dia da Semana': 'category'})
     isola['Data'] = pd.to_datetime(isola['Data'])
-    flash_generate(isola)
     # Filtragem padrão para o main:
     isola = isola[isola['Município'] == 'Estado De São Paulo']
     final = (isola['Data'].max() + dt.timedelta(days=1)).strftime('%Y-%m-%d')
     inicial = (isola['Data'].max() - dt.timedelta(days=16)).strftime("%Y-%m-%d")
     filterdate = (isola['Data'] > inicial) & (isola['Data'] < final)
     isola = isola.loc[filterdate]
+    flash_generate(isola)
 
     # Histórico do indice de isolamento no estado de SP
     fig1 = px.bar(isola, orientation='v', y='Índice de Isolamento (%)', x='Data', color='Dia da Semana',
                   template='xgridoff',
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d'])
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'])
     fig1.update_yaxes(showgrid=False),
     fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                        xaxis_tickangle=360,
@@ -484,11 +468,9 @@ def evoludose_search():
     else:
         # Evolução 1ª dose
         fig1 = px.bar(evoludose, x='Data', y='1ª Dose', template='xgridoff',
-                      color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                               '#ffb329', '#ffb41a',
-                                               '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                               '#e18900', '#eb9300',
-                                               '#f59e00', '#ffa800'])
+                      color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                               '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                               '#eb9300', '#ffa800'])
         fig1.update_yaxes(showgrid=False),
         fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                            xaxis_tickangle=360,
@@ -500,11 +482,9 @@ def evoludose_search():
 
         # Evolução 2ª dose
         fig2 = px.bar(evoludose, x='Data', y='2ª Dose', template='xgridoff',
-                      color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                               '#ffb329', '#ffb41a',
-                                               '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                               '#e18900', '#eb9300',
-                                               '#f59e00', '#ffa800'])
+                      color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                               '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                               '#eb9300', '#ffa800'])
         fig2.update_yaxes(showgrid=False),
         fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                            xaxis_tickangle=360,
@@ -516,11 +496,9 @@ def evoludose_search():
 
         # Evolução 3ª dose
         fig3 = px.bar(evoludose, x='Data', y='3ª Dose', template='xgridoff',
-                      color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                               '#ffb329', '#ffb41a',
-                                               '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                               '#e18900', '#eb9300',
-                                               '#f59e00', '#ffa800'])
+                      color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                               '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                               '#eb9300', '#ffa800'])
         fig3.update_yaxes(showgrid=False),
         fig3.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                            xaxis_tickangle=360,
@@ -532,11 +510,9 @@ def evoludose_search():
 
         # Evolução dose única
         fig4 = px.bar(evoludose, x='Data', y='Dose Única', template='xgridoff',
-                      color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                               '#ffb329', '#ffb41a',
-                                               '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                               '#e18900', '#eb9300',
-                                               '#f59e00', '#ffa800'])
+                      color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                               '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                               '#eb9300', '#ffa800'])
         fig4.update_yaxes(showgrid=False),
         fig4.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                            xaxis_tickangle=360,
@@ -555,11 +531,9 @@ def evoludose_search():
         # Comparativo entre doses
         fig5 = px.bar(evoludose, x='Data', y=['1ª Dose', '2ª Dose', '3ª Dose', 'Dose Única'], barmode='group',
                       template='xgridoff',
-                      color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                               '#ffb329', '#ffb41a',
-                                               '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                               '#e18900', '#eb9300',
-                                               '#f59e00', '#ffa800'])
+                      color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                               '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                               '#eb9300', '#ffa800'])
         fig5.update_yaxes(showgrid=False),
         fig5.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                            xaxis_tickangle=360,
@@ -603,11 +577,9 @@ def leitos_search():
 
         # Ocupação dos leitos de UTI e enfermaria no Estado
         fig1 = px.bar(leitos, x='Data', y='Ocupação dos leitos de UTI e Enfermaria (%)', template='xgridoff',
-                      color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                               '#ffb329', '#ffb41a',
-                                               '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                               '#e18900', '#eb9300',
-                                               '#f59e00', '#ffa800'])
+                      color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                               '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                               '#eb9300', '#ffa800'])
         fig1.update_yaxes(showgrid=False),
         fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                            xaxis_tickangle=360,
@@ -620,11 +592,9 @@ def leitos_search():
         # Número de leitos de UTI e enfermaria no Estado
         fig2 = px.bar(leitos, x='Data', y=['Total de leitos de UTI destinados à Covid',
                                            'Total de leitos de Enfermaria destinados à Covid'], template='xgridoff',
-                      color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                               '#ffb329', '#ffb41a',
-                                               '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                               '#e18900', '#eb9300',
-                                               '#f59e00', '#ffa800'])
+                      color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                               '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                               '#eb9300', '#ffa800'])
         fig2.update_yaxes(showgrid=False),
         fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                            xaxis_tickangle=360,
@@ -637,11 +607,9 @@ def leitos_search():
         # Número de pacientes em tratamento na UTI e enfermaria no Estado
         fig3 = px.bar(leitos, x='Data', y=['Pacientes em tratamento na UTI', 'Pacientes em tratamento na Enfermaria'],
                       template='xgridoff',
-                      color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                               '#ffb329', '#ffb41a',
-                                               '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                               '#e18900', '#eb9300',
-                                               '#f59e00', '#ffa800'])
+                      color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                               '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                               '#eb9300', '#ffa800'])
         fig3.update_yaxes(showgrid=False),
         fig3.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                            xaxis_tickangle=360,
@@ -654,11 +622,9 @@ def leitos_search():
         # Novas internações por dia no Estado
         fig4 = px.line(leitos.sort_values(by=['Data'], ascending=[True]), x='Data',
                        y='Novos casos de internações (UTI e Enfermaria)', template='xgridoff',
-                       color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                                '#ffb329', '#ffb41a',
-                                                '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                                '#e18900', '#eb9300',
-                                                '#f59e00', '#ffa800'])
+                       color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                                '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                                '#eb9300', '#ffa800'])
         fig4.update_yaxes(showgrid=False),
         fig4.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                            xaxis_tickangle=360,
@@ -724,8 +690,6 @@ def covidmuni_main():
                                          'Novos Casos': 'int16', 'Total de Óbitos': 'int32', 'Novos Óbitos': 'int16',
                                          'Mesorregião': 'category', 'Microrregião': 'category'})
     covidmuni['Data'] = pd.to_datetime(covidmuni['Data'])
-    flash_generate(covidmuni)
-
     # Filtragem padrão dos dataframes com município em 'main' functions:
     final = (covidmuni['Data'].max() + dt.timedelta(days=1)).strftime('%Y-%m-%d')
     inicial = (covidmuni['Data'].max() - dt.timedelta(days=16)).strftime("%Y-%m-%d")
@@ -735,14 +699,13 @@ def covidmuni_main():
         "Município == 'São Paulo' | Município == 'São José dos Campos' | Município == 'Caçapava' | Município == "
         "'Jacareí' | Município == 'Campinas' | Município == 'São José do Rio Preto' | Município == 'Ribeirão Preto' | "
         "Município == 'Sorocaba' | Município == 'São Bernardo do Campo' | Município == 'Santo André'")
+    flash_generate(covidmuni)
 
     # Casos diários por município
     fig1 = px.bar(covidmuni, x='Data', y='Novos Casos', color='Município', hover_data=['Novos Casos'],
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'],
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'],
                   title='Casos confirmados por dia e por Município', template='xgridoff')
     fig1.update_yaxes(showgrid=False),
     fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
@@ -755,11 +718,9 @@ def covidmuni_main():
 
     # Óbitos diários por município
     fig2 = px.bar(covidmuni, x='Data', y='Novos Óbitos', color='Município', hover_data=['Novos Óbitos'],
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'],
+                  color_discrete_sequence=[['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                            '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                            '#eb9300', '#ffa800']],
                   title='Óbitos confirmados por dia e por Município', template='xgridoff')
     fig2.update_yaxes(showgrid=False),
     fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
@@ -783,11 +744,9 @@ def covidmuni_main():
     # Total de mortes por município
     fig3 = px.pie(covidmuni, values='Total de Óbitos', names='Município', color='Município',
                   title='Comparativo entre o total de óbitos por Município', template='xgridoff',
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'])
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'])
     fig3.update_xaxes(type='date')
     fig3.update_layout(autosize=True)
     fig3.update_yaxes(showgrid=False),
@@ -851,11 +810,9 @@ def vacina_main():
     # Comparação entre municípios de aplicação das doses
     fig1 = px.histogram(vacina, x='Município', y=['1ª Dose', '2ª Dose', '3ª Dose', 'Dose Única'], barmode='group',
                         template='xgridoff',
-                        color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                                 '#ffb329', '#ffb41a',
-                                                 '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                                 '#e18900', '#eb9300',
-                                                 '#f59e00', '#ffa800'])
+                        color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                                 '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                                 '#eb9300', '#ffa800'])
     fig1.update_layout(legend_title_text='Dose Aplicada')
     fig1.update_yaxes(showgrid=False),
     fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
@@ -868,11 +825,9 @@ def vacina_main():
 
     # Comparação entre municípios de doses distribuídas
     fig2 = px.histogram(vacina, x='Doses Distribuídas', y='Município', orientation='h', template='xgridoff',
-                        color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                                 '#ffb329', '#ffb41a',
-                                                 '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                                 '#e18900', '#eb9300',
-                                                 '#f59e00', '#ffa800'])
+                        color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                                 '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                                 '#eb9300', '#ffa800'])
     fig2.update_yaxes(showgrid=False),
     fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                        xaxis_tickangle=360,
@@ -894,7 +849,6 @@ def isolamuni_main():
                         dtype={'Município': 'category', 'codigo_ibge': 'category', 'Índice de Isolamento (%)': 'int8',
                                'Dia da Semana': 'category'})
     isola['Data'] = pd.to_datetime(isola['Data'])
-    flash_generate(isola)
     # Filtragem padrão para o main:
     isola = isola.query(
         "Município == 'São Paulo' | Município == 'São José Dos Campos' | Município == 'Caçapava' | Município == "
@@ -904,14 +858,13 @@ def isolamuni_main():
     inicial = (isola['Data'].max() - dt.timedelta(days=16)).strftime("%Y-%m-%d")
     filterdate = (isola['Data'] > inicial) & (isola['Data'] < final)
     isola = isola.loc[filterdate]
+    flash_generate(isola)
 
     # Histórico do indice de isolamento nos municipios sp
     fig1 = px.bar(isola, orientation='v', y='Índice de Isolamento (%)', x='Data', color='Município',
-                  color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134', '#ffb329',
-                                           '#ffb41a',
-                                           '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01', '#e18900',
-                                           '#eb9300',
-                                           '#f59e00', '#ffa800'])
+                  color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                           '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                           '#eb9300', '#ffa800'])
     fig1.update_yaxes(showgrid=False),
     fig1.update_traces(hovertemplate=None, )
     fig1.update_layout(autosize=True, margin=dict(t=70, b=0, l=70, r=40),
@@ -961,11 +914,9 @@ def covidmuni_search():
             # Casos diários por município
             fig1 = px.bar(covidmuni, x='Data', y='Novos Casos', color='Município',
                           hover_data=['Novos Casos', 'Total de Casos'],
-                          color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                                   '#ffb329', '#ffb41a',
-                                                   '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                                   '#e18900', '#eb9300',
-                                                   '#f59e00', '#ffa800'],
+                          color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                                   '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                                   '#eb9300', '#ffa800'],
                           title='Casos confirmados por dia e por Município', template='xgridoff')
             fig1.update_yaxes(showgrid=False),
             fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
@@ -979,11 +930,9 @@ def covidmuni_search():
             # Óbitos diários por município
             fig2 = px.bar(covidmuni, x='Data', y='Novos Óbitos', color='Município',
                           hover_data=['Novos Casos', 'Total de Casos'],
-                          color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                                   '#ffb329', '#ffb41a',
-                                                   '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                                   '#e18900', '#eb9300',
-                                                   '#f59e00', '#ffa800'],
+                          color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                                   '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                                   '#eb9300', '#ffa800'],
                           title='Óbitos confirmados por dia e por Município', template='xgridoff')
             fig2.update_yaxes(showgrid=False),
             fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
@@ -1003,11 +952,9 @@ def covidmuni_search():
             # Total de mortes por município
             fig3 = px.pie(covidmuni, values='Total de Óbitos', names='Município', color='Município',
                           title='Comparativo do total de óbitos por Município', template='xgridoff',
-                          color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                                   '#ffb329', '#ffb41a',
-                                                   '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                                   '#e18900', '#eb9300',
-                                                   '#f59e00', '#ffa800'])
+                          color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                                   '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                                   '#eb9300', '#ffa800'])
             fig3.update_xaxes(type='date')
             fig3.update_yaxes(showgrid=False),
             fig3.update_layout(autosize=True)
@@ -1022,11 +969,9 @@ def covidmuni_search():
             # Total de casos por município
             fig4 = px.pie(covidmuni, values='Total de Casos', names='Município', color='Município',
                           title='Comparativo do total de casos por Município', template='xgridoff',
-                          color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                                   '#ffb329', '#ffb41a',
-                                                   '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                                   '#e18900', '#eb9300',
-                                                   '#f59e00', '#ffa800'])
+                          color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                                   '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                                   '#eb9300', '#ffa800'])
             fig4.update_xaxes(type='date')
             fig4.update_layout(autosize=True)
             fig4.update_yaxes(showgrid=False),
@@ -1102,11 +1047,9 @@ def vacina_search():
         # Comparação entre municípios de aplicação das doses
         fig1 = px.histogram(vacina, x='Município', y=['1ª Dose', '2ª Dose', '3ª Dose', 'Dose Única'], barmode='group',
                             template='xgridoff',
-                            color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                                     '#ffb329', '#ffb41a',
-                                                     '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                                     '#e18900', '#eb9300',
-                                                     '#f59e00', '#ffa800'])
+                            color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                                     '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                                     '#eb9300', '#ffa800'])
         fig1.update_layout(legend_title_text='Dose Aplicada')
         fig1.update_yaxes(showgrid=False),
         fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
@@ -1119,11 +1062,9 @@ def vacina_search():
 
         # Comparação entre municípios de doses distribuídas
         fig2 = px.histogram(vacina, x='Doses Distribuídas', y='Município', orientation='h', template='xgridoff',
-                            color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                                     '#ffb329', '#ffb41a',
-                                                     '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                                     '#e18900', '#eb9300',
-                                                     '#f59e00', '#ffa800'])
+                            color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                                     '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                                     '#eb9300', '#ffa800'])
         fig2.update_yaxes(showgrid=False),
         fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                            xaxis_tickangle=360,
@@ -1168,11 +1109,9 @@ def isolamuni_search():
             # Histórico do indice de isolamento nos municipios sp
             fig1 = px.bar(isola, orientation='v', y='Índice de Isolamento (%)', x='Data', color='Município',
                           template='xgridoff',
-                          color_discrete_sequence=['#f8ac5b', '#faad54', '#fbae4d', '#fdaf45', '#feb03d', '#ffb134',
-                                                   '#ffb329', '#ffb41a',
-                                                   '#ffb600', '#ac5a00', '#b76300', '#c16c00', '#cc7601', '#d67f01',
-                                                   '#e18900', '#eb9300',
-                                                   '#f59e00', '#ffa800'])
+                          color_discrete_sequence=['#fbae4d', '#feb03d', '#ffb134', '#ffb41a',
+                                                   '#ffb600', '#b76300', '#cc7601', '#d67f01',
+                                                   '#eb9300', '#ffa800'])
             fig1.update_yaxes(showgrid=False),
             fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
                                xaxis_tickangle=360,
