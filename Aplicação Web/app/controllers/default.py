@@ -71,7 +71,7 @@ def covidsp_main():
                        font=dict(size=18, color='#dc770d'), barmode='stack')
     graf1 = fig1.to_html(full_html=False)
 
-    # Gráfico óbitos diários
+    # Gráfico óbitos por dia
     fig2 = px.bar(covidsp, x='Data', y='Óbitos por dia', color_discrete_sequence=['#f8ac5b'],
                   title='Óbitos por dia no Estado de São Paulo',
                   hover_data=['Data', 'Total de óbitos', 'Óbitos por dia'],
