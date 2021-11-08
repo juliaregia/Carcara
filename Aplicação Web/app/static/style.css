@@ -19,7 +19,7 @@ body{
  a{
   text-decoration: none;
    color: black;
-  
+   border-bottom: 2px solid #ac5a00;
    
    
  }
@@ -215,9 +215,6 @@ body{
 
 /* ------------------------------- ↓↓↓↓↓ TABELA ↓↓↓↓↓  --------------------------------*/
 
-
-
-
 h1, form{
   text-align: center;
   font-size: 110%;
@@ -295,10 +292,6 @@ background-color: #F8AC5B;
 
 /* Style the tab content */
 .tabcontent {
-display: none;
-padding: 6px 12px;
-border: 3px solid #F8AC5B;
-border-top: none;
 }
 
 /* Style the close button */
@@ -311,6 +304,71 @@ font-size: 28px;
 .topright:hover {color: #ac5a00;}
 
 
+/* ------------------------------- ↓↓↓↓↓ BLOCOS TAB ↓↓↓↓↓  --------------------------------*/  
+.BlocoH{
+  width: auto;
+  height: 200px;
+  padding: 10px;
+  background-color: #ffffff;
+  display: flex;
+  margin: auto;
+
+}
+
+.blocoInfo1{
+  background-color: #F8AC5B;
+  width: 400px;
+  height: 200px;
+
+  border-radius: 10px;
+  top: 10px;
+  left: 10px;
+  margin-left: 100px;
+  margin-right: 15px;
+
+  box-shadow: inset 0px 0px 3px #000000;
+  
+}
+
+.blocoInfo2{
+  background-color: #F8AC5B;
+  width: 400px;
+  height: 200px;
+
+  border-radius: 10px;
+  top: 10px;
+  left: 10px;
+  margin-right: 15px;
+
+  box-shadow: inset 0px 0px 3px #000000;
+}
+
+.blocoInfo3{
+  background-color: #F8AC5B;
+  width: 400px;
+  height: 200px;
+
+  border-radius: 10px;
+  top: 10px;
+  left: 10px;
+  margin-right: 15px;
+
+  box-shadow: inset 0px 0px 3px #000000;
+}
+
+.blocoInfo4{
+  background-color: #F8AC5B;
+  width: 400px;
+  height: 200px;
+
+  border-radius: 10px;
+  top: 10px;
+  left: 10px;
+  margin-right: 100px;
+
+  box-shadow: inset 0px 0px 3px #000000;
+}
+
 /* ------------------------------- ↓↓↓↓↓ FOOTER ↓↓↓↓↓  --------------------------------*/       
 .footer {
   position: relative;
@@ -320,7 +378,7 @@ font-size: 28px;
   height: 8%;
   background-color: rgb(255, 255, 255);
   
-   box-shadow:         inset 0 0 2px #000000;
+
 }
 
 .footerText{
