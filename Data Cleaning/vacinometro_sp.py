@@ -1,71 +1,9 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
 import pandas as pd
 import numpy as np
 import sys
 import os
 import glob
 import time
-
-# Automação da coleta dos dataframes pelo selenium
-
-# Primeiro dataframe
-sys.path.insert(0, '/usr/lib/chromium-browser/chromedriver')
-download_dir = "/home/sobral/data/vacinometro"
-prefs = {'download.default_directory': download_dir}
-
-options_chrome = Options()
-options_chrome.add_argument("start-maximized")
-options_chrome.add_argument("disable-infobars")
-options_chrome.add_argument("--disable-extensions")
-options_chrome.add_argument('--headless')
-options_chrome.add_argument('--no-sandbox')
-options_chrome.add_argument('--disable-dev-shm-usage')
-options_chrome.add_experimental_option('prefs', prefs)
-desired = options_chrome.to_capabilities()
-desired['loggingPrefs'] = {'performance': 'ALL'}
-
-navegador = webdriver.Chrome('chromedriver', options=options_chrome,
-                             desired_capabilities=desired)
-
-navegador.get("https://www.saopaulo.sp.gov.br/planosp/simi/dados-abertos/")
-botao1 = navegador.find_element_by_xpath("/html/body/section[4]/div/div/article[14]").click()
-elemento1 = navegador.find_element_by_css_selector(
-    "article.hrf-entry:nth-child(14) > div:nth-child(2) > ul:nth-child(2) > li:nth-child(1) > div:nth-child(1) > "
-    "a:nth-child(2)")
-href1 = elemento1.get_attribute("href")
-navegador.get(href1)
-
-# Segundo dataframe
-sys.path.insert(0, '/usr/lib/chromium-browser/chromedriver')
-download_dir2 = "/home/sobral/data/distribuicao"
-prefs2 = {'download.default_directory': download_dir2}
-
-options_chrome2 = Options()
-options_chrome2.add_argument("start-maximized")
-options_chrome2.add_argument("disable-infobars")
-options_chrome2.add_argument("--disable-extensions")
-options_chrome2.add_argument('--headless')
-options_chrome2.add_argument('--no-sandbox')
-options_chrome2.add_argument('--disable-dev-shm-usage')
-options_chrome2.add_experimental_option('prefs', prefs2)
-desired = options_chrome2.to_capabilities()
-desired['loggingPrefs'] = {'performance': 'ALL'}
-
-navegador2 = webdriver.Chrome('chromedriver', options=options_chrome2,
-                              desired_capabilities=desired)
-
-navegador2.get("https://www.saopaulo.sp.gov.br/planosp/simi/dados-abertos/")
-botao2 = navegador2.find_element_by_xpath("/html/body/section[4]/div/div/article[15]/h3").click()
-elemento2 = navegador2.find_element_by_xpath("/html/body/section[4]/div/div/article[15]/div/ul/li/div/a")
-href2 = elemento2.get_attribute("href")
-navegador2.get(href2)
-
-time.sleep(30)
 
 # Automação do reconhecimento de novos dados pelo Pandas
 list_of_files1 = glob.glob('/home/sobral/data/vacinometro/*.csv')
@@ -132,3 +70,5 @@ print('\n', df.dtypes, '\n')
 
 # Exportando o Dataframe tratado em arquivo csv
 df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/vacinometro-sp.csv", index=False)
+
+print('Dados de vacinometro_sp.py tratados e exportados!' + '\n' + '\n')

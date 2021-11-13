@@ -62,3 +62,5 @@ print('\n', df.dtypes, '\n')
 
 # Exportando o Dataframe tratado em arquivo csv
 df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/covid-municipios-sp.csv", index=False)
+
+print('Dados de covid_municipios_sp.py tratados e exportados!' + '\n' + '\n')

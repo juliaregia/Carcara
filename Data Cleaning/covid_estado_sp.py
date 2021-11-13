@@ -1,9 +1,3 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
 import pandas as pd
 import numpy as np
 import sys
@@ -13,31 +7,6 @@ import os
 import datetime as dt
 from datetime import datetime
 
-# Automação da coleta de um dos dataframes
-sys.path.insert(0, '/usr/lib/chromium-browser/chromedriver')
-download_dir = "/home/sobral/data/covid_estado"
-prefs = {'download.default_directory': download_dir}
-
-options_chrome = Options()
-options_chrome.add_argument("start-maximized")
-options_chrome.add_argument("disable-infobars")
-options_chrome.add_argument("--disable-extensions")
-options_chrome.add_argument('--headless')
-options_chrome.add_argument('--no-sandbox')
-options_chrome.add_argument('--disable-dev-shm-usage')
-options_chrome.add_experimental_option('prefs', prefs)
-desired = options_chrome.to_capabilities()
-desired['loggingPrefs'] = {'performance': 'ALL'}
-
-navegador = webdriver.Chrome('chromedriver', options=options_chrome,
-                             desired_capabilities=desired)
-
-navegador.get("https://www.seade.gov.br/coronavirus/#")
-elemento = navegador.find_element_by_xpath("/html/body/div[1]/div[1]/a[1]")
-href = elemento.get_attribute("href")
-navegador.get(href)
-
-time.sleep(15)
 
 # Automação do reconhecimento de novos dados pelo Pandas
 list_of_files = glob.glob('/home/sobral/data/covid_estado/*.csv')
@@ -93,3 +62,5 @@ print('\n', df.dtypes, '\n')
 
 # Exportando o Dataframe tratado em arquivo csv
 df.to_csv("/home/sobral/Carcara/Aplicação Web/app/data/covid-estado-sp.csv", index=False)
+
+print('Dados de covid_estado_sp.py tratados e exportados!' + '\n' + '\n')
