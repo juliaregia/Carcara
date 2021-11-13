@@ -36,9 +36,11 @@ def date_filter_sp(df, start_request, end_request):
     else:
         try:
             start = str(start_request[-1])
-            end = str(end_request[-1])
         except IndexError:
             start = df['Data'].min().strftime('%Y-%m-%d')
+        try:
+            end = str(end_request[-1])
+        except IndexError:
             end = df['Data'].max().strftime('%Y-%m-%d')
     # Validações por if statement, retorna a pesquisa no 'else' se for validado
     if start > end:
@@ -98,9 +100,11 @@ def date_filter_mun(df, start_request, end_request):
     else:
         try:
             start = str(start_request[-1])
-            end = str(end_request[-1])
         except IndexError:
             start = df['Data'].min().strftime('%Y-%m-%d')
+        try:
+            end = str(end_request[-1])
+        except IndexError:
             end = df['Data'].max().strftime('%Y-%m-%d')
     # Validações por if statement, retorna a pesquisa no 'else' se for validado
     if start > end:

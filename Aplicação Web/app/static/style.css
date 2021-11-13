@@ -13,44 +13,44 @@ body{
 .logo{
   min-width: 500px;
   max-width: 1000px;
-  
+
  }
- 
+
  a{
   text-decoration: none;
    color: black;
    border-bottom: 2px solid #ac5a00;
-   
-   
+
+
  }
- 
+
  nav {
    background-color: #ffffff;
    padding: 3px;
    justify-content: space-between;
    box-shadow: inset 0px 0px 2px #000000;
-   
+
  }
- 
+
  ul {
    list-style: none;
    padding: 0;
    overflow: hidden;
    transition: all .5s;
-   
+
  }
- 
+
  li {
    padding: 20px;
    max-height: 20px;
    font-size: 18px;
  }
- 
+
  nav, ul {
    display: flex;
    flex-direction: row;
  }
- 
+
  .button1 {
    background-color: transparent;
    border: none;
@@ -59,23 +59,23 @@ body{
    position: absolute;
    right: 10px;
    top: center;
-   display: none; 
+   display: none;
  }
- 
+
  li:hover {
    opacity: 0.8;
    background-color: #ac5a00;
    font-size: 21px;
-   
+
  }
- 
+
  .button1:hover {
    cursor: pointer;
    opacity: 0.8;
    background-color: #ac5a00;
    padding: 4px;
  }
- 
+
  .button1:focus~ul {
    height: 300px;
  }
@@ -120,7 +120,7 @@ body{
 .imgIndex {
   max-width:auto ;
   width: 80%;
-  
+
   
 }
 

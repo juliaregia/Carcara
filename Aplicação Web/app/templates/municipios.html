@@ -206,7 +206,11 @@
         
           <div class="tab">
 
+          {% if "municipios/covidsp" not in request.path|string %}
           <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">
+          {% else %}
+          <button class="tablinks active" onclick="openCity(event, 'London')" id="defaultOpen">
+          {% endif %}
                 {% if "/search" not in request.path|string %}
                 <a class="button" href="{{ url_for('covidmuni_main') }}" style="text-decoration:none; color:#000000;">Casos e Óbitos</a>
                 {% endif %}
@@ -226,7 +230,11 @@
           </button>
           -->
 
+          {% if "municipios/vacina" not in request.path|string %}
           <button class="tablinks" onclick="openCity(event, 'Tokyo')">
+          {% else %}
+          <button class="tablinks active" onclick="openCity(event, 'Tokyo')">
+          {% endif %}
               {% if "/search" not in request.path|string %}
               <a class="button" href="{{ url_for('vacina_main') }}" style="text-decoration:none; color:#000000;">Vacinação</a>
               {% endif %}
@@ -235,8 +243,11 @@
               {% endif %}
           </button>
 
-
+          {% if "municipios/isolamento-social" not in request.path|string %}
           <button class="tablinks" onclick="openCity(event, 'Berlin')">
+          {% else %}
+          <button class="tablinks active" onclick="openCity(event, 'Berlin')">
+          {% endif %}
               {% if "/search" not in request.path|string %}
               <a class="button" href="{{ url_for('isolamuni_main') }}" style="text-decoration:none; color:#000000;">Isolamento Social</a>
               {% endif %}
@@ -329,12 +340,8 @@
               for (i = 0; i < tabcontent.length; i++) {
                 tabcontent[i].style.display = "none";
               }
-              tablinks = document.getElementsByClassName("tablinks");
-              for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-              }
+
               document.getElementById(cityName).style.display = "block";
-              evt.currentTarget.className += " active";
             }
 
             // Get the element with id="defaultOpen" and click on it
