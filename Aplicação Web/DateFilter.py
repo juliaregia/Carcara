@@ -36,12 +36,17 @@ def date_filter_sp(df, start_request, end_request):
     else:
         try:
             start = str(start_request[-1])
+            if start_request[-1] == 'dumby':
+                start = df['Data'].min().strftime('%Y-%m-%d')
         except IndexError:
             start = df['Data'].min().strftime('%Y-%m-%d')
         try:
             end = str(end_request[-1])
+            if end_request[-1] == 'dumby':
+                end = df['Data'].max().strftime('%Y-%m-%d')
         except IndexError:
             end = df['Data'].max().strftime('%Y-%m-%d')
+
     # Validações por if statement, retorna a pesquisa no 'else' se for validado
     if start > end:
         flash('\n' + 'A data inicial não pode ser mais recente que a data final' + '\n')
@@ -100,12 +105,17 @@ def date_filter_mun(df, start_request, end_request):
     else:
         try:
             start = str(start_request[-1])
+            if start_request[-1] == 'dumby':
+                start = df['Data'].min().strftime('%Y-%m-%d')
         except IndexError:
             start = df['Data'].min().strftime('%Y-%m-%d')
         try:
             end = str(end_request[-1])
+            if end_request[-1] == 'dumby':
+                end = df['Data'].max().strftime('%Y-%m-%d')
         except IndexError:
             end = df['Data'].max().strftime('%Y-%m-%d')
+
     # Validações por if statement, retorna a pesquisa no 'else' se for validado
     if start > end:
         flash('\n' + 'A data inicial não pode ser mais recente que a data final' + '\n')

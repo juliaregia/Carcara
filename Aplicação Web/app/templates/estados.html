@@ -58,11 +58,19 @@
                    <form action="/estado/covidsp/search" method="post">
                         <p>
                             {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
                             {{form.startdate_field(min=min, max=max)}}
+                            {% endif %}
                         </p>
                         <p>
                             {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
                             {{form.enddate_field(min=min, max=max)}}
+                             {% endif %}
                         </p>
                         <p>
                             {{form.submit_field()}}
@@ -74,11 +82,19 @@
                    <form action="/estado/covidsp/search" method="post">
                         <p>
                             {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
                             {{form.startdate_field(min=min, max=max)}}
+                            {% endif %}
                         </p>
                         <p>
                             {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
                             {{form.enddate_field(min=min, max=max)}}
+                             {% endif %}
                         </p>
                         <p>
                             {{form.submit_field()}}
@@ -90,11 +106,19 @@
                     <form action="/estado/srag/search" method="post">
                         <p>
                             {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
                             {{form.startdate_field(min=min, max=max)}}
+                            {% endif %}
                         </p>
                         <p>
                             {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
                             {{form.enddate_field(min=min, max=max)}}
+                             {% endif %}
                         </p>
                         <p>
                             {{form.submit_field()}}
@@ -106,47 +130,71 @@
                     <form action="/estado/vacina/search" method="post">
                          <p>
                             {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
                             {{form.startdate_field(min=min, max=max)}}
-                         </p>
-                         <p>
+                            {% endif %}
+                        </p>
+                        <p>
                             {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
                             {{form.enddate_field(min=min, max=max)}}
-                         </p>
-                         <p>
+                             {% endif %}
+                        </p>
+                        <p>
                             {{form.submit_field()}}
-                         </p>
+                        </p>
                     </form>
                             {% endif %}
 
                   {% if "/estado/leitos" in request.path|string %}
                     <form action="/estado/leitos/search" method="post">
-                          <p>
+                           <p>
                             {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
                             {{form.startdate_field(min=min, max=max)}}
-                          </p>
-                          <p>
+                            {% endif %}
+                        </p>
+                        <p>
                             {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
                             {{form.enddate_field(min=min, max=max)}}
-                          </p>
-                          <p>
+                             {% endif %}
+                        </p>
+                        <p>
                             {{form.submit_field()}}
-                          </p>
+                        </p>
                     </form>
                                {% endif %}
 
                     {% if "/estado/isolamento-social" in request.path|string %}
                     <form action="/estado/isolamento-social/search" method="post">
-                           <p>
+                            <p>
                             {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
                             {{form.startdate_field(min=min, max=max)}}
-                           </p>
-                           <p>
+                            {% endif %}
+                        </p>
+                        <p>
                             {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
                             {{form.enddate_field(min=min, max=max)}}
-                           </p>
-                           <p>
+                             {% endif %}
+                        </p>
+                        <p>
                             {{form.submit_field()}}
-                           </p>
+                        </p>
                     </form>
                                  {% endif %}
                                 {% endblock %}

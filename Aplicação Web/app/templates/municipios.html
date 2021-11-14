@@ -59,16 +59,28 @@
               <form action="/municipios/covidsp/search" method="post">
                    <p>
                        {{form.municipio_field.label}} <br>
+                       {% if request.form['municipio_field'] != '' %}
+                       {{form.municipio_field(type="text", value=city)}}
+                       {% else %}
                        {{form.municipio_field(type="text")}}
+                       {% endif %}
                    </p>
-                   <p>
-                       {{form.startdate_field.label}} <br>
-                       {{form.startdate_field(min=min, max=max)}}
-                   </p>
-                   <p>
-                       {{form.enddate_field.label}} <br>
-                       {{form.enddate_field(min=min, max=max)}}
-                   </p>
+                    <p>
+                            {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
+                            {{form.startdate_field(min=min, max=max)}}
+                            {% endif %}
+                        </p>
+                        <p>
+                            {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
+                            {{form.enddate_field(min=min, max=max)}}
+                             {% endif %}
+                        </p>
                    <p>
                        {{form.submit_field()}}
                    </p>
@@ -79,16 +91,28 @@
               <form action="/municipios/covidsp/search" method="post">
                    <p>
                        {{form.municipio_field.label}} <br>
+                       {% if request.form['municipio_field'] != '' %}
+                       {{form.municipio_field(type="text", value=city)}}
+                       {% else %}
                        {{form.municipio_field(type="text")}}
+                       {% endif %}
                    </p>
-                   <p>
-                       {{form.startdate_field.label}} <br>
-                       {{form.startdate_field(min=min, max=max)}}
-                   </p>
-                   <p>
-                       {{form.enddate_field.label}} <br>
-                       {{form.enddate_field(min=min, max=max)}}
-                   </p>
+                    <p>
+                            {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
+                            {{form.startdate_field(min=min, max=max)}}
+                            {% endif %}
+                        </p>
+                        <p>
+                            {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
+                            {{form.enddate_field(min=min, max=max)}}
+                             {% endif %}
+                        </p>
                    <p>
                        {{form.submit_field()}}
                    </p>
@@ -99,16 +123,28 @@
                <form action="/municipios/srag/search" method="post">
                    <p>
                        {{form.municipio_field.label}} <br>
-                       {{form.municipio_field()}}
+                       {% if request.form['municipio_field'] != '' %}
+                       {{form.municipio_field(type="text", value=city)}}
+                       {% else %}
+                       {{form.municipio_field(type="text")}}
+                       {% endif %}
                    </p>
-                   <p>
-                       {{form.startdate_field.label}} <br>
-                       {{form.startdate_field(min=min, max=max)}}
-                   </p>
-                   <p>
-                       {{form.enddate_field.label}} <br>
-                       {{form.enddate_field(min=min, max=max)}}
-                   </p>
+                    <p>
+                            {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
+                            {{form.startdate_field(min=min, max=max)}}
+                            {% endif %}
+                        </p>
+                        <p>
+                            {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
+                            {{form.enddate_field(min=min, max=max)}}
+                             {% endif %}
+                        </p>
                    <p>
                        {{form.submit_field()}}
                    </p>
@@ -119,16 +155,28 @@
                <form action="/municipios/vacina/search" method="post">
                     <p>
                        {{form.municipio_field.label}} <br>
-                       {{form.municipio_field()}}
+                       {% if request.form['municipio_field'] != '' %}
+                       {{form.municipio_field(type="text", value=city)}}
+                       {% else %}
+                       {{form.municipio_field(type="text")}}
+                       {% endif %}
                     </p>
-                    <p>
-                       {{form.startdate_field.label}} <br>
-                       {{form.startdate_field(min=min, max=max)}}
-                    </p>
-                    <p>
-                       {{form.enddate_field.label}} <br>
-                       {{form.enddate_field(min=min, max=max)}}
-                    </p>
+                     <p>
+                            {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
+                            {{form.startdate_field(min=min, max=max)}}
+                            {% endif %}
+                        </p>
+                        <p>
+                            {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
+                            {{form.enddate_field(min=min, max=max)}}
+                             {% endif %}
+                        </p>
                     <p>
                        {{form.submit_field()}}
                     </p>
@@ -139,16 +187,28 @@
                <form action="/municipios/leitos/search" method="post">
                      <p>
                        {{form.municipio_field.label}} <br>
-                       {{form.municipio_field()}}
+                       {% if request.form['municipio_field'] != '' %}
+                       {{form.municipio_field(type="text", value=city)}}
+                       {% else %}
+                       {{form.municipio_field(type="text")}}
+                       {% endif %}
                     </p>
-                     <p>
-                       {{form.startdate_field.label}} <br>
-                       {{form.startdate_field(min=min, max=max)}}
-                     </p>
-                     <p>
-                       {{form.enddate_field.label}} <br>
-                       {{form.enddate_field(min=min, max=max)}}
-                     </p>
+                      <p>
+                            {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
+                            {{form.startdate_field(min=min, max=max)}}
+                            {% endif %}
+                        </p>
+                        <p>
+                            {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
+                            {{form.enddate_field(min=min, max=max)}}
+                             {% endif %}
+                        </p>
                      <p>
                        {{form.submit_field()}}
                      </p>
@@ -159,16 +219,28 @@
                <form action="/municipios/isolamento-social/search" method="post">
                       <p>
                        {{form.municipio_field.label}} <br>
-                       {{form.municipio_field()}}
+                       {% if request.form['municipio_field'] != '' %}
+                       {{form.municipio_field(type="text", value=city)}}
+                       {% else %}
+                       {{form.municipio_field(type="text")}}
+                       {% endif %}
                       </p>
-                      <p>
-                       {{form.startdate_field.label}} <br>
-                       {{form.startdate_field(min=min, max=max)}}
-                      </p>
-                      <p>
-                       {{form.enddate_field.label}} <br>
-                       {{form.enddate_field(min=min, max=max)}}
-                      </p>
+                       <p>
+                            {{form.startdate_field.label}} <br>
+                            {% if request.form['startdate_field'] != '' %}
+                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {% else %}
+                            {{form.startdate_field(min=min, max=max)}}
+                            {% endif %}
+                        </p>
+                        <p>
+                            {{form.enddate_field.label}} <br>
+                            {% if request.form['enddate_field'] != '' %}
+                             {{form.enddate_field(min=min, max=max, value=end)}}
+                            {% else %}
+                            {{form.enddate_field(min=min, max=max)}}
+                             {% endif %}
+                        </p>
                       <p>
                        {{form.submit_field()}}
                       </p>
