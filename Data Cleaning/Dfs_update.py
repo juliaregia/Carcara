@@ -14,7 +14,6 @@ import glob
 import pytz
 import time
 import datetime
-import datefinder
 import time
 from dateutil.parser import parse as parsedate
 
@@ -99,12 +98,11 @@ href = elemento.get_attribute("href")
 versao = navegador.find_element_by_xpath("/html/body/section[4]/div/div/article[19]/div/div/p[4]")
 time.sleep(3)
 url_date = versao.text
-url_date = url_date.replace('-', ' ')
-url_date = list(datefinder.find_dates(url_date))
-url_date = url_date[1]
-url_date = url_date.strftime('%Y-%m-%d %H:%M:%S')
-url_date = dt.datetime.strptime(url_date, '%Y-%m-%d %H:%M:%S')
-url_date = url_date - dt.timedelta(days=1)
+url_date = url_date.replace('–', ' ')
+url_date = url_date[-13:]
+url_date = url_date.replace('/', '-')
+url_date = '2021-' + url_date
+url_date = dt.datetime.strptime(url_date, '%Y-%d-%m %H:%M')
 print('A última atualização do site foi:', url_date)
 url_date = utc.localize(url_date)
 
@@ -169,12 +167,10 @@ href = elemento.get_attribute("href")
 versao = navegador.find_element_by_xpath("/html/body/section[4]/div/div/article[13]/div/div/p[2]")
 time.sleep(3)
 url_date = versao.text
-url_date = url_date[-8:]
-url_date = list(datefinder.find_dates(url_date))
-url_date = url_date[0]
-url_date = url_date.strftime('%Y-%d-%m')
-url_date = dt.datetime.strptime(url_date, '%Y-%m-%d')
-url_date = url_date - dt.timedelta(days=1)
+url_date = url_date[-5:]
+url_date = url_date.replace('/', '-')
+url_date = url_date + '-2021'
+url_date = dt.datetime.strptime(url_date, '%d-%m-%Y')
 print('A última atualização do site foi:', url_date)
 url_date = utc.localize(url_date)
 
@@ -226,11 +222,10 @@ href = elemento.get_attribute("href")
 versao = navegador.find_element_by_xpath("/html/body/section[4]/div/div/article[7]/div/div/p[2]")
 time.sleep(3)
 url_date = versao.text
-url_date = list(datefinder.find_dates(url_date))
-url_date = url_date[0]
-url_date = url_date.strftime('%Y-%d-%m')
-url_date = dt.datetime.strptime(url_date, '%Y-%m-%d')
-url_date = url_date - dt.timedelta(days=1)
+url_date = url_date[-5:]
+url_date = url_date.replace('/', '-')
+url_date = url_date + '-2021'
+url_date = dt.datetime.strptime(url_date, '%d-%m-%Y')
 print('A última atualização do site foi:', url_date)
 url_date = utc.localize(url_date)
 
@@ -295,12 +290,10 @@ href = elemento.get_attribute("href")
 versao = navegador.find_element_by_xpath("/html/body/section[4]/div/div/article[5]/div/div/p[2]")
 time.sleep(3)
 url_date = versao.text
-url_date = url_date.replace('aba 1', '')
-url_date = list(datefinder.find_dates(url_date))
-url_date = url_date[0]
-url_date = url_date.strftime('%Y-%d-%m')
-url_date = dt.datetime.strptime(url_date, '%Y-%m-%d')
-url_date = url_date - dt.timedelta(days=1)
+url_date = url_date[-5:]
+url_date = url_date.replace('/', '-')
+url_date = url_date + '-2021'
+url_date = dt.datetime.strptime(url_date, '%d-%m-%Y')
 print('A última atualização do site foi:', url_date)
 url_date = utc.localize(url_date)
 
@@ -352,12 +345,11 @@ href = elemento.get_attribute("href")
 versao = navegador.find_element_by_xpath("/html/body/section[4]/div/div/article[20]/div/div/p[4]")
 time.sleep(3)
 url_date = versao.text
-url_date = url_date.replace('-', ' ')
-url_date = list(datefinder.find_dates(url_date))
-url_date = url_date[1]
-url_date = url_date.strftime('%Y-%m-%d %H:%M:%S')
-url_date = dt.datetime.strptime(url_date, '%Y-%m-%d %H:%M:%S')
-url_date = url_date - dt.timedelta(days=1)
+url_date = url_date.replace('–', ' ')
+url_date = url_date[-13:]
+url_date = url_date.replace('/', '-')
+url_date = '2021-' + url_date
+url_date = dt.datetime.strptime(url_date, '%Y-%d-%m %H:%M')
 print('A última atualização do site foi:', url_date)
 url_date = utc.localize(url_date)
 
@@ -425,12 +417,11 @@ href = elemento.get_attribute("href")
 versao = navegador.find_element_by_xpath("/html/body/section[4]/div/div/article[14]/div/div/p[3]")
 time.sleep(3)
 url_date = versao.text
-url_date = url_date.replace('-', ' ')
-url_date = list(datefinder.find_dates(url_date))
-url_date = url_date[1]
-url_date = url_date.strftime('%Y-%m-%d %H:%M:%S')
-url_date = dt.datetime.strptime(url_date, '%Y-%m-%d %H:%M:%S')
-url_date = url_date - dt.timedelta(days=1)
+url_date = url_date.replace('–', ' ')
+url_date = url_date[-13:]
+url_date = url_date.replace('/', '-')
+url_date = '2021-' + url_date
+url_date = dt.datetime.strptime(url_date, '%Y-%d-%m %H:%M')
 print('A última atualização do site foi:', url_date)
 url_date = utc.localize(url_date)
 
@@ -482,12 +473,11 @@ href = elemento.get_attribute("href")
 versao = navegador.find_element_by_xpath("/html/body/section[4]/div/div/article[15]/div/div/p[4]")
 time.sleep(3)
 url_date = versao.text
-url_date = url_date.replace('-', ' ')
-url_date = list(datefinder.find_dates(url_date))
-url_date = url_date[1]
-url_date = url_date.strftime('%Y-%m-%d %H:%M:%S')
-url_date = dt.datetime.strptime(url_date, '%Y-%m-%d %H:%M:%S')
-url_date = url_date - dt.timedelta(days=1)
+url_date = url_date.replace('–', ' ')
+url_date = url_date[-13:]
+url_date = url_date.replace('/', '-')
+url_date = '2021-' + url_date
+url_date = dt.datetime.strptime(url_date, '%Y-%d-%m %H:%M')
 print('A última atualização do site foi:', url_date)
 url_date = utc.localize(url_date)
 
