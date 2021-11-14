@@ -15,6 +15,10 @@ import random
 start_request = []
 end_request = []
 city_request = []
+form_start = []
+form_end = []
+form_city = []
+
 
 url1 = 'https://raw.githubusercontent.com/SoSoJigsaw/Carcara/main/Aplica%C3%A7%C3%A3o%20Web/' \
        'app/data/covid-estado-sp.csv'
@@ -345,9 +349,17 @@ def covidsp_search():
         if request.form['startdate_field'] != '':
             start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
+            form_start.append(str(start_request[-1]))
+        else:
+            start_request.append('dumby')
+            form_start.append('')
         if request.form['enddate_field'] != '':
             end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
+            form_end.append(str(end_request[-1]))
+        else:
+            end_request.append('dumby')
+            form_end.append('')
 
     covidsp = pd.read_csv(url1, dtype={'Total de casos': 'int32', 'Total de óbitos': 'int32',
                                        'Casos por dia': 'int32', 'Óbitos por dia': 'int16'})
@@ -415,6 +427,7 @@ def covidsp_search():
                            font=dict(size=18, color='#dc770d'))
         graf4 = fig4.to_html(full_html=False)
         return render_template('estados.html', form=form, min=mini, max=maxi,
+                               start=form_start[-1], end=form_end[-1],
                                graf1_covidsp=graf1, graf2_covidsp=graf2, graf3_covidsp=graf3, graf4_covidsp=graf4)
 
 
@@ -428,9 +441,17 @@ def srag_search():
         if request.form['startdate_field'] != '':
             start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
+            form_start.append(str(start_request[-1]))
+        else:
+            start_request.append('dumby')
+            form_start.append('')
         if request.form['enddate_field'] != '':
             end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
+            form_end.append(str(end_request[-1]))
+        else:
+            end_request.append('dumby')
+            form_end.append('')
 
     srag = pd.read_csv(url3, dtype={'Município': 'category', 'Faixa Etária': 'category', 'Evolução': 'category'})
     srag['Data'] = pd.to_datetime(srag['Data'])
@@ -454,9 +475,17 @@ def evoludose_search():
         if request.form['startdate_field'] != '':
             start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
+            form_start.append(str(start_request[-1]))
+        else:
+            start_request.append('dumby')
+            form_start.append('')
         if request.form['enddate_field'] != '':
             end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
+            form_end.append(str(end_request[-1]))
+        else:
+            end_request.append('dumby')
+            form_end.append('')
 
     evoludose = pd.read_csv(url5,
                             dtype={'1ª Dose': 'int32', '2ª Dose': 'int32', '3ª Dose': 'int32',
@@ -534,6 +563,7 @@ def evoludose_search():
                            font=dict(size=18, color='#dc770d'))
         graf5 = fig5.to_html(full_html=False)
         return render_template('estados.html', form=form, min=mini, max=maxi,
+                               start=form_start[-1], end=form_end[-1],
                                graf1_evoludose=graf1, graf2_evoludose=graf2, graf3_evoludose=graf3,
                                graf4_evoludose=graf4, graf5_evoludose=graf5)
 
@@ -548,9 +578,18 @@ def leitos_search():
         if request.form['startdate_field'] != '':
             start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
+            form_start.append(str(start_request[-1]))
+        else:
+            start_request.append('dumby')
+            form_start.append('')
         if request.form['enddate_field'] != '':
             end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
+            form_end.append(str(end_request[-1]))
+        else:
+            end_request.append('dumby')
+            form_end.append('')
+
     leitos = pd.read_csv(url6, dtype={'Departamento Regional de Saúde': 'category',
                                       'mm7d da Ocupação dos leitos de UTI e Enfermaria (%)': 'float64',
                                       'Nº de novas internações nos últimos 7 dias': 'int32',
@@ -621,6 +660,7 @@ def leitos_search():
                            font=dict(size=18, color='#dc770d'))
         graf4 = fig4.to_html(full_html=False)
         return render_template('estados.html', form=form, min=mini, max=maxi,
+                               start=form_start[-1], end=form_end[-1],
                                graf1_leitos=graf1, graf2_leitos=graf2, graf3_leitos=graf3, graf4_leitos=graf4)
 
 
@@ -634,9 +674,18 @@ def isola_search():
         if request.form['startdate_field'] != '':
             start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
+            form_start.append(str(start_request[-1]))
+        else:
+            start_request.append('dumby')
+            form_start.append('')
         if request.form['enddate_field'] != '':
             end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
+            form_end.append(str(end_request[-1]))
+        else:
+            end_request.append('dumby')
+            form_end.append('')
+
     isola = pd.read_csv(url7,
                         dtype={'Município': 'category', 'codigo_ibge': 'category',
                                'Índice de Isolamento (%)': 'int8',
@@ -663,6 +712,7 @@ def isola_search():
                            font=dict(size=18, color='#dc770d'))
         graf1 = fig1.to_html(full_html=False)
         return render_template('estados.html', form=form, min=mini, max=maxi,
+                               start=form_start[-1], end=form_end[-1],
                                graf1_isola=graf1)
 
 
@@ -788,11 +838,11 @@ def vacina_main():
 
     # Filtro só para 'main' functions:
     vacina = vacina.query(
-        "Município == 'São Paulo' | Município == 'Guarulhos' | Município == 'Caçapava' | Município == 'Jacareí' | "
-        "Município == 'Campinas' | Município == 'São Bernardo Do Campo' | Município == 'Osasco' | Município == 'Santo "
-        "André' | Município == 'São José Dos Campos' | Município == 'Sorocaba'")
-    flash('\n' + f" Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores números de "
-                 f"cobertura vacinal no Estado. Para acessar outras cidades, faça uma pesquisa personalizada." + '\n')
+        "Município == 'São Paulo' | Município == 'São José dos Campos' | Município == 'Caçapava' | Município == "
+        "'Jacareí' | Município == 'Campinas' | Município == 'São José do Rio Preto' | Município == 'Ribeirão Preto' | "
+        "Município == 'Sorocaba' | Município == 'São Bernardo do Campo' | Município == 'Santo André'")
+    flash('\n' + f" Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores números da "
+                 f"pandemia no Estado. Para acessar outras cidades, faça uma pesquisa personalizada." + '\n')
 
     # Comparação entre municípios de aplicação das doses
     fig1 = px.histogram(vacina, x='Município', y=['1ª Dose', '2ª Dose', '3ª Dose', 'Dose Única'], barmode='group',
@@ -835,9 +885,9 @@ def isolamuni_main():
     isola['Data'] = pd.to_datetime(isola['Data'])
     # Filtragem padrão para o main:
     isola = isola.query(
-        "Município == 'São Paulo' | Município == 'São José Dos Campos' | Município == 'Caçapava' | Município == "
-        "'Jacareí' | Município == 'Campinas' | Município == 'São José Do Rio Preto' | Município == 'Ribeirão Preto' | "
-        "Município == 'Sorocaba' | Município == 'São Bernardo Do Campo' | Município == 'Santo André'")
+        "Município == 'São Paulo' | Município == 'São José dos Campos' | Município == 'Caçapava' | Município == "
+        "'Jacareí' | Município == 'Campinas' | Município == 'São José do Rio Preto' | Município == 'Ribeirão Preto' | "
+        "Município == 'Sorocaba' | Município == 'São Bernardo do Campo' | Município == 'Santo André'")
     final = (isola['Data'].max() + dt.timedelta(days=1)).strftime('%Y-%m-%d')
     inicial = (isola['Data'].max() - dt.timedelta(days=16)).strftime("%Y-%m-%d")
     filterdate = (isola['Data'] > inicial) & (isola['Data'] < final)
@@ -876,12 +926,24 @@ def covidmuni_search():
         if request.form['startdate_field'] != '':
             start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
+            form_start.append(str(start_request[-1]))
+        else:
+            start_request.append('dumby')
+            form_start.append('')
         if request.form['enddate_field'] != '':
             end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
+            form_end.append(str(end_request[-1]))
+        else:
+            end_request.append('dumby')
+            form_end.append('')
         if request.form['municipio_field'] != '':
             city_request.append(str(request.form.get('municipio_field')))
             print(f'As últimas cidades pesquisadas são agora: {city_request[-1]}')
+            form_city.append(str(city_request[-1]))
+        else:
+            city_request.append('dumby')
+            form_city.append('')
 
     covidmuni = pd.read_csv(url2, dtype={'Município': 'category', 'codigo_ibge': 'category', 'Total de Casos': 'int32',
                                          'Novos Casos': 'int16', 'Total de Óbitos': 'int32', 'Novos Óbitos': 'int16',
@@ -961,6 +1023,7 @@ def covidmuni_search():
                                font=dict(size=18, color='#dc770d'))
             graf4 = fig4.to_html(full_html=False)
             return render_template('municipios.html', form=form, min=mini, max=maxi,
+                                   start=form_start[-1], end=form_end[-1], city=form_city[-1],
                                    graf1_covidmuni=graf1, graf2_covidmuni=graf2, graf3_covidmuni=graf3,
                                    graf4_covidmuni=graf4)
 
@@ -975,12 +1038,24 @@ def sragmuni_search():
         if request.form['startdate_field'] != '':
             start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
+            form_start.append(str(start_request[-1]))
+        else:
+            start_request.append('dumby')
+            form_start.append('')
         if request.form['enddate_field'] != '':
             end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
+            form_end.append(str(end_request[-1]))
+        else:
+            end_request.append('dumby')
+            form_end.append('')
         if request.form['municipio_field'] != '':
             city_request.append(str(request.form.get('municipio_field')))
             print(f'As últimas cidades pesquisadas são agora: {city_request[-1]}')
+            form_city.append(str(city_request[-1]))
+        else:
+            city_request.append('dumby')
+            form_city.append('')
 
     srag = pd.read_csv(url3, dtype={'Município': 'category', 'Faixa Etária': 'category', 'Evolução': 'category'})
     srag['Data'] = pd.to_datetime(srag['Data'])
@@ -995,6 +1070,7 @@ def sragmuni_search():
             return srag
         else:
             return render_template('municipios.html', form=form, min=mini, max=maxi,
+                                   start=form_start[-1], end=form_end[-1], city=form_city[-1],
                                    tables_srag=[srag.to_html(classes='data')],
                                    titles_srag=srag.columns.values)
 
@@ -1006,18 +1082,27 @@ def vacina_search():
     mini = '2020-02-26'
     maxi = datetime.now().strftime('%Y-%m-%d')
     if request.method == 'POST':
-        if request.form['startdate_field'] or request.form['enddate_field'] != '':
-            if request.form['startdate_field'] != '':
-                start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
-                print(f'O start agora eh {start_request[-1]}')
-            if request.form['enddate_field'] != '':
-                end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
-                print(f'O end agora eh {end_request[-1]}')
-            flash('"Vacinômetro" é uma base de dados que totaliza os números da vacinação por município sem fornecer '
-                  'as datas de registro. Por isso, tente filtrá-lo apenas por Município')
+        if request.form['startdate_field'] != '':
+            start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
+            print(f'O start agora eh {start_request[-1]}')
+            form_start.append(str(start_request[-1]))
+        else:
+            start_request.append('dumby')
+            form_start.append('')
+        if request.form['enddate_field'] != '':
+            end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
+            print(f'O end agora eh {end_request[-1]}')
+            form_end.append(str(end_request[-1]))
+        else:
+            end_request.append('dumby')
+            form_end.append('')
         if request.form['municipio_field'] != '':
             city_request.append(str(request.form.get('municipio_field')))
             print(f'As últimas cidades pesquisadas são agora: {city_request[-1]}')
+            form_city.append(str(city_request[-1]))
+        else:
+            city_request.append('dumby')
+            form_city.append('')
 
     vacina = pd.read_csv(url4,
                          dtype={'Município': 'category', '1ª Dose': 'int32', '2ª Dose': 'int32', '3ª Dose': 'int32',
@@ -1053,6 +1138,7 @@ def vacina_search():
                            font=dict(size=18, color='#dc770d'))
         graf2 = fig2.to_html(full_html=False)
         return render_template('municipios.html', form=form, min=mini, max=maxi,
+                               start=form_start[-1], end=form_end[-1], city=form_city[-1],
                                graf1_vacina=graf1, graf2_vacina=graf2)
 
 
@@ -1066,12 +1152,24 @@ def isolamuni_search():
         if request.form['startdate_field'] != '':
             start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
+            form_start.append(str(start_request[-1]))
+        else:
+            start_request.append('dumby')
+            form_start.append('')
         if request.form['enddate_field'] != '':
             end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
+            form_end.append(str(end_request[-1]))
+        else:
+            end_request.append('dumby')
+            form_end.append('')
         if request.form['municipio_field'] != '':
             city_request.append(str(request.form.get('municipio_field')))
             print(f'As últimas cidades pesquisadas são agora: {city_request[-1]}')
+            form_city.append(str(city_request[-1]))
+        else:
+            city_request.append('dumby')
+            form_city.append('')
 
     isola = pd.read_csv(url7,
                         dtype={'Município': 'category', 'codigo_ibge': 'category', 'Índice de Isolamento (%)': 'int8',
@@ -1100,6 +1198,7 @@ def isolamuni_search():
                                font=dict(size=18, color='#dc770d'))
             graf1 = fig1.to_html(full_html=False)
             return render_template('municipios.html', form=form, min=mini, max=maxi,
+                                   start=form_start[-1], end=form_end[-1], city=form_city[-1],
                                    graf1_isola=graf1)
 
 

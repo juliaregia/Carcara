@@ -101,12 +101,35 @@ def city_filter_srag(df, city_request):
             search = str(request.form.get('municipio_field'))
             searches = search.split(', ')
         else:
+            df = df.query("Município == 'São Paulo' | Município == 'São José dos Campos' | Município == 'Caçapava' | "
+                          "Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José do Rio Preto' | "
+                          "Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == 'São Bernardo do "
+                          "Campo' | Município == 'Santo André'")
+            flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
+                         f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
+                         f"personalizada." + '\n')
             return df
     else:
         try:
             search = city_request[-1]
             searches = search.split(', ')
+            if city_request[-1] == 'dumby':
+                df = df.query("Município == 'São Paulo' | Município == 'São José dos Campos' | Município == "
+                              "'Caçapava' | Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José "
+                              "do Rio Preto' | Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == "
+                              "'São Bernardo do Campo' | Município == 'Santo André'")
+                flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
+                             f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
+                             f"personalizada." + '\n')
+                return df
         except IndexError:
+            df = df.query("Município == 'São Paulo' | Município == 'São José dos Campos' | Município == "
+                          "'Caçapava' | Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José "
+                          "do Rio Preto' | Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == "
+                          "'São Bernardo do Campo' | Município == 'Santo André'")
+            flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
+                         f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
+                         f"personalizada." + '\n')
             return df
     filter = regex_match_list(searches, dict_match)
     dfs = {}
@@ -160,12 +183,35 @@ def city_filter_all(df, city_request):
             search = str(request.form.get('municipio_field'))
             searches = search.split(', ')
         else:
+            df = df.query("Município == 'São Paulo' | Município == 'São José dos Campos' | Município == 'Caçapava' | "
+                          "Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José do Rio Preto' | "
+                          "Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == 'São Bernardo do "
+                          "Campo' | Município == 'Santo André'")
+            flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
+                         f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
+                         f"personalizada." + '\n')
             return df
     else:
         try:
             search = city_request[-1]
             searches = search.split(', ')
+            if city_request[-1] == 'dumby':
+                df = df.query("Município == 'São Paulo' | Município == 'São José dos Campos' | Município == "
+                              "'Caçapava' | Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José "
+                              "do Rio Preto' | Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == "
+                              "'São Bernardo do Campo' | Município == 'Santo André'")
+                flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
+                             f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
+                             f"personalizada." + '\n')
+                return df
         except IndexError:
+            df = df.query("Município == 'São Paulo' | Município == 'São José dos Campos' | Município == "
+                          "'Caçapava' | Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José "
+                          "do Rio Preto' | Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == "
+                          "'São Bernardo do Campo' | Município == 'Santo André'")
+            flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
+                         f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
+                         f"personalizada." + '\n')
             return df
     filter = regex_match_list(searches, dict_match)
     filter = regex_change_list(filter, dict_accent)
