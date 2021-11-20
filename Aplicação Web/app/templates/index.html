@@ -31,6 +31,8 @@
       <nav>
         
         <div class="logo"><img src="{{  url_for('static', filename='logo.jpg')}}" ></div>
+        <div class="logo2"><img id="elem" width="55" height="auto" src="{{ url_for('static', filename='logo2.jpg')}}">
+        <img id="marca" width="175" height="auto" src="{{ url_for('static', filename='logo2-open.jpg')}}"></div>
 
         <button class="button button1">&#9776;</button>
 
@@ -39,12 +41,28 @@
             <li> <a href="/estado/covidsp">Estado</a> </li>
             <li> <a href="/municipios/covidsp"  >Municípios</a> </li>
             <li> <a href="/index"  >Observações</a> </li>
-            <li> <a href="https://github.com/SoSoJigsaw/Carcara" >GitHub</a>  </li>
+            <li> <a href="https://github.com/SoSoJigsaw/Carcara" ><img id="git" width="48" height="auto" src="{{ url_for('static', filename='git-hub.png')}}"/></a>  </li>
         </ul>
       </nav>
       </div>
     
       <header id="showcase">
+
+        <div class="perspective-text">
+        <div class="perspective-line">
+            <p></p>
+            <p></p>
+          </div>
+          <div class="perspective-line">
+            <p style="color:black">PANDEMIA</p>
+            <p></p>
+          </div>
+          <div class="perspective-line">
+            <p style="color:#dc770d">ESTRUTURADA</p>
+            <p></p>
+          </div>
+        </div>
+
         <div id="showcase-container">
           <img class="imgIndex" src="{{  url_for('static', filename='logoGrande.png')}}">
             <p>Expondo o impacto da COVID-19 no Estado de São Paulo de forma clara e contextualizada.</p>
@@ -53,12 +71,13 @@
         </div>
     </header>
 
-    
-    
+
+
   <!-- FOOTER -->
   <div class="footer">
     <p class="footerText">© Carcará Analysis,  Inc. 2021. </p>
   </div>
 
-  </body> 
+  </body>
 </html>
+
