@@ -9,13 +9,14 @@
     <meta charset="UTF-8"/>
 
     <!-- Zoom da pagina -->
-    <meta name= "viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
     <title>Dados do Município</title>
 
     <!-- local do arquivo .css flask -->
     <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{  url_for('static', filename='datepicker.css')}}"/>
     <!-- --------------------------------------------------------------------------------------------------------------------------------------
     <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
     <link rel="stylesheet" href="C:\Users\Aldrik\Desktop\helloFlask\app\static\style.css">
@@ -48,176 +49,185 @@
 
       <!-- Bloco  -->
       <div class="bloco">
-        <p class="p1">Dados dos Municípios</p>
+
+        <p class="titulo">Dados dos Municípios</p>
          
-          
+      </div>
+
+            <!-- Paragrafo Invisivel -->
+            <p class="hide"> a</p>
+
           <div class="pesquisa">
-            {% block content %}
-             <h2>Pesquisa Personalizada</h2>
+                            {% block content %}
 
               {% if "/municipios" == request.path|string %}
               <form action="/municipios/covidsp/search" method="post">
-                   <p>
+                  <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
                        {{form.municipio_field(type="text", value=city)}}
                        {% else %}
                        {{form.municipio_field(type="text")}}
                        {% endif %}
-                   </p>
-                    <p>
+                        </p>
+                  <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
-                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
                             {% else %}
-                            {{form.startdate_field(min=min, max=max)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, type="text")}}
                             {% endif %}
+
                         </p>
-                        <p>
+                  <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
-                             {{form.enddate_field(min=min, max=max, value=end)}}
+                             {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
                             {% else %}
-                            {{form.enddate_field(min=min, max=max)}}
+                            {{form.enddate_field(id="calendar1", min=min, max=max, type="text")}}
                              {% endif %}
                         </p>
-                   <p>
-                       {{form.submit_field()}}
-                   </p>
+                  <p class="p">
+                            {{form.submit_field(value="", tabindex="0", style="background-color: transparent")}}
+                        </p>
                </form>
                      {% endif %}
 
               {% if "/municipios/covidsp" in request.path|string %}
               <form action="/municipios/covidsp/search" method="post">
-                   <p>
+                  <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
                        {{form.municipio_field(type="text", value=city)}}
                        {% else %}
                        {{form.municipio_field(type="text")}}
                        {% endif %}
-                   </p>
-                    <p>
+                        </p>
+                  <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
-                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
                             {% else %}
-                            {{form.startdate_field(min=min, max=max)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, type="text")}}
                             {% endif %}
+
                         </p>
-                        <p>
+                  <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
-                             {{form.enddate_field(min=min, max=max, value=end)}}
+                             {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
                             {% else %}
-                            {{form.enddate_field(min=min, max=max)}}
+                            {{form.enddate_field(id="calendar1", min=min, max=max, type="text")}}
                              {% endif %}
                         </p>
-                   <p>
-                       {{form.submit_field()}}
-                   </p>
+                  <p class="p">
+                            {{form.submit_field(value="", tabindex="0", style="background-color: transparent")}}
+                        </p>
                </form>
                      {% endif %}
 
                    {% if "/municipios/srag" in request.path|string %}
                <form action="/municipios/srag/search" method="post">
-                   <p>
+                   <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
                        {{form.municipio_field(type="text", value=city)}}
                        {% else %}
                        {{form.municipio_field(type="text")}}
                        {% endif %}
-                   </p>
-                    <p>
+                        </p>
+                   <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
-                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
                             {% else %}
-                            {{form.startdate_field(min=min, max=max)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, type="text")}}
                             {% endif %}
+
                         </p>
-                        <p>
+                   <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
-                             {{form.enddate_field(min=min, max=max, value=end)}}
+                             {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
                             {% else %}
-                            {{form.enddate_field(min=min, max=max)}}
+                            {{form.enddate_field(id="calendar1", min=min, max=max, type="text")}}
                              {% endif %}
                         </p>
-                   <p>
-                       {{form.submit_field()}}
-                   </p>
+                  <p class="p">
+                            {{form.submit_field(value="", tabindex="0", style="background-color: transparent")}}
+                        </p>
                </form>
                      {% endif %}
 
                     {% if "/municipios/vacina" in request.path|string %}
                <form action="/municipios/vacina/search" method="post">
-                    <p>
+                    <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
                        {{form.municipio_field(type="text", value=city)}}
                        {% else %}
                        {{form.municipio_field(type="text")}}
                        {% endif %}
-                    </p>
-                     <p>
+                        </p>
+                    <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
-                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
                             {% else %}
-                            {{form.startdate_field(min=min, max=max)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, type="text")}}
                             {% endif %}
+
                         </p>
-                        <p>
+                    <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
-                             {{form.enddate_field(min=min, max=max, value=end)}}
+                             {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
                             {% else %}
-                            {{form.enddate_field(min=min, max=max)}}
+                            {{form.enddate_field(id="calendar1", min=min, max=max, type="text")}}
                              {% endif %}
                         </p>
-                    <p>
-                       {{form.submit_field()}}
-                    </p>
+                  <p class="p">
+                            {{form.submit_field(value="", tabindex="0", style="background-color: transparent")}}
+                        </p>
                </form>
                        {% endif %}
 
              {% if "/municipios/leitos" in request.path|string %}
                <form action="/municipios/leitos/search" method="post">
-                     <p>
+                    <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
                        {{form.municipio_field(type="text", value=city)}}
                        {% else %}
                        {{form.municipio_field(type="text")}}
                        {% endif %}
-                    </p>
-                      <p>
+                        </p>
+                    <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
-                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
                             {% else %}
-                            {{form.startdate_field(min=min, max=max)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, type="text")}}
                             {% endif %}
+
                         </p>
-                        <p>
+                    <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
-                             {{form.enddate_field(min=min, max=max, value=end)}}
+                             {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
                             {% else %}
-                            {{form.enddate_field(min=min, max=max)}}
+                            {{form.enddate_field(id="calendar1", min=min, max=max, type="text")}}
                              {% endif %}
                         </p>
-                     <p>
-                       {{form.submit_field()}}
-                     </p>
+                  <p class="p">
+                            {{form.submit_field(value="", tabindex="0", style="background-color: transparent")}}
+                        </p>
                </form>
                           {% endif %}
 
                {% if "/municipios/isolamento-social" in request.path|string %}
                <form action="/municipios/isolamento-social/search" method="post">
-                      <p>
+                      <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
                        {{form.municipio_field(type="text", value=city)}}
@@ -225,25 +235,26 @@
                        {{form.municipio_field(type="text")}}
                        {% endif %}
                       </p>
-                       <p>
+                      <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
-                            {{form.startdate_field(min=min, max=max, value=start)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
                             {% else %}
-                            {{form.startdate_field(min=min, max=max)}}
+                            {{form.startdate_field(id="calendar", min=min, max=max, type="text")}}
                             {% endif %}
+
                         </p>
-                        <p>
+                      <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
-                             {{form.enddate_field(min=min, max=max, value=end)}}
+                             {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
                             {% else %}
-                            {{form.enddate_field(min=min, max=max)}}
+                            {{form.enddate_field(id="calendar1", min=min, max=max, type="text")}}
                              {% endif %}
                         </p>
-                      <p>
-                       {{form.submit_field()}}
-                      </p>
+                      <p class="p">
+                            {{form.submit_field(value="", tabindex="0", style="background-color: transparent")}}
+                        </p>
                </form>
                             {% endif %}
              {% endblock %}
@@ -413,7 +424,7 @@
             <p class="hide"> a</p>
 
 
-          <script>
+        <script>
             function openCity(evt, cityName) {
               var i, tabcontent, tablinks;
               tabcontent = document.getElementsByClassName("tabcontent");
@@ -426,7 +437,50 @@
 
             // Get the element with id="defaultOpen" and click on it
             document.getElementById("defaultOpen").click();
-            </script>
+        </script>
+
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+       <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+       <link href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" type="text/css" />
+       <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/i18n/jquery-ui-i18n.min.js"></script>
+       <script type="text/javascript">
+        $(document).ready(function() {
+
+            var userLang = navigator.language || navigator.userLanguage;
+
+            var options = $.extend({},
+                $.datepicker.regional["pt-BR"], {
+                    dateFormat: "dd/mm/yy"
+                }
+            );
+
+            $("#calendar").datepicker(options);
+            $("#calendar1").datepicker(options);
+        });
+       </script>
+       <script type="text/javascript">
+           $('.p2 input').click(function() {
+
+             $('.p2 input').css('background', 'rgba(249, 212, 156, 0.4)');
+             applied = true;
+
+           })
+
+           $('#p1-start input').click(function() {
+
+             $('#p1-start input').css('background', 'rgba(249, 212, 156, 0.4)');
+             applied = true;
+
+           })
+
+           $('#p1-end input').click(function() {
+
+             $('#p1-end input').css('background', 'rgba(249, 212, 156, 0.4)');
+             applied = true;
+
+           })
+       </script>
+
         </div>
   </body>
 </html>

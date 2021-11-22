@@ -9,7 +9,7 @@
     <meta charset="UTF-8"/>
 
     <!-- Zoom da pagina -->
-    <meta name= "viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     
 
@@ -34,6 +34,7 @@
         <div class="logo2"><img id="elem" width="55" height="auto" src="{{ url_for('static', filename='logo2.jpg')}}">
         <img id="marca" width="175" height="auto" src="{{ url_for('static', filename='logo2-open.jpg')}}"></div>
 
+
         <button class="button button1">&#9776;</button>
 
         <ul>
@@ -45,7 +46,8 @@
         </ul>
       </nav>
       </div>
-    
+
+
       <header id="showcase">
 
         <div class="perspective-text">
@@ -54,29 +56,26 @@
             <p></p>
           </div>
           <div class="perspective-line">
-            <p style="color:black">PANDEMIA</p>
+            <p style="color:white">PANDEMIA</p>
             <p></p>
           </div>
           <div class="perspective-line">
-            <p style="color:#dc770d">ESTRUTURADA</p>
+            <p id="estruturada">ESTRUTURADA</p>
             <p></p>
           </div>
         </div>
 
         <div id="showcase-container">
-          <img class="imgIndex" src="{{  url_for('static', filename='logoGrande.png')}}">
             <p>Expondo o impacto da COVID-19 no Estado de São Paulo de forma clara e contextualizada.</p>
-            <a href="/estado/covidsp" class="btn" style="text-decoration:none; color:#000000;">Dados gerais do Estado de São Paulo</a>
-            <a href="/municipios/covidsp" class="btn" style="text-decoration:none; color:#000000;">Dados por Município</a>
+            <a href="/estado/covidsp" tabindex="0" class="btn">Dados do Estado de SP</a>
+            <a href="/municipios/covidsp" tabindex="0" class="btn">Dados por Município</a>
         </div>
+
+        <!-- Paragrafo Invisivel -->
+            <p class="hide"> a</p>
+            <p class="hide"> a</p>
+
     </header>
-
-
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <p class="footerText">© Carcará Analysis,  Inc. 2021. </p>
-  </div>
 
   </body>
 </html>

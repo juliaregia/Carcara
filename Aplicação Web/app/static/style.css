@@ -1,14 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+@font-face {
+  font-family: 'Neue Helvetica Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: url('Helvetica Neue LT 65 Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Neue Helvetica Medium Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('Helvetica Neue LT 66 Medium Italic.woff') format('woff');
+}
+
 *{
   margin: 0px;
   padding: 0px;
 }
 
 body{
+  display: inline-block;
   background-color: #ffffff;
-  font-family: 'Roboto', sans-serif;
   animation: transitionIn 0.75s;
+  font-family: 'Neue Helvetica Medium';
+  width: 2017px;
 }
 
 @keyframes transitionIn {
@@ -43,7 +59,7 @@ body{
    vertical-align: middle;
    margin-left: 2px;
    margin-top: 2px;
- }
+}
 
 .logo2{
    max-width:auto;
@@ -56,30 +72,48 @@ body{
    line-height: 78px;
    vertical-align: middle;
    margin-left: 398px;
-   transition: 0.5s;
+   transition: 1s;
    position: absolute;
    margin-top: 1px;
+   perspective:1000;
 }
 
 .logo2 #marca{
    margin-top: 4px;
-   visibility: hidden;
-   transition: 0.5s;
-   delay: 0;
- }
+   opacity: 0;
+   transition: 1s;
+}
 
  .logo2 #elem{
-    transition: 0.5s;
+    top: 50% !important;
+    margin: 0 auto !important;
+    transition: 1s;
     delay: 0;
- }
+}
+
+.logo2:hover #elem{
+  transform: rotate(360deg);
+  transition: 1s;
+}
+
+.logo2:hover #elem{
+  opacity: 0;
+  transition: 1s;
+}
+
+.logo2:hover #elem{
+  width: 1px;
+  height: auto;
+  transition: 1s;
+}
 
 .logo2:hover #marca{
-     visibility: visible;
-     transition: 0.5s;
-     delay: 0;
-   }
+  opacity: 1;
+  transition: 1s;
+  delay: 0.5;
+}
 
- li a{
+li a{
    text-decoration: none;
    color: black;
    border-bottom: 3px solid #ac5a00;
@@ -218,17 +252,11 @@ nav {
     font-style: normal;
 }
 
-.imgIndex {
-  max-width:auto ;
-  width: 80%;
-}
-
 .btn {
   display: inline-block;
   padding: 15px 40px;
   font-size: 1.1rem;
   top:650px;
-
   margin: 5px;
   background: #F8AC5B;
   color: #AC5A00;
@@ -246,17 +274,26 @@ nav {
 
 /* Showcase */
 #showcase {
-  
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #eee;
-  background: url('mapaTeste.jpg') no-repeat center center/cover;
-
-  /* Overlay */
-  background-color: rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.3);
   background-blend-mode: color;
+}
+
+#showcase::before {
+  content: "";
+  position: absolute;
+  width: 2000px;
+  height: 1538px;
+  top: -32%;
+  left: 13%;
+  z-index: -1;
+  background: url('mapa-sp-perspective.png') no-repeat center center/cover;
 }
 
 
@@ -264,8 +301,8 @@ nav {
 
 .perspective-text {
   font-family: 'Pathway-Gothic-One-Regular';
-  font-size: 65px;
-  font-weight: 500;
+  font-size: 150px;
+  font-weight: 20px;
   letter-spacing: 2px;
   text-transform: uppercase;
   float: left;
@@ -273,9 +310,9 @@ nav {
   max-weight: auto;
   display: inline-block;
   position: relative;
-  top: -450px;
-  left: 120px;
-
+  top: -46%;
+  left: 0%;
+  resize: auto !important;
 }
 
 .perspective-line {
@@ -289,7 +326,7 @@ nav {
 .perspective-line p {
   margin: 0px;
   line-height: 80%;
-  width: 80%;
+  max-width: 47%;
   height: 100%;
   position: relative;
   transition: all 0.5s ease-in-out;
@@ -304,8 +341,16 @@ nav {
   transform: skew(0deg, -30deg) scaleY(1.333);
 }
 
-.perspective-line:hover p {
-  transform: translate(0, -50px);
+.perspective-line p:nth-child(odd) {
+  box-shadow: 80px 80px 80px -50px orange;
+}
+
+.perspective-line p:nth-child(even) {
+}
+
+.perspective-line:hover #estruturada {
+  transform: translate(0, -160px);
+  box-shadow: 30px 30px 30px 30px transparent;
 }
 
 .perspective-line:nth-child(1) {
@@ -316,36 +361,77 @@ nav {
   left: 10px;
 }
 
+.perspective-line #estruturada {
+  margin-left: 88px;
+  color:#dc770d;
+}
 
 #showcase-container {
   text-align: center;
+  margin-left: -300px;
+  margin-right: 500px;
 }
 
-#showcase-container h2 {
-  font-size: 2.5rem;
+#showcase-container .btn {
+  font-family: 'Pathway-Gothic-One-Regular';
+  text-decoration: none;
+  color: #000000;
+  font-size: 32px;
+  float: center;
+  opacity: 0.8;
+  border-radius: 15px 15px;
+  transition: 1s;
+}
+
+#showcase-container .btn:hover{
+  font-size: 40px;
+  transition: 1s;
+}
+
+#showcase-container .btn:focus{
+  animation: pulse 2s;
 }
 
 #showcase-container p {
-  font-size: 1.2rem;
-  padding: 15px 0;
+  font-size: 48px;
+  padding: 4px 0;
+  font-weight: 500;
   font-family: 'Pathway-Gothic-One-Regular';
 }
 
 
 /* ------------------------------- ↓↓↓↓↓ Bloco Estados/Municipios ↓↓↓↓↓ --------------------------------*/ 
 
+@font-face {
+    font-family: 'KelsonSansBG-Normal';
+    src:url('KelsonSansBG-Normal.woff2') format('woff2'),
+        url('KelsonSansBG-Normal.woff') format('woff'),
+        url('KelsonSansBG-Normal.eot'),
+    font-weight: 500;
+    font-style: normal;
+}
+
 .bloco{
   position: relative;
-
-  padding: 100px;
-
-  box-shadow: inset 0px 0px 3px #000000;
-  background: url('fundo.JPG') no-repeat center center/cover;
+  padding: 105px;
+  box-shadow: inset 0px 0px 3px white;
+  background: rgba(0,0,0,0.3);
+  line-color: white;
+  margin-right: -0%;
+  border-color: white;
 }
 
 .titulo{
   text-align: center;
-  font-size: 210%;
+  font-family: 'KelsonSansBG-Normal';
+  font-size: 120px;
+  color: black;
+  text-transform: uppercase;
+  border-bottom: 10px solid #ac5a00;
+  border-radius: 60px 60px;
+  line-height: -25%;
+  margin-left: 270px;
+  margin-right: 270px;
 }
 
 /* ==========================================================================
@@ -402,8 +488,8 @@ nav {
   border: none;
   box-shadow: none;
   width: 100%;
-  font-size: 18px;
-  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+  font-size: 25px;
+  font-family: 'Neue Helvetica Medium';
 }
 
 .pesquisa input:disabled {
@@ -450,7 +536,8 @@ nav {
 }
 
 .pesquisa label {
-  font-size: 14px;
+  font-size: 18px;
+  font-family: 'Neue Helvetica Medium';
   color: #999;
   text-transform: uppercase;
   font-weight: 700;
@@ -476,16 +563,14 @@ nav {
 .pesquisa .p2 {
   font-size: 18px;
   padding: 9px 0;
-  color: #666;
-  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+  font-family: 'Neue Helvetica Medium';
   margin-left: 10px;
 }
 
 .pesquisa .p1 {
   font-size: 18px;
   padding: 9px 0;
-  color: #666;
-  font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+  font-family: 'Neue Helvetica Medium';
   margin-left: 55px;
 }
 
@@ -521,13 +606,13 @@ nav {
 }
 
 .pesquisa {
-  align-text: left;
+  text-align: left !important;
   display: inline-block;
   height: auto;
-  width: 100vw;
+  width: 100%;
   position: relative;
   top: 0;
-  left: 0;
+  margin: 0 auto;
 }
 
 
@@ -701,24 +786,3 @@ font-size: 28px;
 
   box-shadow: inset 0px 0px 3px #000000;
 }
-
-/* ------------------------------- ↓↓↓↓↓ FOOTER ↓↓↓↓↓  --------------------------------*/       
-.footer {
-  position: relative;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 8%;
-  background-color: rgb(255, 255, 255);
-  
-
-}
-
-.footerText{
-  color: #AC5A00;
-  padding: 30px;
-  text-align: center;
-
-}
-          
-

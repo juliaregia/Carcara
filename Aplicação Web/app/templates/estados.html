@@ -9,7 +9,7 @@
     <meta charset="UTF-8"/>
 
     <!-- Zoom da pagina -->
-    <meta name= "viewport" content="width=\, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
     <title>Dados do Estado</title>
@@ -62,7 +62,7 @@
 
                    {% if "/estado" == request.path|string %}
                    <form action="/estado/covidsp/search" method="post">
-                        <p class="p1">
+                        <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
                             {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
@@ -71,12 +71,12 @@
                             {% endif %}
 
                         </p>
-                        <p class="p1">
+                        <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
-                             {{form.enddate_field(id="calendar", min=min, max=max, value=end, type="text")}}
+                             {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
                             {% else %}
-                            {{form.enddate_field(id="calendar", min=min, max=max, type="text")}}
+                            {{form.enddate_field(id="calendar1", min=min, max=max, type="text")}}
                              {% endif %}
                         </p>
                         <p class="p">
@@ -87,7 +87,7 @@
 
                    {% if "/estado/covidsp" in request.path|string %}
                    <form action="/estado/covidsp/search" method="post">
-                        <p class="p1">
+                        <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
                             {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
@@ -96,7 +96,7 @@
                             {% endif %}
 
                         </p>
-                        <p class="p1">
+                        <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
                              {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
@@ -112,7 +112,7 @@
 
                         {% if "/estado/srag" in request.path|string %}
                     <form action="/estado/srag/search" method="post">
-                        <p class="p1">
+                        <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
                             {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
@@ -121,7 +121,7 @@
                             {% endif %}
 
                         </p>
-                        <p class="p1">
+                        <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
                              {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
@@ -137,7 +137,7 @@
 
                          {% if "/estado/vacina" in request.path|string %}
                     <form action="/estado/vacina/search" method="post">
-                         <p class="p1">
+                         <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
                             {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
@@ -146,7 +146,7 @@
                             {% endif %}
 
                         </p>
-                        <p class="p1">
+                        <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
                              {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
@@ -162,7 +162,7 @@
 
                   {% if "/estado/leitos" in request.path|string %}
                     <form action="/estado/leitos/search" method="post">
-                           <p class="p1">
+                           <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
                             {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
@@ -171,7 +171,7 @@
                             {% endif %}
 
                         </p>
-                        <p class="p1">
+                        <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
                              {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
@@ -187,7 +187,7 @@
 
                     {% if "/estado/isolamento-social" in request.path|string %}
                     <form action="/estado/isolamento-social/search" method="post">
-                            <p class="p1">
+                            <p class="p1" id="p1-start">
                             {{form.startdate_field.label}} <br>
                             {% if request.form['startdate_field'] != '' %}
                             {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
@@ -196,7 +196,7 @@
                             {% endif %}
 
                         </p>
-                        <p class="p1">
+                        <p class="p1" id="p1-end">
                             {{form.enddate_field.label}} <br>
                             {% if request.form['enddate_field'] != '' %}
                              {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
@@ -463,6 +463,22 @@
             $("#calendar1").datepicker(options);
         });
        </script>
+       <script type="text/javascript">
+           $('#p1-start input').click(function() {
+
+             $('#p1-start input').css('background', 'rgba(249, 212, 156, 0.4)');
+             applied = true;
+
+           })
+
+           $('#p1-end input').click(function() {
+
+             $('#p1-end input').css('background', 'rgba(249, 212, 156, 0.4)');
+             applied = true;
+
+           })
+       </script>
+
           </div>
 
     </body> 
