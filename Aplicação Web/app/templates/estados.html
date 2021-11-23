@@ -17,10 +17,8 @@
         <!-- local do arquivo .css flask -->
     <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{  url_for('static', filename='datepicker.css')}}"/>
-    <!-- --------------------------------------------------------------------------------------------------------------------------------------
-    <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
-    <link rel="stylesheet" href="C:\Users\Aldrik\Desktop\helloFlask\app\static\style.css">
-    -->
+
+
   </head>
 
 
@@ -41,8 +39,7 @@
             <li> <a href="/index" >Início</a> </li>
             <li> <a href="/estado/covidsp">Estado</a> </li>
             <li> <a href="/municipios/covidsp"  >Municípios</a> </li>
-            <li> <a href="/index"  >Observações</a> </li>
-            <li> <a href="https://github.com/SoSoJigsaw/Carcara" ><img id="git" width="48" height="auto" src="{{ url_for('static', filename='git-hub.png')}}"/></a>  </li>
+            <li> <a id='git-link' href="https://github.com/SoSoJigsaw/Carcara" ><img id="git" width="48" height="auto" src="{{ url_for('static', filename='git-hub.png')}}"/></a>  </li>
         </ul>
       </nav>
       </div>
@@ -104,31 +101,6 @@
                         </p>
                         <p class="p">
                             {{form.submit_field(value="", tabindex="0", style="background-color: transparent")}}
-                        </p>
-                    </form>
-                          {% endif %}
-
-                        {% if "/estado/srag" in request.path|string %}
-                    <form action="/estado/srag/search#p1-start" method="post">
-                        <p class="p1" id="p1-start">
-                            {{form.startdate_field.label}} <br>
-                            {% if request.form['startdate_field'] != '' %}
-                            {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
-                            {% else %}
-                            {{form.startdate_field(id="calendar", min=min, max=max, type="text")}}
-                            {% endif %}
-
-                        </p>
-                        <p class="p1" id="p1-end">
-                            {{form.enddate_field.label}} <br>
-                            {% if request.form['enddate_field'] != '' %}
-                             {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
-                            {% else %}
-                            {{form.enddate_field(id="calendar1", min=min, max=max, type="text")}}
-                             {% endif %}
-                        </p>
-                        <p class="p">
-                            {{form.submit_field(value="", style="background-color: transparent")}}
                         </p>
                     </form>
                           {% endif %}
@@ -233,16 +205,7 @@
                 {% endif %}
             </button>
 
-            <!--  SRAG 
-              <button class="tablinks" onclick="openCity(event, 'Paris')">
-                     {% if "/search" not in request.path|string %}
-                     <a class="button" href="{{ url_for('srag_main') }}" style="text-decoration:none; color:#000000;">Casos Graves (SRAG)</a>
-                      {% endif %}
-                      {% if "/search" in request.path|string %}
-                     <a class="button" href="{{ url_for('srag_search') }}" style="text-decoration:none; color:#000000;">Casos Graves (SRAG)</a>
-                     {% endif %}
-              </button>
-            -->
+
                 <a class="tab-separator">|</a>
 
 

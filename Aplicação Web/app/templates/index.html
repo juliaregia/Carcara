@@ -17,10 +17,7 @@
 
     <!-- local do arquivo .css flask -->
     <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
-    <!-- --------------------------------------------------------------------------------------------------------------------------------------
-    <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
-    <link rel="stylesheet" href="C:\Users\Aldrik\Desktop\Carcara\Aplicação Web\app\static\style.css">
-    -->
+
       
   </head>
 
@@ -41,8 +38,7 @@
             <li> <a href="/index" >Início</a> </li>
             <li> <a href="/estado/covidsp">Estado</a> </li>
             <li> <a href="/municipios/covidsp"  >Municípios</a> </li>
-            <li> <a href="/index"  >Observações</a> </li>
-            <li> <a href="https://github.com/SoSoJigsaw/Carcara" ><img id="git" width="48" height="auto" src="{{ url_for('static', filename='git-hub.png')}}"/></a>  </li>
+            <li> <a id='git-link' href="https://github.com/SoSoJigsaw/Carcara" ><img id="git" width="48" height="auto" src="{{ url_for('static', filename='git-hub.png')}}"/></a>  </li>
         </ul>
       </nav>
       </div>

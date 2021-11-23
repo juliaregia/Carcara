@@ -122,19 +122,23 @@ li a {
    vertical-align: middle;
    background-repeat: no-repeat;
    float: inline-right !important;
+   width: 600%;
+   padding-left: 1px;
+   padding-right: 3px;
    transition: 1s;
-   width: max-content;
-   left: 50px;
 }
 
 #git{
    max-width:auto;
    max-height:auto;
-   background: white !important;
    width: auto;
    height: auto;
    vertical-align: middle;
    margin-top: -10px !important;
+}
+
+li #git-link {
+  background: transparent !important;
 }
 
 nav {
@@ -150,7 +154,7 @@ nav {
    padding: 0;
    overflow: hidden;
    transition: all .5s;
-   width: 35%;
+   width: 24%;
  }
 
  li {

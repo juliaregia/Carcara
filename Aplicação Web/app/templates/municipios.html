@@ -17,10 +17,6 @@
     <!-- local do arquivo .css flask -->
     <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{  url_for('static', filename='datepicker.css')}}"/>
-    <!-- --------------------------------------------------------------------------------------------------------------------------------------
-    <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
-    <link rel="stylesheet" href="C:\Users\Aldrik\Desktop\helloFlask\app\static\style.css">
-    -->
 
 
   </head>
@@ -41,8 +37,7 @@
             <li> <a href="/index" >Início</a> </li>
             <li> <a href="/estado/covidsp">Estado</a> </li>
             <li> <a href="/municipios/covidsp"  >Municípios</a> </li>
-            <li> <a href="/index"  >Observações</a> </li>
-            <li> <a href="https://github.com/SoSoJigsaw/Carcara" ><img id="git" width="48" height="auto" src="{{ url_for('static', filename='git-hub.png')}}"/></a>  </li>
+            <li> <a id='git-link' href="https://github.com/SoSoJigsaw/Carcara" ><img id="git" width="48" height="auto" src="{{ url_for('static', filename='git-hub.png')}}"/></a>  </li>
         </ul>
       </nav>
       </div>
@@ -124,39 +119,6 @@
                </form>
                      {% endif %}
 
-                   {% if "/municipios/srag" in request.path|string %}
-               <form action="/municipios/srag/search#p1-start" method="post">
-                   <p class="p2">
-                       {{form.municipio_field.label}} <br>
-                       {% if request.form['municipio_field'] != '' %}
-                       {{form.municipio_field(type="text", value=city)}}
-                       {% else %}
-                       {{form.municipio_field(type="text")}}
-                       {% endif %}
-                        </p>
-                   <p class="p1" id="p1-start">
-                            {{form.startdate_field.label}} <br>
-                            {% if request.form['startdate_field'] != '' %}
-                            {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
-                            {% else %}
-                            {{form.startdate_field(id="calendar", min=min, max=max, type="text")}}
-                            {% endif %}
-
-                        </p>
-                   <p class="p1" id="p1-end">
-                            {{form.enddate_field.label}} <br>
-                            {% if request.form['enddate_field'] != '' %}
-                             {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
-                            {% else %}
-                            {{form.enddate_field(id="calendar1", min=min, max=max, type="text")}}
-                             {% endif %}
-                        </p>
-                  <p class="p">
-                            {{form.submit_field(value="", tabindex="0", style="background-color: transparent")}}
-                        </p>
-               </form>
-                     {% endif %}
-
                     {% if "/municipios/vacina" in request.path|string %}
                <form action="/municipios/vacina/search#p1-start" method="post">
                     <p class="p2">
@@ -189,39 +151,6 @@
                         </p>
                </form>
                        {% endif %}
-
-             {% if "/municipios/leitos" in request.path|string %}
-               <form action="/municipios/leitos/search#p1-start" method="post">
-                    <p class="p2">
-                       {{form.municipio_field.label}} <br>
-                       {% if request.form['municipio_field'] != '' %}
-                       {{form.municipio_field(type="text", value=city)}}
-                       {% else %}
-                       {{form.municipio_field(type="text")}}
-                       {% endif %}
-                        </p>
-                    <p class="p1" id="p1-start">
-                            {{form.startdate_field.label}} <br>
-                            {% if request.form['startdate_field'] != '' %}
-                            {{form.startdate_field(id="calendar", min=min, max=max, value=start, type="text")}}
-                            {% else %}
-                            {{form.startdate_field(id="calendar", min=min, max=max, type="text")}}
-                            {% endif %}
-
-                        </p>
-                    <p class="p1" id="p1-end">
-                            {{form.enddate_field.label}} <br>
-                            {% if request.form['enddate_field'] != '' %}
-                             {{form.enddate_field(id="calendar1", min=min, max=max, value=end, type="text")}}
-                            {% else %}
-                            {{form.enddate_field(id="calendar1", min=min, max=max, type="text")}}
-                             {% endif %}
-                        </p>
-                  <p class="p">
-                            {{form.submit_field(value="", tabindex="0", style="background-color: transparent")}}
-                        </p>
-               </form>
-                          {% endif %}
 
                {% if "/municipios/isolamento-social" in request.path|string %}
                <form action="/municipios/isolamento-social/search#p1-start" method="post">
@@ -284,16 +213,6 @@
                 {% endif %}
           </button>
 
-          <!--  SRAG 
-          <button class="tablinks" onclick="openCity(event, 'Paris')">
-              {% if "/search" not in request.path|string %}
-              <a class="button" href="{{ url_for('sragmuni_main') }}" style="text-decoration:none; color:#000000;">Casos Graves (SRAG)</a>
-              {% endif %}
-              {% if "/search" in request.path|string %}
-              <a class="button" href="{{ url_for('sragmuni_search') }}" style="text-decoration:none; color:#000000;">Casos Graves (SRAG)</a>
-              {% endif %}
-          </button>
-          -->
 
               <a class="tab-separator">|</a>
 
@@ -341,13 +260,6 @@
             </div>
           -->
           </div>
-
-          <!--  SRAG 
-          <div id="Paris" class="tabcontent">
-            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-           
-          </div>
-          -->
 
           <div id="Tokyo" class="tabcontent">
             <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
