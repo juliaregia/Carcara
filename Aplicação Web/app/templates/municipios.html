@@ -59,7 +59,7 @@
                             {% block content %}
 
               {% if "/municipios" == request.path|string %}
-              <form action="/municipios/covidsp/search" method="post">
+              <form action="/municipios/covidsp/search#p1-start" method="post">
                   <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
@@ -92,7 +92,7 @@
                      {% endif %}
 
               {% if "/municipios/covidsp" in request.path|string %}
-              <form action="/municipios/covidsp/search" method="post">
+              <form action="/municipios/covidsp/search#p1-start" method="post">
                   <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
@@ -125,7 +125,7 @@
                      {% endif %}
 
                    {% if "/municipios/srag" in request.path|string %}
-               <form action="/municipios/srag/search" method="post">
+               <form action="/municipios/srag/search#p1-start" method="post">
                    <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
@@ -158,7 +158,7 @@
                      {% endif %}
 
                     {% if "/municipios/vacina" in request.path|string %}
-               <form action="/municipios/vacina/search" method="post">
+               <form action="/municipios/vacina/search#p1-start" method="post">
                     <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
@@ -191,7 +191,7 @@
                        {% endif %}
 
              {% if "/municipios/leitos" in request.path|string %}
-               <form action="/municipios/leitos/search" method="post">
+               <form action="/municipios/leitos/search#p1-start" method="post">
                     <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
@@ -224,7 +224,7 @@
                           {% endif %}
 
                {% if "/municipios/isolamento-social" in request.path|string %}
-               <form action="/municipios/isolamento-social/search" method="post">
+               <form action="/municipios/isolamento-social/search#p1-start" method="post">
                       <p class="p2">
                        {{form.municipio_field.label}} <br>
                        {% if request.form['municipio_field'] != '' %}
@@ -261,31 +261,8 @@
       </div>
 
 
-
-
-
-
       <!-- Paragrafo Invisivel -->
       <p class="hide"> a</p>
-
-<div class="MensagemAviso">
-{% with messages = get_flashed_messages() %}
-      {% if messages %}
-      {% for message in messages %}
-
-      
-      <h1>  {{ message }}  </h1>
-      {% endfor %}
-   {% endif %}
-{% endwith %}
-</div>
-
-      <!-- Paragrafo Invisivel -->
-       <p class="hide"> a</p>
-
-
-
-
 
 
        <!-- tabs -->
@@ -300,10 +277,10 @@
           <button class="tablinks active" onclick="openCity(event, 'London')" id="defaultOpen">
           {% endif %}
                 {% if "/search" not in request.path|string %}
-                <a class="button" href="{{ url_for('covidmuni_main') }}" style="text-decoration:none; color:#000000;">Casos e Óbitos</a>
+                <a class="button" href="{{ url_for('covidmuni_main') }}#p1-start" style="text-decoration:none; color:#000000;">Casos e Óbitos</a>
                 {% endif %}
                 {% if "/search" in request.path|string %}
-                <a class="button" href="{{ url_for('covidmuni_search') }}" style="text-decoration:none; color:#000000;">Casos e Óbitos</a>
+                <a class="button" href="{{ url_for('covidmuni_search') }}#p1-start" style="text-decoration:none; color:#000000;">Casos e Óbitos</a>
                 {% endif %}
           </button>
 
@@ -318,18 +295,25 @@
           </button>
           -->
 
+              <a class="tab-separator">|</a>
+
+
           {% if "municipios/vacina" not in request.path|string %}
           <button class="tablinks" onclick="openCity(event, 'Tokyo')">
           {% else %}
           <button class="tablinks active" onclick="openCity(event, 'Tokyo')">
           {% endif %}
               {% if "/search" not in request.path|string %}
-              <a class="button" href="{{ url_for('vacina_main') }}" style="text-decoration:none; color:#000000;">Vacinação</a>
+              <a class="button" href="{{ url_for('vacina_main') }}#p1-start" style="text-decoration:none; color:#000000;">Vacinação</a>
               {% endif %}
               {% if "/search" in request.path|string %}
-              <a class="button" href="{{ url_for('vacina_search') }}" style="text-decoration:none; color:#000000;">Vacinação</a>
+              <a class="button" href="{{ url_for('vacina_search') }}#p1-start" style="text-decoration:none; color:#000000;">Vacinação</a>
               {% endif %}
           </button>
+
+
+              <a class="tab-separator">|</a>
+
 
           {% if "municipios/isolamento-social" not in request.path|string %}
           <button class="tablinks" onclick="openCity(event, 'Berlin')">
@@ -337,10 +321,10 @@
           <button class="tablinks active" onclick="openCity(event, 'Berlin')">
           {% endif %}
               {% if "/search" not in request.path|string %}
-              <a class="button" href="{{ url_for('isolamuni_main') }}" style="text-decoration:none; color:#000000;">Isolamento Social</a>
+              <a class="button" href="{{ url_for('isolamuni_main') }}#p1-start" style="text-decoration:none; color:#000000;">Isolamento Social</a>
               {% endif %}
               {% if "/search" in request.path|string %}
-              <a class="button" href="{{ url_for('isolamuni_search') }}" style="text-decoration:none; color:#000000;">Isolamento Social</a>
+              <a class="button" href="{{ url_for('isolamuni_search') }}#p1-start" style="text-decoration:none; color:#000000;">Isolamento Social</a>
               {% endif %}
           </button>
 
@@ -388,6 +372,25 @@
             </div>
           -->
           </div>
+
+
+            <!-- Paragrafo Invisivel -->
+             <p class="hide"> a</p>
+
+
+            <div class="MensagemAviso">
+                {% with messages = get_flashed_messages() %}
+                          {% if messages %}
+                     {% for message in messages %}
+                      <h1>  {{ message }}  </h1>
+                            {% endfor %}
+                             {% endif %}
+                            {% endwith %}
+            </div>
+
+      <!-- Paragrafo Invisivel -->
+       <p class="hide"> a</p>
+
 
             {% if graf1_covidmuni %}
             {{ graf1_covidmuni|safe }}

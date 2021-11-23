@@ -112,30 +112,34 @@ body{
   delay: 0.5;
 }
 
-li a{
+li a {
    text-decoration: none;
    color: black;
-   border-bottom: 3px solid #ac5a00;
-   padding-bottom: 3px;
+   padding-bottom: 5px;
+   background: linear-gradient(to right, rgba(220, 119, 13, 0.8) 50%, rgba(220, 119, 13, 0.8) 100%);
+   background-size: 30px 60%;
+   background-position: 0px 25px;
    vertical-align: middle;
-   margin-right: 1px !important;
-   margin-left: 1px !important;
+   background-repeat: no-repeat;
    float: inline-right !important;
- }
+   transition: 1s;
+   width: max-content;
+   left: 50px;
+}
 
 #git{
    max-width:auto;
    max-height:auto;
+   background: white !important;
    width: auto;
    height: auto;
    vertical-align: middle;
-   margin-top: -5px !important;
-   color: #ac5a00;
+   margin-top: -10px !important;
 }
 
 nav {
    background-color: #ffffff;
-   padding: 3px;
+   padding-bottom: 3px;
    justify-content: space-between;
    box-shadow: 0 10px 40px rgba(150,172,177,0.8);
    max-height: 55px;
@@ -150,12 +154,10 @@ nav {
  }
 
  li {
-   padding: 20px;
-   max-height: 28px;
-   font-size: 25px;
+   padding: 14px;
+   max-height: 32px;
+   font-size: 28px;
    vertical-align: middle;
-   transition: 0.3s;
-   transition-delay: 0.5s;
  }
 
  nav, ul {
@@ -175,29 +177,22 @@ nav {
  }
 
  li:hover :not(#git) {
-   opacity: 0.8;
-   background-opacity: 0.9;
-   bottom: 0;
-   height: 20px;
-   font-size: 30px;
-   z-index: 1;
-   border-radius: 16px 16px 0 0;
-   transition: 0.3s;
+   text-decoration: none;
+   color: #dc770d;
+   padding-bottom: 5px;
+   background: linear-gradient(to right, #dc770d 0%, #dc770d 75%);
+   background-size: 100% 50%;
+   background-position: 0px 25px;
    vertical-align: middle;
-   margin-top: -4px;
-   border-bottom: 3px solid #dc770d;
-   padding-bottom: 15px;
+   background-repeat: no-repeat;
+   float: inline-right !important;
+   transition: 0.3s;
  }
 
 #git:hover {
-   opacity: 0.8;
-   background-opacity: 1;
-   height: 50px;
-   width: 50px;
    vertical-align: middle;
-   border-bottom: 3px solid transparent !important;
+   background: white !important;
    transition: 0.3s;
-   margin-top: -20px !important;
    box-shadow: 0px 2px 20px #dc770d;
    border-radius: 70%;
  }
@@ -205,7 +200,7 @@ nav {
  .button1:hover {
    cursor: pointer;
    opacity: 0.8;
-   background-color: #ac5a00;
+   background-color: #dc770d;
    padding: 4px;
  }
 
@@ -635,7 +630,7 @@ nav {
   width: 1000px;
   position: relative;
   top: 0;
-  left: 580px;
+  left: 585px;
 }
 
 #pesquisa-municipios .p2 {
@@ -690,8 +685,7 @@ h2{
   font-size: 160%;
 }
 
-.MensagemAviso{
-  
+.MensagemAviso {
   display: block;
   background-color: #ffffff;
   padding: 10px;
@@ -736,37 +730,71 @@ table{
 /* Style the tab */
 .tab {
 overflow: hidden;
-
-background-color: #cc3434;
+border: none;
+color-background: white;
+background-color: transparent;
 text-align: center;
-width: 40%;
-margin: auto;
-margin-bottom: 40px;
+}
+
+.tab-separator {
+  font-family: 'Neue Helvetica Medium';
+  font-size: 45px;
+  width: 50%;
+  padding-right: 15px;
+  padding-left: 15px;
+  color: rgba(0,0,0,0.2);
 }
 
 /* Style the buttons inside the tab */
 .tab button {
+font-family: 'Neue Helvetica Medium';
+font-size: 45px;
+height: 150%;
+width: auto;
+opacity: 0.8;
 background-color: inherit;
-border: none;
+border-radius: 25px;
+border-color: transparent;
+border-bottom: 1px solid transparent;
+border-width: 5px;
 cursor: pointer;
-padding: 15px;
-transition: 0.3s;
-font-size: 20px;
+padding: 10px;
+padding-right: 35px;
+padding-left: 35px;
+transition: 0.1s;
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-background-color: #F8AC5B;
-
+border: 1px solid transparent;
+border-bottom-color: #f8ac5b;
+border-radius: 1px;
+border-width: 5px;
+transition: 0;
+delay: 0;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-background-color: #F8AC5B;
+  background-color: #F8AC5B;
+  border-bottom-color: transparent;
+  border-radius: 25px;
+  padding: 14px;
+  padding-right: 35px;
+  padding-left: 35px;
+  border-width: 0px;
 }
 
-/* Style the tab content */
-.tabcontent {
+.tab .button:focus {
+  border-width: 0px;
+  background-color: rgba(172, 90, 0, 0.6);
+  border-bottom-color: transparent;
+  border-radius: 25px;
+  padding: 14px;
+  padding-right: 45px;
+  padding-left: 45px;
+  animation: pulse 0.5s;
+  transition: 0.5s forwards;
 }
 
 /* Style the close button */
