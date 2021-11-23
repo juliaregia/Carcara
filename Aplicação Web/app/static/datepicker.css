@@ -1,8 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
+@font-face {
+  font-family: 'Neue Helvetica Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: url('Helvetica Neue LT 65 Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Neue Helvetica Medium Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: url('Helvetica Neue LT 66 Medium Italic.woff') format('woff');
+}
+
+
 body {
     background-color: #ffffff;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Neue Helvetica Medium', sans-serif;
     animation: transitionIn 0.75s;
 }
 
@@ -10,7 +25,7 @@ body {
   width: 216px;
   height: auto;
   margin: 0px auto 0;
-  font-family: 12pt 'Roboto', sans-serif;
+  font-family: 12pt 'Neue Helvetica Medium', sans-serif;
   color: #dc770d;
   -webkit-box-shadow: 0px 0px 10px 0px #f9d49c;
   -moz-box-shadow: 0px 0px 10px 0px #f9d49c;
@@ -42,7 +57,7 @@ body {
 .ui-datepicker-header {
   background-color: repeat 0 0 #fff;
   color: #dc770d;
-  font-family: 12pt 'Roboto', sans-serif;
+  font-family: 12pt 'Neue Helvetica Medium', sans-serif;
   font-weight: bold;
   -webkit-box-shadow: inset 0px 1px 1px 0px #f9d49c;
   -moz-box-shadow: inset 0px 1px 1px 0px #f9d49c;

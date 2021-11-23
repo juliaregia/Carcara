@@ -50,14 +50,12 @@
       <!-- Bloco -->
       <div class="bloco">
 
-          <p class="titulo">Dados do Estado</p>
+          <p class="titulo" id="titulo-estado">Dados do Estado</p>
 
-      </div>
-
-            <!-- Paragrafo Invisivel -->
+           <!-- Paragrafo Invisivel -->
             <p class="hide"> a</p>
 
-       <div class="pesquisa">
+          <div class="pesquisa" id="pesquisa-estado">
                           {% block content %}
 
                    {% if "/estado" == request.path|string %}
@@ -210,7 +208,8 @@
                     </form>
                                  {% endif %}
                                 {% endblock %}
-       </div>
+          </div>
+      </div>
 
       <!-- Paragrafo Invisivel -->
             <p class="hide"> a</p>

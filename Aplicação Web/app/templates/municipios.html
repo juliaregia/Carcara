@@ -50,14 +50,12 @@
       <!-- Bloco  -->
       <div class="bloco">
 
-        <p class="titulo">Dados dos Municípios</p>
-         
-      </div>
+        <p class="titulo" id="titulo-municipios">Dados dos Municípios</p>
 
-            <!-- Paragrafo Invisivel -->
+        <!-- Paragrafo Invisivel -->
             <p class="hide"> a</p>
 
-          <div class="pesquisa">
+        <div class="pesquisa" id="pesquisa-municipios">
                             {% block content %}
 
               {% if "/municipios" == request.path|string %}
@@ -261,6 +259,11 @@
 
           </div>
       </div>
+
+
+
+
+
 
       <!-- Paragrafo Invisivel -->
       <p class="hide"> a</p>
