@@ -137,20 +137,6 @@ def covidsp_main():
                            graf1_covidsp=graf1, graf2_covidsp=graf2, graf3_covidsp=graf3, graf4_covidsp=graf4)
 
 
-@app.route("/estado/srag", methods=['GET'])
-def srag_main():
-    random.shuffle(palette)
-    form = Form()
-    mini = '2020-02-26'
-    maxi = datetime.now().strftime('%Y-%m-%d')
-    srag = pd.read_csv(url3, dtype={'Município': 'category', 'Faixa Etária': 'category', 'Evolução': 'category'})
-    srag['Data'] = pd.to_datetime(srag['Data'])
-    flash_generate(srag)
-    return render_template('estados.html', form=form, min=mini, max=maxi,
-                           tables_srag=[srag.to_html(classes='data')],
-                           titles_srag=srag.columns.values)
-
-
 @app.route("/estado/vacina", methods=['GET'])
 def evoludose_main():
     random.shuffle(palette)
@@ -354,16 +340,16 @@ def covidsp_search():
     maxi = datetime.now().strftime('%Y-%m-%d')
     if request.method == 'POST':
         if request.form['startdate_field'] != '':
-            start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
+            start_request.append(parse(request.form['startdate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
-            form_start.append(str(start_request[-1]))
+            form_start.append(request.form['startdate_field'])
         else:
             start_request.append('dumby')
             form_start.append('')
         if request.form['enddate_field'] != '':
-            end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
+            end_request.append(parse(request.form['enddate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
-            form_end.append(str(end_request[-1]))
+            form_end.append(request.form['enddate_field'])
         else:
             end_request.append('dumby')
             form_end.append('')
@@ -438,40 +424,6 @@ def covidsp_search():
                                graf1_covidsp=graf1, graf2_covidsp=graf2, graf3_covidsp=graf3, graf4_covidsp=graf4)
 
 
-@app.route("/estado/srag/search", methods=['POST', 'GET'])
-def srag_search():
-    random.shuffle(palette)
-    form = Form()
-    mini = '2020-02-26'
-    maxi = datetime.now().strftime('%Y-%m-%d')
-    if request.method == 'POST':
-        if request.form['startdate_field'] != '':
-            start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
-            print(f'O start agora eh {start_request[-1]}')
-            form_start.append(str(start_request[-1]))
-        else:
-            start_request.append('dumby')
-            form_start.append('')
-        if request.form['enddate_field'] != '':
-            end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
-            print(f'O end agora eh {end_request[-1]}')
-            form_end.append(str(end_request[-1]))
-        else:
-            end_request.append('dumby')
-            form_end.append('')
-
-    srag = pd.read_csv(url3, dtype={'Município': 'category', 'Faixa Etária': 'category', 'Evolução': 'category'})
-    srag['Data'] = pd.to_datetime(srag['Data'])
-    srag = date_filter_sp(srag, start_request, end_request)
-
-    if not isinstance(srag, pd.DataFrame):
-        return srag
-    else:
-        return render_template('estados.html', form=form, min=mini, max=maxi,
-                               tables_srag=[srag.to_html(classes='data')],
-                               titles_srag=srag.columns.values)
-
-
 @app.route("/estado/vacina/search", methods=['POST', 'GET'])
 def evoludose_search():
     random.shuffle(palette)
@@ -480,16 +432,16 @@ def evoludose_search():
     maxi = datetime.now().strftime('%Y-%m-%d')
     if request.method == 'POST':
         if request.form['startdate_field'] != '':
-            start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
+            start_request.append(parse(request.form['startdate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
-            form_start.append(str(start_request[-1]))
+            form_start.append(request.form['startdate_field'])
         else:
             start_request.append('dumby')
             form_start.append('')
         if request.form['enddate_field'] != '':
-            end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
+            end_request.append(parse(request.form['enddate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
-            form_end.append(str(end_request[-1]))
+            form_end.append(request.form['enddate_field'])
         else:
             end_request.append('dumby')
             form_end.append('')
@@ -583,16 +535,16 @@ def leitos_search():
     maxi = datetime.now().strftime('%Y-%m-%d')
     if request.method == 'POST':
         if request.form['startdate_field'] != '':
-            start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
+            start_request.append(parse(request.form['startdate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
-            form_start.append(str(start_request[-1]))
+            form_start.append(request.form['startdate_field'])
         else:
             start_request.append('dumby')
             form_start.append('')
         if request.form['enddate_field'] != '':
-            end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
+            end_request.append(parse(request.form['enddate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
-            form_end.append(str(end_request[-1]))
+            form_end.append(request.form['enddate_field'])
         else:
             end_request.append('dumby')
             form_end.append('')
@@ -679,16 +631,16 @@ def isola_search():
     maxi = datetime.now().strftime('%Y-%m-%d')
     if request.method == 'POST':
         if request.form['startdate_field'] != '':
-            start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
+            start_request.append(parse(request.form['startdate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
-            form_start.append(str(start_request[-1]))
+            form_start.append(request.form['startdate_field'])
         else:
             start_request.append('dumby')
             form_start.append('')
         if request.form['enddate_field'] != '':
-            end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
+            end_request.append(parse(request.form['enddate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
-            form_end.append(str(end_request[-1]))
+            form_end.append(request.form['enddate_field'])
         else:
             end_request.append('dumby')
             form_end.append('')
@@ -820,18 +772,6 @@ def covidmuni_main():
                            graf1_covidmuni=graf1, graf2_covidmuni=graf2, graf3_covidmuni=graf3, graf4_covidmuni=graf4)
 
 
-@app.route("/municipios/srag", methods=['GET'])
-def sragmuni_main():
-    random.shuffle(palette)
-    form = Form()
-    mini = '2020-02-26'
-    maxi = datetime.now().strftime('%Y-%m-%d')
-    srag = pd.read_csv(url3, dtype={'Município': 'category', 'Faixa Etária': 'category', 'Evolução': 'category'})
-    srag['Data'] = pd.to_datetime(srag['Data'])
-    flash_generate(srag)
-    return render_template('municipios.html', form=form, min=mini, max=maxi)
-
-
 @app.route("/municipios/vacina", methods=['GET'])
 def vacina_main():
     random.shuffle(palette)
@@ -931,16 +871,16 @@ def covidmuni_search():
     maxi = datetime.now().strftime('%Y-%m-%d')
     if request.method == 'POST':
         if request.form['startdate_field'] != '':
-            start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
+            start_request.append(parse(request.form['startdate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
-            form_start.append(str(start_request[-1]))
+            form_start.append(request.form['startdate_field'])
         else:
             start_request.append('dumby')
             form_start.append('')
         if request.form['enddate_field'] != '':
-            end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
+            end_request.append(parse(request.form['enddate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
-            form_end.append(str(end_request[-1]))
+            form_end.append(request.form['enddate_field'])
         else:
             end_request.append('dumby')
             form_end.append('')
@@ -1035,53 +975,6 @@ def covidmuni_search():
                                    graf4_covidmuni=graf4)
 
 
-@app.route("/municipios/srag/search", methods=['POST', 'GET'])
-def sragmuni_search():
-    random.shuffle(palette)
-    form = Form()
-    mini = '2020-02-26'
-    maxi = datetime.now().strftime('%Y-%m-%d')
-    if request.method == 'POST':
-        if request.form['startdate_field'] != '':
-            start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
-            print(f'O start agora eh {start_request[-1]}')
-            form_start.append(str(start_request[-1]))
-        else:
-            start_request.append('dumby')
-            form_start.append('')
-        if request.form['enddate_field'] != '':
-            end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
-            print(f'O end agora eh {end_request[-1]}')
-            form_end.append(str(end_request[-1]))
-        else:
-            end_request.append('dumby')
-            form_end.append('')
-        if request.form['municipio_field'] != '':
-            city_request.append(str(request.form.get('municipio_field')))
-            print(f'As últimas cidades pesquisadas são agora: {city_request[-1]}')
-            form_city.append(str(city_request[-1]))
-        else:
-            city_request.append('dumby')
-            form_city.append('')
-
-    srag = pd.read_csv(url3, dtype={'Município': 'category', 'Faixa Etária': 'category', 'Evolução': 'category'})
-    srag['Data'] = pd.to_datetime(srag['Data'])
-    srag = date_filter_mun(srag, start_request, end_request)
-
-    if not isinstance(srag, pd.DataFrame):
-        return srag
-    else:
-        srag = city_filter_srag(srag, city_request)
-
-        if not isinstance(srag, pd.DataFrame):
-            return srag
-        else:
-            return render_template('municipios.html', form=form, min=mini, max=maxi,
-                                   start=form_start[-1], end=form_end[-1], city=form_city[-1],
-                                   tables_srag=[srag.to_html(classes='data')],
-                                   titles_srag=srag.columns.values)
-
-
 @app.route("/municipios/vacina/search", methods=['POST', 'GET'])
 def vacina_search():
     random.shuffle(palette)
@@ -1090,16 +983,16 @@ def vacina_search():
     maxi = datetime.now().strftime('%Y-%m-%d')
     if request.method == 'POST':
         if request.form['startdate_field'] != '':
-            start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
+            start_request.append(parse(request.form['startdate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
-            form_start.append(str(start_request[-1]))
+            form_start.append(request.form['startdate_field'])
         else:
             start_request.append('dumby')
             form_start.append('')
         if request.form['enddate_field'] != '':
-            end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
+            end_request.append(parse(request.form['enddate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
-            form_end.append(str(end_request[-1]))
+            form_end.append(request.form['enddate_field'])
         else:
             end_request.append('dumby')
             form_end.append('')
@@ -1157,16 +1050,16 @@ def isolamuni_search():
     maxi = datetime.now().strftime('%Y-%m-%d')
     if request.method == 'POST':
         if request.form['startdate_field'] != '':
-            start_request.append(parse(request.form['startdate_field']).strftime('%Y-%m-%d'))
+            start_request.append(parse(request.form['startdate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O start agora eh {start_request[-1]}')
-            form_start.append(str(start_request[-1]))
+            form_start.append(request.form['startdate_field'])
         else:
             start_request.append('dumby')
             form_start.append('')
         if request.form['enddate_field'] != '':
-            end_request.append(parse(request.form['enddate_field']).strftime('%Y-%m-%d'))
+            end_request.append(parse(request.form['enddate_field'], dayfirst=True).strftime('%Y-%m-%d'))
             print(f'O end agora eh {end_request[-1]}')
-            form_end.append(str(end_request[-1]))
+            form_end.append(request.form['enddate_field'])
         else:
             end_request.append('dumby')
             form_end.append('')

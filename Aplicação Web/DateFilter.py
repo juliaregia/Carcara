@@ -26,11 +26,11 @@ def date_filter_sp(df, start_request, end_request):
     maxi = datetime.now().strftime('%Y-%m-%d')
     if request.method == 'POST':
         if request.form['startdate_field'] != '':
-            start = parse(request.form['startdate_field']).strftime('%Y-%m-%d')
+            start = parse(request.form['startdate_field'], dayfirst=True).strftime('%Y-%m-%d')
         else:
             start = df['Data'].min().strftime('%Y-%m-%d')
         if request.form['enddate_field'] != '':
-            end = parse(request.form['enddate_field']).strftime('%Y-%m-%d')
+            end = parse(request.form['enddate_field'], dayfirst=True).strftime('%Y-%m-%d')
         else:
             end = df['Data'].max().strftime('%Y-%m-%d')
     else:
@@ -95,11 +95,11 @@ def date_filter_mun(df, start_request, end_request):
     maxi = datetime.now().strftime('%Y-%m-%d')
     if request.method == 'POST':
         if request.form['startdate_field'] != '':
-            start = parse(request.form['startdate_field']).strftime('%Y-%m-%d')
+            start = parse(request.form['startdate_field'], dayfirst=True).strftime('%Y-%m-%d')
         else:
             start = df['Data'].min().strftime('%Y-%m-%d')
         if request.form['enddate_field'] != '':
-            end = parse(request.form['enddate_field']).strftime('%Y-%m-%d')
+            end = parse(request.form['enddate_field'], dayfirst=True).strftime('%Y-%m-%d')
         else:
             end = df['Data'].max().strftime('%Y-%m-%d')
     else:
