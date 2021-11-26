@@ -1,4 +1,4 @@
-from flask import render_template, request, flash
+from flask import render_template, request, flash, Markup
 from app import app
 from MyForms import Form
 from DateFilter import *
@@ -700,8 +700,9 @@ def covidmuni_main():
         "'Jacareí' | Município == 'Campinas' | Município == 'São José do Rio Preto' | Município == 'Ribeirão Preto' | "
         "Município == 'Sorocaba' | Município == 'São Bernardo do Campo' | Município == 'Santo André'")
     flash_generate(covidmuni)
-    flash('\n' + f" Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores números "
-                 f"da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa personalizada." + '\n')
+    flash(Markup(f'<h1 class="cidades"> Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os '
+                 f'maiores números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa '
+                 f'personalizada.</h1>'))
 
     # Casos diários por município
     fig1 = px.bar(covidmuni, x='Data', y='Novos Casos', color='Município', hover_data=['Novos Casos'],
@@ -778,18 +779,23 @@ def vacina_main():
     form = Form()
     mini = '2020-02-26'
     maxi = datetime.now().strftime('%Y-%m-%d')
+    covidsp = pd.read_csv(url1, usecols=['Data'])
+    covidsp['Data'] = pd.to_datetime(covidsp['Data'])
+    lastupdate = covidsp['Data'].max().strftime("%d/%m/%Y")
     vacina = pd.read_csv(url4,
                          dtype={'Município': 'category', '1ª Dose': 'int32', '2ª Dose': 'int32', '3ª Dose': 'int32',
                                 'Dose Única': 'int32', 'Doses Distribuídas': 'int32'})
-    flash('Totalização da campanha vacinal por Município')
+    flash(Markup(f'<h1 class="vacinometro">Totalização da campanha vacinal por Município '
+                 f'<span>(última atualização: {lastupdate})</span></h1>'))
 
     # Filtro só para 'main' functions:
     vacina = vacina.query(
         "Município == 'São Paulo' | Município == 'São José dos Campos' | Município == 'Caçapava' | Município == "
         "'Jacareí' | Município == 'Campinas' | Município == 'São José do Rio Preto' | Município == 'Ribeirão Preto' | "
         "Município == 'Sorocaba' | Município == 'São Bernardo do Campo' | Município == 'Santo André'")
-    flash('\n' + f" Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores números da "
-                 f"pandemia no Estado. Para acessar outras cidades, faça uma pesquisa personalizada." + '\n')
+    flash(Markup(f'<h1 class="cidades">Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os '
+                 f'maiores números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa '
+                 f'personalizada.</h1>'))
 
     # Comparação entre municípios de aplicação das doses
     fig1 = px.histogram(vacina, x='Município', y=['1ª Dose', '2ª Dose', '3ª Dose', 'Dose Única'], barmode='group',
@@ -840,8 +846,9 @@ def isolamuni_main():
     filterdate = (isola['Data'] > inicial) & (isola['Data'] < final)
     isola = isola.loc[filterdate]
     flash_generate(isola)
-    flash('\n' + f" Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores números "
-                 f"da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa personalizada." + '\n')
+    flash(Markup(f'<h1 class="cidades">Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os '
+                 f'maiores números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa '
+                 f'personalizada.</h1>'))
 
     # Histórico do indice de isolamento nos municipios sp
     fig1 = px.bar(isola, orientation='v', y='Índice de Isolamento (%)', x='Data', color='Município',
@@ -981,6 +988,9 @@ def vacina_search():
     form = Form()
     mini = '2020-02-26'
     maxi = datetime.now().strftime('%Y-%m-%d')
+    covidsp = pd.read_csv(url1, usecols=['Data'])
+    covidsp['Data'] = pd.to_datetime(covidsp['Data'])
+    lastupdate = covidsp['Data'].max().strftime("%d/%m/%Y")
     if request.method == 'POST':
         if request.form['startdate_field'] != '':
             start_request.append(parse(request.form['startdate_field'], dayfirst=True).strftime('%Y-%m-%d'))
@@ -1007,6 +1017,8 @@ def vacina_search():
     vacina = pd.read_csv(url4,
                          dtype={'Município': 'category', '1ª Dose': 'int32', '2ª Dose': 'int32', '3ª Dose': 'int32',
                                 'Dose Única': 'int32', 'Doses Distribuídas': 'int32'})
+    flash(Markup(f'<h1 class="vacinometro">Totalização da campanha vacinal por Município '
+                 f'<span>(última atualização: {lastupdate})</span></h1>'))
     vacina = city_filter_all(vacina, city_request)
 
     if not isinstance(vacina, pd.DataFrame):

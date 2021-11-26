@@ -1,4 +1,4 @@
-from flask import render_template, request, flash
+from flask import render_template, request, flash, Markup
 from collections import Iterable
 from MyForms import Form
 import pandas as pd
@@ -105,9 +105,9 @@ def city_filter_srag(df, city_request):
                           "Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José do Rio Preto' | "
                           "Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == 'São Bernardo do "
                           "Campo' | Município == 'Santo André'")
-            flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
-                         f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
-                         f"personalizada." + '\n')
+            flash(Markup(f'<h1 class="cidades">Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios '
+                         f'com os maiores números da pandemia no Estado. Para acessar outras cidades, '
+                         f'faça uma pesquisa personalizada.</h1>'))
             return df
     else:
         try:
@@ -118,18 +118,18 @@ def city_filter_srag(df, city_request):
                               "'Caçapava' | Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José "
                               "do Rio Preto' | Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == "
                               "'São Bernardo do Campo' | Município == 'Santo André'")
-                flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
-                             f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
-                             f"personalizada." + '\n')
+                flash(Markup(f'<h1 class="cidades">Dados de São José dos Campos, Jacareí e Caçapava, além de 7 '
+                             f'municípios com os maiores números da pandemia no Estado. Para acessar outras cidades, '
+                             f'faça uma pesquisa personalizada.</h1>'))
                 return df
         except IndexError:
             df = df.query("Município == 'São Paulo' | Município == 'São José dos Campos' | Município == "
                           "'Caçapava' | Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José "
                           "do Rio Preto' | Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == "
                           "'São Bernardo do Campo' | Município == 'Santo André'")
-            flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
-                         f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
-                         f"personalizada." + '\n')
+            flash(Markup(f'<h1 class="cidades">Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios '
+                         f'com os maiores números da pandemia no Estado. Para acessar outras cidades, '
+                         f'faça uma pesquisa personalizada.</h1>'))
             return df
     filter = regex_match_list(searches, dict_match)
     dfs = {}
@@ -139,7 +139,7 @@ def city_filter_srag(df, city_request):
             dfs[item] = result
             names.append(item.title())
         else:
-            flash('\n' + f'Não há dados referentes à "{item}"' + '\n')
+            flash(Markup(f'<h1 class="cidades-erro">Não há dados referentes à "{item}"</h1>'))
             del item
     names = list(dict.fromkeys(names))
     names = ', '.join(names)
@@ -147,15 +147,15 @@ def city_filter_srag(df, city_request):
         df = pd.concat(dfs.values())
         duplicates = df.duplicated(keep='first')
         df = df[~duplicates]
-        flash('\n' + f'Resultados referentes à busca "{names}"' + '\n')
+        flash(Markup(f'<h1 class="cidades">Resultados referentes à busca "{names}"</h1>'))
         return df
     elif len(dfs) == 1:
         for v in dfs.values():
             df = v
-        flash('\n' + f'Resultados referentes à busca "{names}"' + '\n')
+        flash(Markup(f'<h1 class="cidades">Resultados referentes à busca "{names}"</h1>'))
         return df
     else:
-        flash('\n' + 'Não há resultados referentes à busca por município' + '\n')
+        flash(Markup('<h1 class="cidades-erro-total">Não há resultados referentes à busca por município</h1>'))
         return render_template('municipios.html', form=form, min=mini, max=maxi)
 
 
@@ -187,9 +187,9 @@ def city_filter_all(df, city_request):
                           "Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José do Rio Preto' | "
                           "Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == 'São Bernardo do "
                           "Campo' | Município == 'Santo André'")
-            flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
-                         f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
-                         f"personalizada." + '\n')
+            flash(Markup(f'<h1 class="cidades">Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios '
+                         f'com os maiores números da pandemia no Estado. Para acessar outras cidades, '
+                         f'faça uma pesquisa personalizada.</h1>'))
             return df
     else:
         try:
@@ -200,18 +200,18 @@ def city_filter_all(df, city_request):
                               "'Caçapava' | Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José "
                               "do Rio Preto' | Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == "
                               "'São Bernardo do Campo' | Município == 'Santo André'")
-                flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
-                             f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
-                             f"personalizada." + '\n')
+                flash(Markup(f'<h1 class="cidades">Dados de São José dos Campos, Jacareí e Caçapava, além de 7 '
+                             f'municípios com os maiores números da pandemia no Estado. Para acessar outras cidades, '
+                             f'faça uma pesquisa personalizada.</h1>'))
                 return df
         except IndexError:
             df = df.query("Município == 'São Paulo' | Município == 'São José dos Campos' | Município == "
                           "'Caçapava' | Município == 'Jacareí' | Município == 'Campinas' | Município == 'São José "
                           "do Rio Preto' | Município == 'Ribeirão Preto' | Município == 'Sorocaba' | Município == "
                           "'São Bernardo do Campo' | Município == 'Santo André'")
-            flash('\n' + f"Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios com os maiores "
-                         f"números da pandemia no Estado. Para acessar outras cidades, faça uma pesquisa "
-                         f"personalizada." + '\n')
+            flash(Markup(f'<h1 class="cidades">Dados de São José dos Campos, Jacareí e Caçapava, além de 7 municípios '
+                         f'com os maiores números da pandemia no Estado. Para acessar outras cidades, '
+                         f'faça uma pesquisa personalizada.</h1>'))
             return df
     filter = regex_match_list(searches, dict_match)
     filter = regex_change_list(filter, dict_accent)
@@ -223,19 +223,19 @@ def city_filter_all(df, city_request):
             dfs[item] = result
             names.append(item.title())
         else:
-            flash('\n' + f'Não há dados referentes à "{item}"' + '\n')
+            flash(Markup(f'<h1 class="cidades-erro">Não há dados referentes à "{item}"</h1>'))
             del item
     names = list(dict.fromkeys(names))
     names = ', '.join(names)
     if len(dfs) >= 2:
         df = pd.concat(dfs.values())
-        flash('\n' + f'Resultados referentes à busca "{names}"' + '\n')
+        flash(Markup(f'<h1 class="cidades">Resultados referentes à busca "{names}"</h1>'))
         return df
     elif len(dfs) == 1:
         for v in dfs.values():
             df = v
-        flash('\n' + f'Resultados referentes à busca "{names}"' + '\n')
+        flash(Markup(f'<h1 class="cidades">Resultados referentes à busca "{names}"</h1>'))
         return df
     else:
-        flash('\n' + 'Não há resultados referentes à busca por município' + '\n')
+        flash(Markup('<h1 class="cidades-erro-total">Não há resultados referentes à busca por município</h1>'))
         return render_template('municipios.html', form=form, min=mini, max=maxi)

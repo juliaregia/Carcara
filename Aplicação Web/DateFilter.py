@@ -1,4 +1,4 @@
-from flask import render_template, request, flash
+from flask import render_template, request, flash, Markup
 from MyForms import Form
 import pandas as pd
 import datetime as dt
@@ -16,8 +16,9 @@ def flash_generate(df):
     dia_inicial = dia_inicial.lstrip('0')
     dia_final = dia_final.lstrip('0')
     if request.method != 'POST':
-        return flash('\n' + f" Visualização dos dados do dia {dia_inicial} de {mes[int(mes_inicial) - 1]} de "
-                     f"{ano_inicial}, até o dia {dia_final} de {mes[int(mes_final) - 1]} de {ano_final} " + '\n')
+        return flash(Markup(f'<h1 class="datas">Visualização dos dados do dia {dia_inicial} de '
+                            f'{mes[int(mes_inicial) - 1]} de {ano_inicial}, até o dia {dia_final} de '
+                            f'{mes[int(mes_final) - 1]} de {ano_final}</h1>'))
 
 
 def date_filter_sp(df, start_request, end_request):
@@ -49,17 +50,17 @@ def date_filter_sp(df, start_request, end_request):
 
     # Validações por if statement, retorna a pesquisa no 'else' se for validado
     if start > end:
-        flash('\n' + 'A data inicial não pode ser mais recente que a data final' + '\n')
+        flash(Markup('<h1 class="datas-erro">A data inicial não pode ser mais recente que a data final</h1>'))
         return render_template('estados.html', form=form, min=mini, max=maxi)
     elif start < (df['Data'].min().strftime('%Y-%m-%d')):
-        flash('\n' + f'''Pelo menos uma das datas fornecidas antecede a atual base de dados. Por favor, insira datas a 
-              partir de "{df['Data'].min().strftime('%Y-%m-%d')}" até "{df['Data'].max().strftime("%d/%m/%Y")}"'''
-              + '\n')
+        flash(Markup(f'''<h1 class="datas-erro">Pelo menos uma das datas fornecidas antecede a atual base de dados. 
+                     Por favor, insira datas a partir de "{df['Data'].min().strftime('%d/%m/%Y')}" até 
+                     "{df['Data'].max().strftime("%d/%m/%Y")}"</h1>'''))
         return render_template('estados.html', form=form, min=mini, max=maxi)
     elif end > (df['Data'].max().strftime('%Y-%m-%d')):
-        flash('\n' + f'''Não há por enquanto dados referentes a pelo menos uma das datas requeridas. Por favor, insira 
-              datas a partir de "{df['Data'].min().strftime('%Y-%m-%d')}" até "{df['Data'].max().strftime("%d/%m/%Y")}" 
-              para essa base de dados''' + '\n')
+        flash(Markup(f'''<h1 class="datas-erro">Não há por enquanto dados referentes a pelo menos uma das datas 
+                     requeridas. Por favor, insira datas a partir de "{df['Data'].min().strftime('%d/%m/%Y')}" até 
+                     "{df['Data'].max().strftime("%d/%m/%Y")}" para essa base de dados</h1>'''))
         return render_template('estados.html', form=form, min=mini, max=maxi)
     else:
         mes = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho',
@@ -69,11 +70,12 @@ def date_filter_sp(df, start_request, end_request):
         dia_inicial = dia_inicial.lstrip('0')
         dia_final = dia_final.lstrip('0')
         if start != end:
-            flash('\n' + f"Visualização dos dados do dia {dia_inicial} de {mes[int(mes_inicial) - 1]} de {ano_inicial}"
-                         f", até o dia {dia_final} de {mes[int(mes_final) - 1]} de {ano_final}" + '\n')
+            flash(Markup(f'''<h1 class="datas">Visualização dos dados do dia {dia_inicial} de 
+                         {mes[int(mes_inicial) - 1]} de {ano_inicial}, até o dia {dia_final} de 
+                         {mes[int(mes_final) - 1]} de {ano_final}</h1>'''))
         else:
-            flash('\n' + f"Visualização dos dados do dia {dia_inicial} de {mes[int(mes_inicial) - 1]} de {ano_inicial}"
-                  + '\n')
+            flash(Markup(f'''<h1 class="datas">Visualização dos dados do dia {dia_inicial} de 
+                         {mes[int(mes_inicial) - 1]} de {ano_inicial}</h1>'''))
 
         headers = list(df.columns.values)
         for header in headers:
@@ -118,17 +120,17 @@ def date_filter_mun(df, start_request, end_request):
 
     # Validações por if statement, retorna a pesquisa no 'else' se for validado
     if start > end:
-        flash('\n' + 'A data inicial não pode ser mais recente que a data final' + '\n')
+        flash(Markup('<h1 class="datas-erro">A data inicial não pode ser mais recente que a data final</h1>'))
         return render_template('municipios.html', form=form, min=mini, max=maxi)
     elif start < (df['Data'].min().strftime('%Y-%m-%d')):
-        flash('\n' + f'''Pelo menos uma das datas fornecidas antecede a atual base de dados. Por favor, insira datas a 
-              partir de "{df['Data'].min().strftime('%Y-%m-%d')}" até "{df['Data'].max().strftime("%d/%m/%Y")}"'''
-              + '\n')
+        flash(Markup(f'''<h1 class="datas-erro">Pelo menos uma das datas fornecidas antecede a atual base de dados. 
+                     Por favor, insira datas a partir de "{df['Data'].min().strftime('%d/%m/%Y')}" até 
+                     "{df['Data'].max().strftime("%d/%m/%Y")}"</h1>'''))
         return render_template('municipios.html', form=form, min=mini, max=maxi)
     elif end > (df['Data'].max().strftime('%Y-%m-%d')):
-        flash('\n' + f'''Não há por enquanto dados referentes a pelo menos uma das datas requeridas. Por favor, insira 
-              datas a partir de "{df['Data'].min().strftime('%Y-%m-%d')}" até "{df['Data'].max().strftime("%d/%m/%Y")}" 
-              para essa base de dados''' + '\n')
+        flash(Markup(f'''<h1 class="datas-erro">Não há por enquanto dados referentes a pelo menos uma das datas 
+                     requeridas. Por favor, insira datas a partir de "{df['Data'].min().strftime('%d/%m/%Y')}" até 
+                     "{df['Data'].max().strftime("%d/%m/%Y")}" para essa base de dados</h1>'''))
         return render_template('municipios.html', form=form, min=mini, max=maxi)
     else:
         mes = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho',
@@ -138,11 +140,12 @@ def date_filter_mun(df, start_request, end_request):
         dia_inicial = dia_inicial.lstrip('0')
         dia_final = dia_final.lstrip('0')
         if start != end:
-            flash('\n' + f"Visualização dos dados do dia {dia_inicial} de {mes[int(mes_inicial) - 1]} de {ano_inicial}"
-                         f", até o dia {dia_final} de {mes[int(mes_final) - 1]} de {ano_final}" + '\n')
+            flash(Markup(f'''<h1 class="datas">Visualização dos dados do dia {dia_inicial} de 
+                  {mes[int(mes_inicial) - 1]} de {ano_inicial}, até o dia {dia_final} de {mes[int(mes_final) - 1]} de 
+                  {ano_final}</h1>'''))
         else:
-            flash('\n' + f"Visualização dos dados do dia {dia_inicial} de {mes[int(mes_inicial) - 1]} de {ano_inicial}"
-                  + '\n')
+            flash(Markup(f'''<h1 class="datas">Visualização dos dados do dia {dia_inicial} de 
+                  {mes[int(mes_inicial) - 1]} de {ano_inicial}</h1>'''))
 
         headers = list(df.columns.values)
         for header in headers:
