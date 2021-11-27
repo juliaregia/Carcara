@@ -17,7 +17,7 @@
         <!-- local do arquivo .css flask -->
     <link rel="stylesheet" href="{{  url_for('static', filename='style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{  url_for('static', filename='datepicker.css')}}"/>
-
+    <link rel="stylesheet" type="text/css" href="{{  url_for('static', filename='graficos.css')}}"/>
 
   </head>
 
@@ -185,11 +185,8 @@
       <!-- Paragrafo Invisivel -->
             <p class="hide"> a</p>
 
-         <!-- tabs -->
-        <div class="tabela">
-
+          <!-- tabs -->
           <div class="tab">
-
 
             {% if "estado/covidsp" not in request.path|string %}
             <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">
@@ -254,52 +251,6 @@
                 <a class="button" href="{{ url_for('leitos_search') }}#p1-start" style="text-decoration:none; color:#000000;">Leitos</a>
                 {% endif %}
             </button>
-
-        </div>
-
-
-          <div id="London" class="tabcontent">
-            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-
-            <!-- 
-            <div class="BlocoH">
-            <div class="blocoInfo1"></div>
-            <div class="blocoInfo2"></div>
-            <div class="blocoInfo3"></div>
-            <div class="blocoInfo4"></div>
-            </div>
-            --> 
-          </div>
-
-
-          <div id="Tokyo" class="tabcontent">
-            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
- <!-- 
-            <div class="BlocoH">
-              <div class="blocoInfo1"></div>
-              <div class="blocoInfo2"></div>
-              <div class="blocoInfo3"></div>
-              <div class="blocoInfo4"></div>
-            </div>
-          -->
-          </div>
-
-          <div id="Berlin" class="tabcontent">
-            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
- <!-- 
-            <div class="BlocoH">
-              <div class="blocoInfo1"></div>
-              <div class="blocoInfo2"></div>
-              <div class="blocoInfo3"></div>
-              <div class="blocoInfo4"></div>
-            </div>
-          -->
-          </div>
-
-
-          <div id="Lima" class="tabcontent">
-            <span onclick="this.parentElement.style.display='none'" class="topright">&times</span>
-      
           </div>
 
             <!-- Paragrafo Invisivel -->
@@ -319,73 +270,70 @@
       <!-- Paragrafo Invisivel -->
        <p class="hide"> a</p>
 
+       <div class="graficos-estado">
+           <div class="covidsp">
+               {% if graf1_covidsp %}
+               <div class="casos-diarios-sp">{{ graf1_covidsp|safe }}</div>
+               {% endif %}
 
-            {% if graf1_covidsp %}
-            {{ graf1_covidsp|safe }}
-            {% endif %}
+               {% if graf2_covidsp %}
+               <div class="obitos-diarios-sp">{{ graf2_covidsp|safe }}</div>
+               {% endif %}
 
-            {% if graf2_covidsp %}
-            {{ graf2_covidsp|safe }}
-            {% endif %}
+               {% if graf3_covidsp %}
+               <div class="total-casos-sp">{{ graf3_covidsp|safe }}</div>
+               {% endif %}
 
-            {% if graf3_covidsp %}
-            {{ graf3_covidsp|safe }}
-            {% endif %}
+               {% if graf4_covidsp %}
+               <div class="total-obitos-sp">{{ graf4_covidsp|safe }}</div>
+               {% endif %}
+           </div>
 
-            {% if graf4_covidsp %}
-            {{ graf4_covidsp|safe }}
-            {% endif %}
+           <div class="vacinasp">
+                {% if graf1_evoludose %}
+                <div class="primeira-dose-sp">{{ graf1_evoludose|safe }}</div>
+                {% endif %}
 
+                {% if graf2_evoludose %}
+                <div class="segunda-dose-sp">{{ graf2_evoludose|safe }}</div>
+                {% endif %}
 
+                {% if graf3_evoludose %}
+                <div class="terceira-dose-sp">{{ graf3_evoludose|safe }}</div>
+                {% endif %}
 
+                {% if graf4_evoludose %}
+                <div class="dose-unica-sp">{{ graf4_evoludose|safe }}</div>
+                {% endif %}
 
+                {% if graf5_evoludose %}
+                <div class="doses-sp">{{ graf5_evoludose|safe }}</div>
+                {% endif %}
+           </div>
 
+           <div class="leitos">
+               {% if graf1_leitos %}
+               <div class="ocupacao-leitos">{{ graf1_leitos|safe }}</div>
+               {% endif %}
 
-            {% if graf1_evoludose %}
-            {{ graf1_evoludose|safe }}
-            {% endif %}
+               {% if graf2_leitos %}
+               <div class="total-leitos">{{ graf2_leitos|safe }}</div>
+               {% endif %}
 
-            {% if graf2_evoludose %}
-            {{ graf2_evoludose|safe }}
-            {% endif %}
+               {% if graf3_leitos %}
+               <div class="total-pacientes">{{ graf3_leitos|safe }}</div>
+               {% endif %}
 
-            {% if graf3_evoludose %}
-            {{ graf3_evoludose|safe }}
-            {% endif %}
-
-            {% if graf4_evoludose %}
-            {{ graf4_evoludose|safe }}
-            {% endif %}
-
-            {% if graf5_evoludose %}
-            {{ graf5_evoludose|safe }}
-            {% endif %}
-
-
-
-
-            {% if graf1_leitos %}
-            {{ graf1_leitos|safe }}
-            {% endif %}
-
-            {% if graf2_leitos %}
-            {{ graf2_leitos|safe }}
-            {% endif %}
-
-            {% if graf3_leitos %}
-            {{ graf3_leitos|safe }}
-            {% endif %}
-
-            {% if graf4_leitos %}
-            {{ graf4_leitos|safe }}
-            {% endif %}
+               {% if graf4_leitos %}
+               <div class="novas-internacoes">{{ graf4_leitos|safe }}</div>
+               {% endif %}
+           </div>
 
 
-
-             {% if graf1_isola %}
-            {{ graf1_isola|safe }}
-            {% endif %}
-
+              {% if graf1_isola %}
+              <div class="isola-sp">{{ graf1_isola|safe }}</div>
+              {% endif %}
+       </div>
 
       <!-- Paragrafo Invisivel -->
             <p class="hide"> a</p>
@@ -452,8 +400,5 @@
              $("#ui-datepicker-div").hide();
           });
        </script>
-          </div>
-
-    </body> 
-
+    </body>
 </html>

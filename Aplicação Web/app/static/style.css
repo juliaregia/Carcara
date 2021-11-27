@@ -818,11 +818,11 @@ nav {
 
 /* Style the tab */
 .tab {
-overflow: hidden;
-border: none;
-color-background: white;
-background-color: transparent;
-text-align: center;
+  overflow: hidden;
+  border: none;
+  color-background: white;
+  background-color: transparent;
+  text-align: center;
 }
 
 .tab-separator {
@@ -855,12 +855,12 @@ text-align: center;
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-border: 1px solid transparent;
-border-bottom-color: #f8ac5b;
-border-radius: 1px;
-border-width: 5px;
-transition: 0;
-delay: 0;
+  border: 1px solid transparent;
+  border-bottom-color: #f8ac5b;
+  border-radius: 1px;
+  border-width: 5px;
+  transition: 0;
+  delay: 0;
 }
 
 /* Create an active/current tablink class */
@@ -885,17 +885,9 @@ delay: 0;
   transition: 0.1s forwards;
 }
 
-/* Style the close button */
-.topright {
-float: right;
-cursor: pointer;
-font-size: 28px;
-}
 
-.topright:hover {color: #ac5a00;}
+/* ------------------------------- ↓↓↓↓↓ Blocos Totalizadores ↓↓↓↓↓  --------------------------------*/
 
-
-/* ------------------------------- ↓↓↓↓↓ BLOCOS TAB ↓↓↓↓↓  --------------------------------*/  
 .BlocoH{
   width: auto;
   height: 200px;
@@ -903,34 +895,28 @@ font-size: 28px;
   background-color: #ffffff;
   display: flex;
   margin: auto;
-
 }
 
 .blocoInfo1{
   background-color: #F8AC5B;
   width: 400px;
   height: 200px;
-
   border-radius: 10px;
   top: 10px;
   left: 10px;
   margin-left: 100px;
   margin-right: 15px;
-
   box-shadow: inset 0px 0px 3px #000000;
-  
 }
 
 .blocoInfo2{
   background-color: #F8AC5B;
   width: 400px;
   height: 200px;
-
   border-radius: 10px;
   top: 10px;
   left: 10px;
   margin-right: 15px;
-
   box-shadow: inset 0px 0px 3px #000000;
 }
 
@@ -938,12 +924,10 @@ font-size: 28px;
   background-color: #F8AC5B;
   width: 400px;
   height: 200px;
-
   border-radius: 10px;
   top: 10px;
   left: 10px;
   margin-right: 15px;
-
   box-shadow: inset 0px 0px 3px #000000;
 }
 
@@ -951,11 +935,9 @@ font-size: 28px;
   background-color: #F8AC5B;
   width: 400px;
   height: 200px;
-
   border-radius: 10px;
   top: 10px;
   left: 10px;
   margin-right: 100px;
-
   box-shadow: inset 0px 0px 3px #000000;
 }
