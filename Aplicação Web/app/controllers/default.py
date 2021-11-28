@@ -79,15 +79,17 @@ def covidsp_main():
 
     # Gráfico casos por dia
     fig1 = px.bar(covidsp, x='Data', y='Casos por dia', color_discrete_sequence=palette,
-                  title='Casos por dia no Estado de São Paulo', hover_data=['Data', 'Total de casos', 'Casos por dia'],
-                  template='xgridoff')
-    fig1.update_yaxes(showgrid=False),
-    fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+                  title='<b>Casos por dia no Estado de São Paulo</b>',
+                  hover_data=['Data', 'Total de casos', 'Casos por dia'], template='xgridoff')
+    fig1.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=2000),
+    fig1.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(covidsp['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Casos por dia",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'), barmode='stack')
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='stack',
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf1 = fig1.to_html(full_html=False)
 
     # Gráfico óbitos por dia
@@ -95,13 +97,15 @@ def covidsp_main():
                   title='Óbitos por dia no Estado de São Paulo',
                   hover_data=['Data', 'Total de óbitos', 'Óbitos por dia'],
                   template='xgridoff')
-    fig2.update_yaxes(showgrid=False),
-    fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig2.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=100),
+    fig2.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(covidsp['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig2.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Óbitos por dia",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'), barmode='stack')
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='stack',
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf2 = fig2.to_html(full_html=False)
 
     # Gráfico total de casos
@@ -110,13 +114,15 @@ def covidsp_main():
                    color_discrete_sequence=palette, title='Crescimento do nº de casos no Estado',
                    hover_data=['Data', 'Total de casos', 'Casos por dia'], line_dash_sequence=['solid'],
                    render_mode='auto')
-    fig3.update_yaxes(showgrid=False),
-    fig3.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig3.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=500000),
+    fig3.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(covidsp['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig3.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Total de casos",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf3 = fig3.to_html(full_html=False)
 
     # Gráfico total de óbitos
@@ -125,13 +131,15 @@ def covidsp_main():
                    line_dash_sequence=['solid'],
                    render_mode='auto', hover_data=['Data', 'Total de óbitos', 'Óbitos por dia'],
                    title='Crescimento do nº de óbitos no Estado')
-    fig4.update_yaxes(showgrid=False),
-    fig4.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig4.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=15000),
+    fig4.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(covidsp['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig4.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Total de óbitos",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf4 = fig4.to_html(full_html=False)
     return render_template('estados.html', form=form, min=mini, max=maxi,
                            graf1_covidsp=graf1, graf2_covidsp=graf2, graf3_covidsp=graf3, graf4_covidsp=graf4)
@@ -151,49 +159,57 @@ def evoludose_main():
     # Evolução 1ª dose
     fig1 = px.bar(evoludose, x='Data', y='1ª Dose', template='xgridoff',
                   color_discrete_sequence=palette, title='Evolução da aplicação da 1ª dose')
-    fig1.update_yaxes(showgrid=False),
-    fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig1.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=50000),
+    fig1.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(evoludose['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Doses aplicadas",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf1 = fig1.to_html(full_html=False)
 
     # Evolução 2ª dose
     fig2 = px.bar(evoludose, x='Data', y='2ª Dose', template='xgridoff',
                   color_discrete_sequence=palette, title='Evolução da aplicação da 2ª dose')
-    fig2.update_yaxes(showgrid=False),
-    fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig2.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=50000),
+    fig2.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(evoludose['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig2.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Doses aplicadas",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf2 = fig2.to_html(full_html=False)
 
     # Evolução 3ª dose
     fig3 = px.bar(evoludose, x='Data', y='3ª Dose', template='xgridoff',
                   color_discrete_sequence=palette, title='Evolução da aplicação da 3ª dose')
-    fig3.update_yaxes(showgrid=False),
-    fig3.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig3.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=20000),
+    fig3.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(evoludose['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig3.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Doses aplicadas",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf3 = fig3.to_html(full_html=False)
 
     # Evolução dose única
     fig4 = px.bar(evoludose, x='Data', y='Dose Única', template='xgridoff',
                   color_discrete_sequence=palette, title='Evolução da aplicação da dose única')
-    fig4.update_yaxes(showgrid=False),
-    fig4.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig4.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=20000),
+    fig4.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(evoludose['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig4.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='Data', yaxis_title="Doses aplicadas",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf4 = fig4.to_html(full_html=False)
 
     # Filtros apenas para dados totais
@@ -206,13 +222,13 @@ def evoludose_main():
     fig5 = px.bar(evoludose, x='Data', y=['1ª Dose', '2ª Dose', '3ª Dose', 'Dose Única'], barmode='group',
                   template='xgridoff',
                   color_discrete_sequence=palette, title='Comparativo entre a aplicação das doses')
-    fig5.update_yaxes(showgrid=False),
-    fig5.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
-                       xaxis_title='', yaxis_title="Doses Aplicadas",
+    fig5.update_yaxes(showgrid=False, tickmode="linear", tick0=0, dtick=20000),
+    fig5.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
+                       xaxis_tickangle=360, xaxis_title='', yaxis_title="Doses Aplicadas",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                       xaxis_tickformat='Última atualização: %d de %b de %y', xaxis_hoverformat='%b %d, %Y')
     graf5 = fig5.to_html(full_html=False)
     return render_template('estados.html', form=form, min=mini, max=maxi,
                            graf1_evoludose=graf1, graf2_evoludose=graf2, graf3_evoludose=graf3,
@@ -242,13 +258,15 @@ def leitos_main():
     # Ocupação dos leitos de UTI e enfermaria no Estado
     fig1 = px.bar(leitos, x='Data', y='Ocupação dos leitos de UTI e Enfermaria (%)', template='xgridoff',
                   color_discrete_sequence=palette, title='Ocupação dos leitos de UTI e Enfermaria no Estado')
-    fig1.update_yaxes(showgrid=False),
-    fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig1.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=10),
+    fig1.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(leitos['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Ocupação dos leitos (%)",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf1 = fig1.to_html(full_html=False)
 
     # Número de leitos de UTI e enfermaria no Estado
@@ -256,39 +274,45 @@ def leitos_main():
                   y=['Total de leitos de UTI destinados à Covid', 'Total de leitos de Enfermaria destinados à Covid'],
                   template='xgridoff', title='Total de leitos de UTI e Enfermaria destinados à COVID-19',
                   color_discrete_sequence=palette)
-    fig2.update_yaxes(showgrid=False),
-    fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig2.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=2500),
+    fig2.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(leitos['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig2.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Leitos destinados à COVID-19",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'), barmode='group')
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='group',
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf2 = fig2.to_html(full_html=False)
 
     # Número de pacientes em tratamento na UTI e enfermaria no Estado
     fig3 = px.bar(leitos, x='Data', y=['Pacientes em tratamento na UTI', 'Pacientes em tratamento na Enfermaria'],
                   template='xgridoff', title='Total de pacientes nas UTIs e Enfermarias',
                   color_discrete_sequence=palette)
-    fig3.update_yaxes(showgrid=False),
-    fig3.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig3.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=2500),
+    fig3.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(leitos['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig3.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Pacientes em tratamento",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'), barmode='group')
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='group',
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf3 = fig3.to_html(full_html=False)
 
     # Novas internações por dia no Estado
     fig4 = px.line(leitos.sort_values(by=['Data'], ascending=[True]), x='Data',
                    y='Novos casos de internações (UTI e Enfermaria)', template='xgridoff',
                    color_discrete_sequence=palette, title='Novas internações por dia no Estado')
-    fig4.update_yaxes(showgrid=False),
-    fig4.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig4.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=500),
+    fig4.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(leitos['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig4.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Internações (UTI e Enfermaria)",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf4 = fig4.to_html(full_html=False)
     return render_template('estados.html', form=form, min=mini, max=maxi,
                            graf1_leitos=graf1, graf2_leitos=graf2, graf3_leitos=graf3, graf4_leitos=graf4)
@@ -316,13 +340,15 @@ def isola_main():
     fig1 = px.bar(isola, orientation='v', y='Índice de Isolamento (%)', x='Data', color='Dia da Semana',
                   template='xgridoff', title='Índice de Isolamento Social do Estado',
                   color_discrete_sequence=palette)
-    fig1.update_yaxes(showgrid=False),
-    fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig1.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=10),
+    fig1.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(isola['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Isolamento Social (%)",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf1 = fig1.to_html(full_html=False)
     return render_template('estados.html', form=form, min=mini, max=maxi,
                            graf1_isola=graf1)
@@ -367,13 +393,15 @@ def covidsp_search():
                       title='Casos por dia no Estado de São Paulo',
                       hover_data=['Data', 'Total de casos', 'Casos por dia'],
                       template='xgridoff')
-        fig1.update_yaxes(showgrid=False),
-        fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig1.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=2000),
+        fig1.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(covidsp['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Casos por dia",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'), barmode='stack')
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='stack',
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf1 = fig1.to_html(full_html=False)
 
         # Gráfico óbitos diários
@@ -381,13 +409,15 @@ def covidsp_search():
                       title='Óbitos por dia no Estado de São Paulo',
                       hover_data=['Data', 'Total de óbitos', 'Óbitos por dia'],
                       template='xgridoff')
-        fig2.update_yaxes(showgrid=False),
-        fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig2.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=100),
+        fig2.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(covidsp['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig2.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Óbitos por dia",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'), barmode='stack')
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='stack',
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf2 = fig2.to_html(full_html=False)
 
         # Gráfico total de casos
@@ -396,13 +426,15 @@ def covidsp_search():
                        color_discrete_sequence=palette, title='Crescimento do nº de casos no Estado',
                        hover_data=['Data', 'Total de casos', 'Casos por dia'], line_dash_sequence=['solid'],
                        render_mode='auto')
-        fig3.update_yaxes(showgrid=False),
-        fig3.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig3.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=500000),
+        fig3.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(covidsp['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig3.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Total de casos",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf3 = fig3.to_html(full_html=False)
 
         # Gráfico total de óbitos
@@ -411,13 +443,15 @@ def covidsp_search():
                        line_dash_sequence=['solid'],
                        render_mode='auto', hover_data=['Data', 'Total de óbitos', 'Óbitos por dia'],
                        title='Crescimento do nº de óbitos no Estado')
-        fig4.update_yaxes(showgrid=False),
-        fig4.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig4.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=15000),
+        fig4.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(covidsp['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig4.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Total de óbitos",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf4 = fig4.to_html(full_html=False)
         return render_template('estados.html', form=form, min=mini, max=maxi,
                                start=form_start[-1], end=form_end[-1],
@@ -458,49 +492,57 @@ def evoludose_search():
         # Evolução 1ª dose
         fig1 = px.bar(evoludose, x='Data', y='1ª Dose', template='xgridoff',
                       color_discrete_sequence=palette, title='Evolução da aplicação da 1ª dose')
-        fig1.update_yaxes(showgrid=False),
-        fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig1.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=50000),
+        fig1.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(evoludose['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Doses aplicadas",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf1 = fig1.to_html(full_html=False)
 
         # Evolução 2ª dose
         fig2 = px.bar(evoludose, x='Data', y='2ª Dose', template='xgridoff',
                       color_discrete_sequence=palette, title='Evolução da aplicação da 2ª dose')
-        fig2.update_yaxes(showgrid=False),
-        fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig2.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=50000),
+        fig2.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(evoludose['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig2.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Doses aplicadas",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf2 = fig2.to_html(full_html=False)
 
         # Evolução 3ª dose
         fig3 = px.bar(evoludose, x='Data', y='3ª Dose', template='xgridoff',
                       color_discrete_sequence=palette, title='Evolução da aplicação da 3ª dose')
-        fig3.update_yaxes(showgrid=False),
-        fig3.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig3.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=20000),
+        fig3.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(evoludose['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig3.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Doses aplicadas",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf3 = fig3.to_html(full_html=False)
 
         # Evolução dose única
         fig4 = px.bar(evoludose, x='Data', y='Dose Única', template='xgridoff',
                       color_discrete_sequence=palette, title='Evolução da aplicação da dose única')
-        fig4.update_yaxes(showgrid=False),
-        fig4.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig4.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=20000),
+        fig4.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(evoludose['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig4.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='Data', yaxis_title="Doses aplicadas",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf4 = fig4.to_html(full_html=False)
 
         # Filtros apenas para dados totais
@@ -513,13 +555,13 @@ def evoludose_search():
         fig5 = px.bar(evoludose, x='Data', y=['1ª Dose', '2ª Dose', '3ª Dose', 'Dose Única'], barmode='group',
                       template='xgridoff', title='Comparativo entre a aplicação das doses',
                       color_discrete_sequence=palette)
-        fig5.update_yaxes(showgrid=False),
-        fig5.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
-                           xaxis_title='', yaxis_title="Doses Aplicadas",
+        fig5.update_yaxes(showgrid=False, tickmode="linear", tick0=0, dtick=20000),
+        fig5.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
+                           xaxis_tickangle=360, xaxis_title='', yaxis_title="Doses Aplicadas",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                           xaxis_tickformat='Última atualização: %d de %b de %y', xaxis_hoverformat='%b %d, %Y')
         graf5 = fig5.to_html(full_html=False)
         return render_template('estados.html', form=form, min=mini, max=maxi,
                                start=form_start[-1], end=form_end[-1],
@@ -570,13 +612,15 @@ def leitos_search():
         # Ocupação dos leitos de UTI e enfermaria no Estado
         fig1 = px.bar(leitos, x='Data', y='Ocupação dos leitos de UTI e Enfermaria (%)', template='xgridoff',
                       color_discrete_sequence=palette, title='Ocupação dos leitos de UTI e Enfermaria no Estado')
-        fig1.update_yaxes(showgrid=False),
-        fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig1.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=10),
+        fig1.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(leitos['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Ocupação dos leitos (%)",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf1 = fig1.to_html(full_html=False)
 
         # Número de leitos de UTI e enfermaria no Estado
@@ -584,39 +628,45 @@ def leitos_search():
                                            'Total de leitos de Enfermaria destinados à Covid'], template='xgridoff',
                       color_discrete_sequence=palette,
                       title='Total de leitos de UTI e Enfermaria destinados à COVID-19')
-        fig2.update_yaxes(showgrid=False),
-        fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig2.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=2500),
+        fig2.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(leitos['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig2.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Leitos destinados à COVID-19",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'), barmode='group')
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='group',
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf2 = fig2.to_html(full_html=False)
 
         # Número de pacientes em tratamento na UTI e enfermaria no Estado
         fig3 = px.bar(leitos, x='Data', y=['Pacientes em tratamento na UTI', 'Pacientes em tratamento na Enfermaria'],
                       template='xgridoff', title='Total de pacientes nas UTIs e Enfermarias',
                       color_discrete_sequence=palette)
-        fig3.update_yaxes(showgrid=False),
-        fig3.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig3.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=2500),
+        fig3.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(leitos['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig3.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Pacientes em tratamento",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'), barmode='group')
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='group',
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf3 = fig3.to_html(full_html=False)
 
         # Novas internações por dia no Estado
         fig4 = px.line(leitos.sort_values(by=['Data'], ascending=[True]), x='Data',
                        y='Novos casos de internações (UTI e Enfermaria)', template='xgridoff',
                        color_discrete_sequence=palette, title='Novas internações por dia no Estado')
-        fig4.update_yaxes(showgrid=False),
-        fig4.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig4.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=500),
+        fig4.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(leitos['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig4.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Internações (UTI e Enfermaria)",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf4 = fig4.to_html(full_html=False)
         return render_template('estados.html', form=form, min=mini, max=maxi,
                                start=form_start[-1], end=form_end[-1],
@@ -662,13 +712,15 @@ def isola_search():
         fig1 = px.bar(isola, orientation='v', y='Índice de Isolamento (%)', x='Data', color='Dia da Semana',
                       template='xgridoff', title='Índice de Isolamento Social do Estado',
                       color_discrete_sequence=palette)
-        fig1.update_yaxes(showgrid=False),
-        fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig1.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=10),
+        fig1.update_xaxes(tickangle=-45,
+                          tickvals=pd.date_range(isola['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+        fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Isolamento Social (%)",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                           xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
         graf1 = fig1.to_html(full_html=False)
         return render_template('estados.html', form=form, min=mini, max=maxi,
                                start=form_start[-1], end=form_end[-1],
@@ -708,26 +760,30 @@ def covidmuni_main():
     fig1 = px.bar(covidmuni, x='Data', y='Novos Casos', color='Município', hover_data=['Novos Casos'],
                   color_discrete_sequence=palette,
                   title='Casos confirmados por dia e por Município', template='xgridoff')
-    fig1.update_yaxes(showgrid=False),
-    fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig1.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=150),
+    fig1.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(covidmuni['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Novos Casos",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'), barmode='stack')
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='stack',
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf1 = fig1.to_html(full_html=False)
 
     # Óbitos diários por municípioo
     fig2 = px.bar(covidmuni, x='Data', y='Novos Óbitos', color='Município', hover_data=['Novos Óbitos'],
                   color_discrete_sequence=palette,
                   title='Óbitos confirmados por dia e por Município', template='xgridoff')
-    fig2.update_yaxes(showgrid=False),
-    fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig2.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=25),
+    fig2.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(covidmuni['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig2.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Novos Óbitos",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'), barmode='stack')
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='stack',
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf2 = fig2.to_html(full_html=False)
 
     # Filtros apenas para dados totais
@@ -747,12 +803,12 @@ def covidmuni_main():
     fig3.update_xaxes(type='date')
     fig3.update_layout(autosize=True)
     fig3.update_yaxes(showgrid=False),
-    fig3.update_layout(margin=dict(t=80, b=40, l=85, r=50),
+    fig3.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_tickangle=360,
                        xaxis_title='', yaxis_title="Total de Óbitos",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"))
     graf3 = fig3.to_html(full_html=False)
 
     # Total de casos por município
@@ -762,12 +818,12 @@ def covidmuni_main():
     fig4.update_xaxes(type='date')
     fig4.update_layout(autosize=True)
     fig4.update_yaxes(showgrid=False),
-    fig4.update_layout(margin=dict(t=80, b=40, l=85, r=50),
+    fig4.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_tickangle=360,
                        xaxis_title='', yaxis_title="Total de Casos",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"))
     graf4 = fig4.to_html(full_html=False)
     return render_template('municipios.html', form=form, min=mini, max=maxi,
                            graf1_covidmuni=graf1, graf2_covidmuni=graf2, graf3_covidmuni=graf3, graf4_covidmuni=graf4)
@@ -802,25 +858,25 @@ def vacina_main():
                         template='xgridoff', title='Aplicação das doses por Município',
                         color_discrete_sequence=palette)
     fig1.update_layout(legend_title_text='Dose Aplicada')
-    fig1.update_yaxes(showgrid=False),
-    fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig1.update_yaxes(showgrid=False, tickmode="linear", tick0=0, dtick=1000000),
+    fig1.update_xaxes(tickangle=-45),
+    fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='', yaxis_title="Doses Aplicadas",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"))
     graf1 = fig1.to_html(full_html=False)
 
     # Comparação entre municípios de doses distribuídas
     fig2 = px.histogram(vacina, x='Doses Distribuídas', y='Município', orientation='h', template='xgridoff',
                         color_discrete_sequence=palette, title='Doses distribuídas por Município')
-    fig2.update_yaxes(showgrid=False),
-    fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                       xaxis_tickangle=360,
+    fig2.update_xaxes(showgrid=False, tickmode="linear", tick0=0, dtick=2500000),
+    fig2.update_yaxes(tickangle=-45),
+    fig2.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                        xaxis_title='Doses Distribuídas', yaxis_title="",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'))
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"))
     graf2 = fig2.to_html(full_html=False)
     return render_template('municipios.html', form=form, min=mini, max=maxi,
                            graf1_vacina=graf1, graf2_vacina=graf2)
@@ -853,15 +909,15 @@ def isolamuni_main():
     # Histórico do indice de isolamento nos municipios sp
     fig1 = px.bar(isola, orientation='v', y='Índice de Isolamento (%)', x='Data', color='Município',
                   color_discrete_sequence=palette, title='Índice de Isolamento Social por Município')
-    fig1.update_yaxes(showgrid=False),
-    fig1.update_traces(hovertemplate=None, )
-    fig1.update_layout(autosize=True, margin=dict(t=70, b=0, l=70, r=40),
-                       hovermode="x unified",
-                       xaxis_tickangle=360,
-                       xaxis_title='Data', yaxis_title="Isolamento Social (%)",
+    fig1.update_yaxes(showgrid=False, tickmode="linear", tick0=0, dtick=10),
+    fig1.update_xaxes(tickangle=-45,
+                      tickvals=pd.date_range(isola['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+    fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
+                       hovermode="x unified", xaxis_title='Data', yaxis_title="Isolamento Social (%)",
                        plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                       title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                       font=dict(size=18, color='#dc770d'), barmode='stack')
+                       title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                       font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                       xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
     graf1 = fig1.to_html(full_html=False)
     return render_template('municipios.html', form=form, min=mini, max=maxi, graf1_isola=graf1)
 
@@ -918,13 +974,15 @@ def covidmuni_search():
                           hover_data=['Novos Casos', 'Total de Casos'],
                           color_discrete_sequence=palette,
                           title='Casos confirmados por dia e por Município', template='xgridoff')
-            fig1.update_yaxes(showgrid=False),
-            fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                               xaxis_tickangle=360,
+            fig1.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=150),
+            fig1.update_xaxes(tickangle=-45,
+                              tickvals=pd.date_range(covidmuni['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+            fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                                xaxis_title='', yaxis_title="Novos Casos",
                                plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                               title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                               font=dict(size=18, color='#dc770d'), barmode='stack')
+                               title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                               font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='stack',
+                               xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
             graf1 = fig1.to_html(full_html=False)
 
             # Óbitos diários por município
@@ -932,13 +990,15 @@ def covidmuni_search():
                           hover_data=['Novos Casos', 'Total de Casos'],
                           color_discrete_sequence=palette,
                           title='Óbitos confirmados por dia e por Município', template='xgridoff')
-            fig2.update_yaxes(showgrid=False),
-            fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                               xaxis_tickangle=360,
+            fig2.update_yaxes(showgrid=True, gridcolor='rgba(0, 0, 0, 0.2)', tickmode="linear", tick0=0, dtick=25),
+            fig2.update_xaxes(tickangle=-45,
+                              tickvals=pd.date_range(covidmuni['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+            fig2.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                                xaxis_title='', yaxis_title="Novos Óbitos",
                                plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                               title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                               font=dict(size=18, color='#dc770d'), barmode='stack')
+                               title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                               font=dict(size=18, color='#dc770d', family="Helvetica, neue"), barmode='stack',
+                               xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
             graf2 = fig2.to_html(full_html=False)
 
             # Filtros apenas para dados totais
@@ -952,14 +1012,14 @@ def covidmuni_search():
                           title='Comparativo do total de óbitos por Município', template='xgridoff',
                           color_discrete_sequence=palette)
             fig3.update_xaxes(type='date')
-            fig3.update_yaxes(showgrid=False),
             fig3.update_layout(autosize=True)
-            fig3.update_layout(margin=dict(t=80, b=40, l=85, r=50),
+            fig3.update_yaxes(showgrid=False),
+            fig3.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                                xaxis_tickangle=360,
-                               xaxis_title='Data', yaxis_title="Total de Óbitos",
+                               xaxis_title='', yaxis_title="Total de Óbitos",
                                plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                               title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                               font=dict(size=18, color='#dc770d'))
+                               title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                               font=dict(size=18, color='#dc770d', family="Helvetica, neue"))
             graf3 = fig3.to_html(full_html=False)
 
             # Total de casos por município
@@ -969,12 +1029,12 @@ def covidmuni_search():
             fig4.update_xaxes(type='date')
             fig4.update_layout(autosize=True)
             fig4.update_yaxes(showgrid=False),
-            fig4.update_layout(margin=dict(t=80, b=40, l=85, r=50),
+            fig4.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                                xaxis_tickangle=360,
-                               xaxis_title='Data', yaxis_title="Total de Casos",
+                               xaxis_title='', yaxis_title="Total de Casos",
                                plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                               title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                               font=dict(size=18, color='#dc770d'))
+                               title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                               font=dict(size=18, color='#dc770d', family="Helvetica, neue"))
             graf4 = fig4.to_html(full_html=False)
             return render_template('municipios.html', form=form, min=mini, max=maxi,
                                    start=form_start[-1], end=form_end[-1], city=form_city[-1],
@@ -1029,25 +1089,25 @@ def vacina_search():
                             template='xgridoff', title='Aplicação das doses por Município',
                             color_discrete_sequence=palette)
         fig1.update_layout(legend_title_text='Dose Aplicada')
-        fig1.update_yaxes(showgrid=False),
-        fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig1.update_yaxes(showgrid=False, tickmode="linear", tick0=0, dtick=1000000),
+        fig1.update_xaxes(tickangle=-45),
+        fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='', yaxis_title="Doses Aplicadas",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"))
         graf1 = fig1.to_html(full_html=False)
 
         # Comparação entre municípios de doses distribuídas
         fig2 = px.histogram(vacina, x='Doses Distribuídas', y='Município', orientation='h', template='xgridoff',
                             color_discrete_sequence=palette, title='Doses distribuídas por Município')
-        fig2.update_yaxes(showgrid=False),
-        fig2.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                           xaxis_tickangle=360,
+        fig2.update_xaxes(showgrid=False, tickmode="linear", tick0=0, dtick=2500000),
+        fig2.update_yaxes(tickangle=-45),
+        fig2.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
                            xaxis_title='Doses Distribuídas', yaxis_title="",
                            plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                           title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                           font=dict(size=18, color='#dc770d'))
+                           title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                           font=dict(size=18, color='#dc770d', family="Helvetica, neue"))
         graf2 = fig2.to_html(full_html=False)
         return render_template('municipios.html', form=form, min=mini, max=maxi,
                                start=form_start[-1], end=form_end[-1], city=form_city[-1],
@@ -1101,13 +1161,15 @@ def isolamuni_search():
             fig1 = px.bar(isola, orientation='v', y='Índice de Isolamento (%)', x='Data', color='Município',
                           template='xgridoff', title='Índice de Isolamento Social por Município',
                           color_discrete_sequence=palette)
-            fig1.update_yaxes(showgrid=False),
-            fig1.update_layout(autosize=True, margin=dict(t=80, b=40, l=85, r=50),
-                               xaxis_tickangle=360,
-                               xaxis_title='', yaxis_title="Isolamento Social (%)",
+            fig1.update_yaxes(showgrid=False, tickmode="linear", tick0=0, dtick=10),
+            fig1.update_xaxes(tickangle=-45,
+                              tickvals=pd.date_range(isola['Data'].min().strftime('%Y-%m-%d'), maxi, freq='MS')),
+            fig1.update_layout(autosize=True, height=700, margin=dict(t=85, b=90, l=90, r=50),
+                               hovermode="x unified", xaxis_title='Data', yaxis_title="Isolamento Social (%)",
                                plot_bgcolor='#ffffff', paper_bgcolor='#ffffff',
-                               title_font=dict(size=32, color='#dc770d', family="Lato, sans-serif"),
-                               font=dict(size=18, color='#dc770d'))
+                               title_font=dict(size=32, color='#dc770d', family="Helvetica, neue"),
+                               font=dict(size=18, color='#dc770d', family="Helvetica, neue"),
+                               xaxis_tickformat='%b/%y', xaxis_hoverformat='%b %d, %Y')
             graf1 = fig1.to_html(full_html=False)
             return render_template('municipios.html', form=form, min=mini, max=maxi,
                                    start=form_start[-1], end=form_end[-1], city=form_city[-1],
