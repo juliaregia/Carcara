@@ -263,34 +263,55 @@
        <div class="graficos-municipios">
            <div class="covidmuni">
                {% if graf1_covidmuni %}
-               <div class="casos-diarios-muni">{{ graf1_covidmuni|safe }}</div>
+               <div class="casos-diarios-muni">{{ graf1_covidmuni|safe }}
+                   <button class="hide-dado" onclick="dadosComp()">DADOS</button>
+                   <p class=unhide-dado" id="df1">Variação nos últimos sete dias no período:</p>
+               </div>
                {% endif %}
 
                {% if graf2_covidmuni %}
-               <div class="obitos-diarios-muni">{{ graf2_covidmuni|safe }}</div>
+               <div class="obitos-diarios-muni">{{ graf2_covidmuni|safe }}
+                   <button class="hide-dado" onclick="dadosComp()">DADOS</button>
+                   <p class=unhide-dado" id="df2">Variação nos últimos sete dias no período:</p>
+               </div>
                {% endif %}
 
                {% if graf3_covidmuni %}
-               <div class="total-obitos-muni">{{ graf3_covidmuni|safe }}</div>
+               <div class="total-obitos-muni">{{ graf3_covidmuni|safe }}
+                   <button class="hide-dado" onclick="dadosComp()">DADOS</button>
+                   <p class=unhide-dado" id="df3">Variação nos últimos sete dias no período:</p>
+               </div>
                {% endif %}
 
                {% if graf4_covidmuni %}
-               <div class="total-casos-muni">{{ graf4_covidmuni|safe }}</div>
+               <div class="total-casos-muni">{{ graf4_covidmuni|safe }}
+                   <button class="hide-dado" onclick="dadosComp()">DADOS</button>
+                   <p class=unhide-dado" id="df4">Variação nos últimos sete dias no período:</p>
+               </div>
                {% endif %}
            </div>
 
            <div class="vacinamuni">
                {% if graf1_vacina %}
-               <div class="doses-muni">{{ graf1_vacina|safe }}</div>
+               <div class="doses-muni">{{ graf1_vacina|safe }}
+                   <button class="hide-dado" onclick="dadosComp()">DADOS</button>
+                   <p class=unhide-dado" id="df5">Variação nos últimos sete dias no período:</p>
+               </div>
                {% endif %}
 
                {% if graf2_vacina %}
-               <div class="vacina-distribuicao-muni">{{ graf2_vacina|safe }}</div>
+               <div class="vacina-distribuicao-muni">{{ graf2_vacina|safe }}
+                   <button class="hide-dado" onclick="dadosComp()">DADOS</button>
+                   <p class=unhide-dado" id="df6">Variação nos últimos sete dias no período:</p>
+               </div>
                {% endif %}
            </div>
 
                {% if graf1_isola %}
-               <div class="isola-muni">{{ graf1_isola|safe }}</div>
+               <div class="isola-muni">{{ graf1_isola|safe }}
+                   <button class="hide-dado" onclick="dadosComp()">DADOS</button>
+                   <p class=unhide-dado" id="df7">Variação nos últimos sete dias no período:</p>
+               </div>
                {% endif %}
        </div>
 
