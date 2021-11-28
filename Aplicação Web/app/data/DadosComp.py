@@ -27,16 +27,40 @@ covidsp = pd.read_csv(url1, dtype={'Total de casos': 'int32', 'Total de óbitos'
 covidsp['Data'] = pd.to_datetime(covidsp['Data'])
 
 # GRÁFICO CASOS POR DIA (???)
+casos = covidsp[covidsp['Casos por dia']
+casos7 = covidsp['Casos por dia'] #7 dias atrás
 
+print(casos)
+print(casos7)
+
+x = (casos*100) / casos7-100
+print ('Casos em comparação a 7 dias atrás: %.1f' %x, '%')
 
 # GRÁFICO ÓBITOS POR DIA (???)
+obi = covidsp['Óbitos por dia'] [107]
+obi7 = covidsp['Óbitos por dia'] [100] #7dias atrás
 
+x = (obi*100) / obi7-100
+print ('Óbitos em comparação a 7 dias atrás: %.1f' %x, '%')
 
 # GRÁFICO TOTAL DE CASOS (Taxa de Incidência)
+pop = 700000
+casos = 100
 
+inc = casos / (pop-casos) * 100000
+print('Incidência de casos: %.f' %inc, 'a cada 100 mil habitantes')
 
 # GRÁFICO TOTAL DE ÓBITOS (Taxa de Letalidade)
+obtotal = covidsp['Total de óbitos'] [107]
+casostotal = covidsp['Total de casos'] [107]
+obtotal7 = covidsp['Total de óbitos'] [100]
+casostotal7 = covidsp['Total de casos'] [100]
 
+let = (obtotal/casostotal) * 100
+let7 = (obtotal7/casostotal7) * 100
+
+print('Taxa de letalidade: %.1f' %let, '%')
+print('Taxa de letalidade em comparação aos últimos 7 dias: %.1f' %let7, '%')
 
 # ---------------------------------------  VACINAÇÃO DO ESTADO  ------------------------------------------------ #
 
@@ -44,16 +68,32 @@ evoludose = pd.read_csv(url5, dtype={'1ª Dose': 'int32', '2ª Dose': 'int32', '
 evoludose['Data'] = pd.to_datetime(evoludose['Data'])
 
 # EVOLUÇÃO 1ª DOSE (???)
+dose = evoludose['1ª Dose'] [107]
+dose7 = evoludose['1ª Dose'] [100]
 
+evol = (dose*100) / dose7-100
+print('Taxa de aplicação da 1ª dose: %.1f' %evol, '% comparado a 7 dias atrás')
 
 # EVOLUÇÃO 2ª DOSE (???)
+dose = evoludose['2ª Dose'] [107]
+dose7 = evoludose['2ª Dose'] [100]
 
+evol = (dose*100) / dose7-100
+print('Taxa de aplicação da 2ª dose: %.1f' %evol, '% comparado a 7 dias atrás')
 
 # EVOLUÇÃO 3ª DOSE (???)
+dose = 500
+dose7 = 300
 
+evol = (dose*100) / dose7-100
+print('Taxa de aplicação da 3ª dose: %.1f' %evol, '% comparado a 7 dias atrás')
 
 # EVOLUÇÃO DOSE ÚNICA (???)
+dose = 500
+dose7 = 300
 
+evol = (dose*100) / dose7-100
+print('Taxa de aplicação da dose única: %.1f' %evol, '% comparado a 7 dias atrás')
 
 # COMPARATIVO ENTRE DOSES (???)
 
@@ -92,7 +132,11 @@ isola['Data'] = pd.to_datetime(isola['Data'])
 isola = isola[isola['Município'] == 'Estado De São Paulo']
 
 # INDICE DE ISOLAMENTO (???)
+iso = isola['Índice de Isolamento (%)'] [128]
+iso7 = isola['Índice de Isolamento (%)'] [255]
 
+ind = (iso*100) / iso7-100
+print('Isolamento em relação aos últimos 7 dias: %.1f' %ind, '%')
 
 # ---------------------------------------  CASOS E ÓBITOS MUNICÍPIOS  -------------------------------------------- #
 
