@@ -5,3 +5,4 @@ app.secret_key = 'flask'
 
 from app.controllers import default
 
+
