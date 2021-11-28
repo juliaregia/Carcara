@@ -15,11 +15,40 @@
 }
 
 
+/* ---------------------- ↓↓↓↓↓ Dados Complementares dos gráficos ↓↓↓↓↓ -----------------------*/
+
+.hide-dado {
+  color: transparent;
+  border: 1px solid transparent;
+  background: url('virus.png') no-repeat center center/cover;
+  width: 45px;
+  height: 45px;
+  float: right;
+  position: absolute;
+  top: 45%;
+  left: 100.7%;
+  opacity: 0.6;
+}
+
+.hide-dado:hover {
+  opacity: 1;
+}
+
+.graficos-estado p {
+
+}
+
+.graficos-municipios p {
+
+}
+
+
 /* ------------------------------- ↓↓↓↓↓ Gráficos Estado ↓↓↓↓↓ --------------------------------*/
 
 .graficos-estado {
   margin-left: 20px;
   margin-right: 20px;
+  font-family: 'Neue Helvetica Medium';
 }
 
 .casos-diarios-sp {
@@ -28,6 +57,10 @@
   margin-top: 10px;
   margin-bottom: 25px;
   box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .obitos-diarios-sp {
@@ -35,7 +68,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .total-casos-sp {
@@ -43,7 +80,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .total-obitos-sp {
@@ -51,7 +92,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .primeira-dose-sp {
@@ -59,7 +104,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .segunda-dose-sp {
@@ -67,7 +116,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .terceira-dose-sp {
@@ -75,7 +128,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .dose-unica-sp {
@@ -84,6 +141,10 @@
   margin-top: 10px;
   margin-bottom: 25px;
   box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .doses-sp {
@@ -91,7 +152,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .ocupacao-leitos {
@@ -99,7 +164,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .total-leitos {
@@ -107,7 +176,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .total-pacientes {
@@ -116,6 +189,10 @@
   margin-top: 10px;
   margin-bottom: 25px;
   box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .novas-internacoes {
@@ -123,7 +200,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .isola-sp {
@@ -131,7 +212,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 
@@ -140,6 +225,7 @@
 .graficos-municipios {
   margin-left: 20px;
   margin-right: 20px;
+  font-family: 'Neue Helvetica Medium';
 }
 
 .casos-diarios-muni {
@@ -147,7 +233,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .obitos-diarios-muni {
@@ -155,7 +245,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .total-obitos-muni {
@@ -164,6 +258,10 @@
   margin-top: 10px;
   margin-bottom: 25px;
   box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .total-casos-muni {
@@ -171,7 +269,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .doses-muni {
@@ -179,7 +281,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .vacina-distribuicao-muni {
@@ -187,7 +293,11 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
 
 .isola-muni {
@@ -195,5 +305,9 @@
   border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 25px;
-  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4)
+  box-shadow: 3px 3px 5px 3px rgba(190, 120, 45, 0.4);
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  width: 98%;
 }
